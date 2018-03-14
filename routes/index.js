@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
 				      url: "http://app.best-hint.com"
 				    }); 
 //					  res.render('index', {jsticket:jsapiTicket,signature:signature,nonceStr:nonceStr,timeStamp:timeStamp,corpId:env.corpId,agentId:agentId});
-						res.render("mainpage")
+						res.render("loginMain")
 				  }
 				  else {
 				    error('cannot get jsapi_ticket');
