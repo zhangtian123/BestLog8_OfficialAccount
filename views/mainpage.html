@@ -1,0 +1,41 @@
+<!--
+	作者：lyj,lcf
+	时间：2017-07-04
+	描述：主页面
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+	<link href="/stylesheets/index.css" rel="stylesheet" />
+</head>
+<body>
+	<!--主页面容器-->
+	<div class="mui-content-padded contain">
+		<div class="logobar">
+			<img src="/images/logo.png" />
+		</div>
+		<!--按钮-->
+		<div class="mui-col-xs-9 login">
+			<button type="button" class="mui-btn mui-btn-block">客户注册</button>
+			<button type="button" class="mui-btn mui-btn-block" style="margin-top: 10%;">统一登录</button>
+		</div>
+	</div>
+</body>
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/mui.min.js"></script>
+<script type="text/javascript">
+	mui.init()
+	$(document).ready(function(){
+		$('.login button:first').click(function(){
+			location.href='/registerMain';
+		})
+		$('.login button').eq(1).click(function(){
+			location.href='/loginMain';
+		})
+	})
+</script>
+</html>

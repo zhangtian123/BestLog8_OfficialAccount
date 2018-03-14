@@ -1,0 +1,92 @@
+<!--
+	作者：lyj,lcf
+	时间：2017-07-04
+	描述：注册之设置密码
+-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link href="/stylesheets/index.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!--主页面容器-->
+		<div class="mui-content-padded  contain">
+			<div class="logobar">
+				<img src="/images/logo.png" />
+			</div>
+			<!--主页面内容容器-->
+			<div class="mui-col-xs-9 login">
+				<!--输入框表单-->
+				<form>
+					<div class="mui-input-row">
+						<label><img src="/images/密码.png" width="25px;"></label>
+						<input type="password" name="password" class="mui-input-clear" placeholder="请输入密码" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label><img src="/images/密码确认.png" width="25px;"></label>
+						<input type="password" name="repassword" class="mui-input-clear" placeholder="请再次输入密码" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+				</form>
+				<!--下一步按钮-->
+				<button type="button" class="mui-btn mui-btn-block" style="margin-top: 25%;">下一步</button>
+			</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			$(document).ready(function(){
+				$('.login button').eq(0).click(function(){
+					var check = true;
+					mui("#inputinfo input").each(function() {
+					//若当前input为空，则alert提醒 
+					if(!this.value || this.value.trim() == "") {
+						var label = this.previousElementSibling;
+						mui.alert("不允许为空");
+						check = false;
+						return false;
+					}
+					}); //校验通过，继续执行业务逻辑 
+					if(check){
+						var password = $("input[name='password']").val();
+						var repassword = $("input[name='repassword']").val();
+						if(password == repassword)
+						{
+							$.ajax({
+							type:"post",
+							url:"/reSetpassword",
+							data:{
+								password:password,
+							},
+							async:true,
+							success:function(data){
+								var result = eval(data);
+								if(result.result=='1')
+								{
+									mui.toast("修改成功");
+									mui.openWindow('/loginMain');
+								}
+							},
+							error:function(){
+								mui.alert("系统服务错误");
+							}
+						});
+						}
+						else{
+							mui.alert("两次密码不匹配");
+						}
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

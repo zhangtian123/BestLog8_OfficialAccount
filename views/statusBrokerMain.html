@@ -1,0 +1,325 @@
+<!--
+	作者：lcf
+	时间：2017-07-05
+	描述：状态反馈之拖车主页
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title></title>
+	    <script src="/javascripts/mui.min.js"></script>
+	    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="/stylesheets/base.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	    </script>
+	</head>
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+	      		<div class="maincontent">
+	      			<!--<div class="mui-card content-item">
+			    		<div class="toplabel"></div>
+						<!--页眉，放置标题-->
+						<!--<div class="mui-card-header">报关单号：XXXXXXXXX</div>
+						<!--内容区-->
+						<!--<div class="mui-card-content" style="text-align: center;">
+							<div class="item" style="text-align: left;">
+								<span class="item-title">报关单状态</span>
+							</div>
+							<canvas id="tracecontent" width="310px" height="100px"></canvas>
+							<div class="buttonbar">
+								<button type="button" class="mui-btn mui-btn-primary">状态反馈</button>
+							</div>
+						</div>
+					</div>-->
+	      		</div>
+	      	</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/getbroker.js"></script>
+		<script src="/javascripts/trace.js"></script>
+		<script type="text/javascript" charset="utf-8">
+//		$(document).ready(function(){
+//			$.ajax()
+//		})
+
+		var currentlist = 0;
+		var count = 0;
+		var downflag = 0;
+		var upflag = 0;
+		var Totalcount = 0;
+		var DATA;
+		
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
+		/**
+		 * 下拉刷新具体业务实现
+		 */
+		function pulldownRefresh() {
+			setTimeout(function() {
+				var flag = 0;
+				currentlist=0;
+				var aDiv = document.body.querySelector('.maincontent');
+				aDiv.innerHTML="";
+				var bDiv = document.getElementsByClassName('content-item')[0];
+				for(var o in DATA)
+				{
+					var result = eval(DATA[o]);
+					if(upflag==0)
+					{
+						result.shift();
+						downflag=1;
+						upflag=1;
+					}
+//					var time1="",time2="",time3="",time="";
+					$.each(result,function(key,value){
+						var time1="",time2="",time3="",time="";
+						//alert(flag1+" "+currentlist+" "+flag);
+						if(flag<3 && currentlist<=Totalcount)
+						{
+							var Detail = value.DETAIL;
+							for(var p in Detail)
+							{
+								var detail = eval(Detail[p]);
+								switch(detail.NODECODE)
+								{
+									case 'FMS_BG03':
+										time="doing";
+										time1=detail.FINISHEDDATE;
+										break;
+									case 'FMS_BG04':
+										time="clearance";
+										time2 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_BG05':
+										time="finish";
+										time3 = detail.FINISHEDDATE;
+										break;
+									default:break;
+								}
+//								$.each(detail,function(key,value){
+//									switch(value.NODECODE)
+//									{
+//										case 'FMS_BG03':
+//											time="doing";
+//											time1=value.FINISHEDDATE;
+//											break;
+//										case 'FMS_BG04':
+//											time="clearance";
+//											time2 = value.FINISHEDDATE;
+//											break;
+//										case 'FMS_BG05':
+//											time="finish";
+//											time3 = value.FINISHEDDATE;
+//											break;
+//										default:break;
+//									}
+//								})
+							}
+							var oDiv = document.createElement('div');
+							oDiv.className = 'mui-card content-item';
+							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,oDiv);
+							aDiv.appendChild(oDiv);
+							//alert(time1+time2+time3+time4);
+							//alert(value.id);
+							trace({
+								"id":value.BILLNO,
+								"row_number":3,//每行有几个圆
+								"col_number":3,//每列有几个圆
+								"total_number":3,//一共有多少个圆
+								"datainit":[
+									{"name":"接单","time":time1},
+									{"name":"申报","time":time2},
+									{"name":"放行","time":time3}
+								]
+							});
+							flag++;
+							currentlist++;
+						}
+					}) 
+				}
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				mui('#pullrefresh').pullRefresh().enablePullupToRefresh(); 
+			}, 1500);
+		}
+		var count = 0;
+		
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((currentlist >= Totalcount)); //参数为true代表没有更多数据了。
+				var aDiv = document.body.querySelector('.maincontent');
+				var bDiv = document.getElementsByClassName('content-item')[0];
+				var flag1=0;
+				var flag = 0;
+				//alert(flag1+" "+currentlist+" "+flag);
+				for(var o in DATA)
+				{
+					var result = eval(DATA[o]);
+					if(downflag==0)
+					{
+						result.shift();
+						downflag=1;
+						upflag=1;
+					}
+					//var time1="",time2="",time3="",time="";
+					$.each(result,function(key,value){
+						var time1="",time2="",time3="",time="";
+						//alert(flag1+" "+currentlist+" "+flag);
+						if(flag1>=currentlist && flag<3 && currentlist<=Totalcount)
+						{
+							var Detail = value.DETAIL;
+							for(var p in Detail)
+							{
+								var detail = eval(Detail[p]);
+								switch(detail.NODECODE)
+								{
+									case 'FMS_BG03':
+										time="doing";
+										time1=detail.FINISHEDDATE;
+										break;
+									case 'FMS_BG04':
+										time="clearance";
+										time2 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_BG05':
+										time="finish";
+										time3 = detail.FINISHEDDATE;
+										break;
+									default:break;
+								}
+//								$.each(detail,function(key,value){
+//									//alert(value.NODECODE);
+//									switch(value.NODECODE)
+//									{
+//										case 'FMS_BG03':
+//											time="doing";
+//											time1=value.FINISHEDDATE;
+//											break;
+//										case 'FMS_BG04':
+//											time="clearance";
+//											time2 = value.FINISHEDDATE;
+//											break;
+//										case 'FMS_BG05':
+//											time="finish";
+//											time3 = value.FINISHEDDATE;
+//											break;
+//										default:break;
+//									}
+//								})
+							}
+							var oDiv = document.createElement('div');
+							oDiv.className = 'mui-card content-item';
+							//alert(time);
+							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,oDiv);
+							aDiv.appendChild(oDiv);
+//							if(time == "finish")
+//							{
+//								document.body.querySelector("#submit").disabled = true;
+//								$("#submit").value = "已完成";
+//							}
+							trace({
+								"id":value.BILLNO,
+								"row_number":3,//每行有几个圆
+								"col_number":3,//每列有几个圆
+								"total_number":3,//一共有多少个圆
+								"datainit":[
+									{"name":"接单","time":time1},
+									{"name":"申报","time":time2},
+									{"name":"放行","time":time3}
+								]
+							});
+							flag++;
+							currentlist++;
+							flag1++;
+						}
+						else if(flag1<currentlist) 
+						{
+							flag1++;
+							return true;
+						}
+					}) 
+				}
+			}, 1500);
+		}
+//		if (mui.os.plus) {
+//			mui.plusReady(function() {
+//				setTimeout(function() {
+//					mui('#pullrefresh').pullRefresh().pullupLoading();
+//				}, 1000);
+//		
+//			});
+//		} else {
+//			mui.ready(function() {
+//				mui('#pullrefresh').pullRefresh().pullupLoading();
+//			});
+//		}
+		
+		var Inner = function(id,orderid,billcode,time,oDiv){
+			oDiv.innerHTML = oDiv.innerHTML+
+						'<div class="toplabel"></div>'+
+						'<!--页眉，放置标题-->'+
+						'<div class="mui-card-header">报关单号：'+id+'</div>'+
+						'<input type="hidden" id="'+orderid+'" value="'+time+'"/>'+
+						'<input type="hidden" id="'+billcode+'"/>'+
+						'<!--内容区-->'+
+						'<div class="mui-card-content" style="text-align: center;">'+
+							'<div class="item" style="text-align: left;">'+
+								'<span class="item-title">报关单状态</span>'+
+							'</div>'+
+							'<canvas id="'+id+'" width="370px" height="100px" style="width:310px;height:100px;">'+
+							'</canvas>'+
+							'<div class="mui-card-footer"><div class="buttonbar">'+
+								'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>'+
+							'</div></div>'+
+						'</div>';
+		};
+		
+		$(document).ready(function(){
+			$('body').on("tap",'#submit',function() {
+				var n = $(this).parents('.content-item').index();
+				//n = n + 1;
+				var text1 = $(".maincontent").find(".content-item:eq("+n+")").find('.mui-card-header').eq(0).text();
+				var orderid = text1.substr(text1.indexOf('：')+1,9);
+				var text2 = $(".maincontent").find(".content-item:eq("+n+")").find('input').eq(0).val();
+				var text3 = $(".maincontent").find(".content-item:eq("+n+")").find('input').eq(0).attr('id');
+				var text4 = $(".maincontent").find(".content-item:eq("+n+")").find('input').eq(1).attr('id');
+				//alert(text3);
+				//var text2 = $(".maincontent").find(".content-item:eq("+n+")").find('input').eq(0).val();
+				if(text2=="")
+				 	mui.openWindow('/statusBrokerOrdertaking?orderid='+text3+'&billcode='+text4+'&billNo='+text1.replace("报关单号：",""));
+				else if(text2=="doing")
+					mui.openWindow('/statusBrokerDoing?orderid='+text3+'&billcode='+text4+'&billNo='+text1.replace("报关单号：",""));
+				else if(text2=="clearance")
+				 	mui.openWindow('/statusBrokerClearance?orderid='+text3+'&billcode='+text4+'&billNo='+text1.replace("报关单号：",""));
+				else if(text2=="finish")
+				 	mui.alert("该订单已完成所有状态反馈");
+//				$.ajax({
+//					type:"post",
+//					url:"/statusbrokerback",
+//					data:{
+//						orderid:orderid,
+//						status:text2,
+//					},
+//					async:true
+//				});
+			})
+		})
+		</script>
+	</body>
+</html>

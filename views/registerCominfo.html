@@ -1,0 +1,120 @@
+<!--
+	作者：lyj,lcf
+	时间：2017-07-04
+	描述：注册之填写公司基本信息
+-->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link href="/stylesheets/register.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+            <h1 class="mui-title">佰信国际物流协同管理平台--BestLOG8</h1>
+        </header>
+		<div class="mui-content-padded"><!-- contain">-->
+			<div class="register">
+				<form>
+					<div class="mui-input-row">
+						<label><img src="/images/企业名称.png" width="25px;"></label>
+						<input type="text" name="ComChiname" class="mui-input-clear" placeholder="请输入企业中文名称" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label><img src="/images/企业.png" width="25px;"></label>
+						<input type="text" name="ComEngname" class="mui-input-clear" placeholder="请输入企业英文名称" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label><img src="/images/NO税.png" width="25px;"></label>
+						<input type="text" name="TaxNumber" class="mui-input-clear" placeholder="请输入企业税号" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label><img src="/images/地址 (1).png" width="25px;"></label>
+						<input type="text" name="ComChiadd" class="mui-input-clear" placeholder="请输入企业中文地址" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label><img src="/images/地址.png" width="25px;"></label>
+						<input type="text" name="ComEngadd" class="mui-input-clear" placeholder="请输入企业英文地址" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label><img src="/images/邮箱.png" width="25px;"></label>
+						<input type="text" name="ComEmail" class="mui-input-clear" placeholder="请输入企业联系邮箱" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<!--<div class="mui-input-row">
+						<label><img src="/images/资料.png" width="25px;"></label>
+						<input type="text" name="photo" placeholder="上传企业资质材料" />
+						<button type="button" class="vertify mui-btn mui-btn-primary">点击拍照</button>
+					</div>-->
+				</form>
+				<button type="button" class="mui-btn mui-btn-block" style="margin-top: 20%;">下一步</button>
+				<!--<span>注册即代表同意协议<span class="red-text">《BestLOG8运输物流协议》《...协议书》</span></span>-->
+			</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			$(document).ready(function(){
+//				$('.register button').eq(0).click(function(){
+//					mui.openWindow('/takephoto');
+//				})
+			
+				$('.register button').eq(0).click(function(){
+					var check = true;
+					mui("#inputinfo input").each(function() {
+					//若当前input为空，则alert提醒 
+					if(!this.value || this.value.trim() == "") {
+						var label = this.previousElementSibling;
+						mui.alert("不允许为空");
+						check = false;
+						return false;
+					}
+					}); //校验通过，继续执行业务逻辑 
+					if(check){
+						var ComChiname = $("input[name='ComChiname']").val();
+						var ComEngname = $("input[name='ComEngname']").val();
+						var TaxNumber = $("input[name='TaxNumber']").val();
+						var ComChiadd = $("input[name='ComChiadd']").val();
+						var ComEngadd = $("input[name='ComEngadd']").val();
+						var ComEmail = $("input[name='ComEmail']").val();
+						$.ajax({
+							type:"post",
+							url:"/saveuserCom",
+							data:{
+								COMNAMECN: ComChiname,
+								COMNAME: ComEngname,
+								TAXNUMBER: TaxNumber,
+								COMADDRESS: ComChiadd,
+								COMADDRESSEN: ComEngadd,
+								COMEMAIL: ComEmail,
+							},
+							async:true,
+							success:function(data){
+								var result = eval(data);
+								if(result.result=='1')
+								{
+									mui.openWindow('/takephoto');
+								}
+							},
+							error:function(){
+								alert("系统服务错误");
+							}
+						});
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

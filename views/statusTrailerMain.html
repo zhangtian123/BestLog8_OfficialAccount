@@ -1,0 +1,384 @@
+<!--
+	作者：lcf
+	时间：2017-07-05
+	描述：状态反馈之拖车主页
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/stylesheets/base.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="maincontent">
+					<!--<div class="mui-card content-item">
+			    		<div class="toplabel"></div>
+						<!--页眉，放置标题-->
+					<!--<div class="mui-card-header">派车单号：XXXXXXXXX</div>-->
+					<!--内容区-->
+					<!--<div class="mui-card-content" style="text-align: center;">
+							<div class="item" style="text-align: left;">
+								<span class="item-title">派车单状态</span>
+							</div>
+							<canvas id="tracecontent" width="310px" height="230px"></canvas>
+							<div class="buttonbar">
+								<button type="button" class="mui-btn mui-btn-primary">状态反馈</button>
+							</div>
+						</div>
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/trace.js"></script>
+		<script src="/javascripts/gettrailer.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var currentlist = 0;
+			var count = 0;
+			var downflag = 0;
+			var upflag = 0;
+			var Totalcount = 0;
+			var DATA;
+
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					var flag = 0;
+					currentlist = 0;
+					var aDiv = document.body.querySelector('.maincontent');
+					aDiv.innerHTML = "";
+					var bDiv = document.getElementsByClassName('content-item')[0];
+					for(var o in DATA) {
+						var result = eval(DATA[o]);
+						if(upflag == 0) {
+							result.shift();
+							downflag = 1;
+							upflag = 1;
+						}
+						//var time1="",time2 ="",time3="",time4="",time5="",time6="",time7="",time="";
+						$.each(result, function(key, value) {
+							var time1 = "",
+								time2 = "",
+								time3 = "",
+								time4 = "",
+								time5 = "",
+								time6 = "",
+								time7 = "",
+								time = "";
+							//alert(flag1+" "+currentlist+" "+flag);
+							if(flag < 3 && currentlist <= Totalcount) {
+								var Detail = value.DETAIL; //alert(JSON.stringify(value));
+								for(var p in Detail) {
+									var detail = Detail[p];
+									switch(detail.NODECODE) {
+										case 'FMS_TCMX05':
+											time = "sent";
+											time1 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX06':
+											time = "pickup";
+											time2 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX07':
+											time = "arrive";
+											time3 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX10':
+											time = "packing";
+											time4 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX09':
+											time = "packed";
+											time5 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX08':
+											time = "portarrive";
+											time6 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX11':
+											time = "finish";
+											time7 = detail.FINISHEDDATE;
+											break;
+										default:
+											break;
+									}
+								}
+								var oDiv = document.createElement('div');
+								oDiv.className = 'mui-card content-item';
+								Inner(value.BILLNO, value.BILLID, value.BILLCODE, value.CONTAINERNO, value.SIZE, value.TYPE, value.TRUCKNO, value.DRIVER, value.TELEPHONE, time, oDiv);
+								aDiv.appendChild(oDiv);
+								//alert(time1+time2+time3+time4);
+								//alert(value.id);
+								trace({
+									"id": value.BILLID + value.BILLNO,
+									"row_number": 3, //每行有几个圆
+									"col_number": 3, //每列有几个圆
+									"total_number": 7, //一共有多少个圆
+									"datainit": [{
+											"name": "接单",
+											"time": time1
+										},
+										{
+											"name": "派车",
+											"time": time2
+										},
+										{
+											"name": "提箱",
+											"time": time3
+										},
+										{
+											"name": "到厂",
+											"time": time4
+										},
+										{
+											"name": "装箱",
+											"time": time5
+										},
+										{
+											"name": "装完",
+											"time": time6
+										},
+										{
+											"name": "进港",
+											"time": time7
+										}
+									]
+								});
+								flag++;
+								currentlist++;
+							}
+						})
+					}
+					count = 0;
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+				}, 1500);
+			}
+			var count = 0;
+
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((currentlist >= Totalcount)); //参数为true代表没有更多数据了。
+					var aDiv = document.body.querySelector('.maincontent');
+					var bDiv = document.getElementsByClassName('content-item')[0];
+					var flag1 = 0;
+					var flag = 0;
+					//alert(flag1+" "+currentlist+" "+flag);
+					for(var o in DATA) {
+						var result = eval(DATA[o]);
+						if(downflag == 0) {
+							result.shift();
+							downflag = 1;
+							upflag = 1;
+						}
+						//var time1="",time2 ="",time3="",time4="",time5="",time6="",time7="",time="";
+						$.each(result, function(key, value) {
+							var time1 = "",
+								time2 = "",
+								time3 = "",
+								time4 = "",
+								time5 = "",
+								time6 = "",
+								time7 = "",
+								time = "";
+							//alert(flag1+" "+currentlist+" "+flag);
+							if(flag1 >= currentlist && flag < 3 && currentlist <= Totalcount) {
+								var Detail = value.DETAIL; //alert(JSON.stringify(value));
+								for(var p in Detail) {
+									var detail = Detail[p];
+									switch(detail.NODECODE) {
+										case 'FMS_TCMX05':
+											time = "sent";
+											time1 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX06':
+											time = "pickup";
+											time2 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX07':
+											time = "arrive";
+											time3 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX10':
+											time = "packing";
+											time4 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX09':
+											time = "packed";
+											time5 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX08':
+											time = "portarrive";
+											time6 = detail.FINISHEDDATE;
+											break;
+										case 'FMS_TCMX11':
+											time = "finish";
+											time7 = detail.FINISHEDDATE;
+											break;
+										default:
+											break;
+									}
+								}
+								var oDiv = document.createElement('div');
+								oDiv.className = 'mui-card content-item';
+								Inner(value.BILLNO, value.BILLID, value.BILLCODE, value.CONTAINERNO, value.SIZE, value.TYPE, value.TRUCKNO, value.DRIVER, value.TELEPHONE, time, oDiv);
+								aDiv.appendChild(oDiv);
+								//alert(time1+time2+time3+time4);
+								//alert(value.id);
+								trace({
+									"id": value.BILLID + value.BILLNO,
+									"row_number": 3, //每行有几个圆
+									"col_number": 3, //每列有几个圆
+									"total_number": 7, //一共有多少个圆
+									"datainit": [{
+											"name": "接单",
+											"time": time1
+										},
+										{
+											"name": "派车",
+											"time": time2
+										},
+										{
+											"name": "提箱",
+											"time": time3
+										},
+										{
+											"name": "到厂",
+											"time": time4
+										},
+										{
+											"name": "装箱",
+											"time": time5
+										},
+										{
+											"name": "装完",
+											"time": time6
+										},
+										{
+											"name": "进港",
+											"time": time7
+										}
+									]
+								});
+								flag++;
+								currentlist++;
+								flag1++;
+							} else if(flag1 < currentlist) {
+								flag1++;
+								return true;
+							}
+						})
+					}
+				}, 1500);
+			}
+			var Inner = function(id, orderid, billcode, containerno, size, type, truckNo, driver, telephone, time, oDiv) {
+				oDiv.innerHTML = oDiv.innerHTML +
+					'<div class="toplabel"></div>' +
+					'<!--页眉，放置标题-->' +
+					'<div class="mui-card-header">派车单号：' + id + '</div>' +
+					'<input type="hidden" id="' + orderid + '" value="' + time + '"/>' +
+					'<input type="hidden" id="' + billcode + '"/>' +
+					'<!--内容区-->' +
+					'<div class="mui-card-content" style="text-align: center;">' +
+					'<div class="item">' +
+					'<span class="item-title">集装箱号/箱型尺寸：</span>' +
+					'<span>' + (containerno == null ? '' : containerno) + '/' + (size == null ? '' : size) + (type == null ? '' : type) + '</span>' +
+					'</div>' +
+					'<div class="item">' +
+					'<span class="item-title">司机/车号：</span>' +
+					'<span>' + (driver == null ? '' : driver) + '/' + (truckNo == null ? '' : truckNo) + '</span>' +
+					'</div>' +
+					'<div class="item">' +
+					'<span class="item-title">司机电话：</span>' +
+					'<span>' + (telephone == null ? '' : telephone) + '</span>' +
+					'</div>' +
+					'<div class="item" style="text-align: left;">' +
+					'<span class="item-title">派车单状态</span>' +
+					'</div>' +
+					'<canvas  id="' + orderid + id + '" width="370px" height="230px" style="width:310px;height:230px;"></canvas>' +
+					'<div class="mui-card-footer"><div class="buttonbar">' +
+					'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>' +
+					//'<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button>'+
+					'</div></div>' +
+					'</div>';
+			};
+
+			$(document).ready(function() {
+				$('body').on("tap", '#submit', function() {
+					var n = $(this).parents('.content-item').index();
+					//n = n + 1;
+					var text1 = $(".maincontent").find(".content-item:eq(" + n + ")").find('.mui-card-header').eq(0).text();
+					var orderid = text1.substr(text1.indexOf('：') + 1, 9);
+					var text2 = $(".maincontent").find(".content-item:eq(" + n + ")").find('input').eq(0).val();
+					var text3 = $(".maincontent").find(".content-item:eq(" + n + ")").find('input').eq(0).attr('id');
+					var text4 = $(".maincontent").find(".content-item:eq(" + n + ")").find('input').eq(1).attr('id');
+					//alert(text2);
+					if(text2 == "")
+						mui.openWindow('/statusTrailerOrdertaking?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "sent")
+						mui.openWindow('/statusTrailerSent?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "pickup")
+						mui.openWindow('/statusTrailerPickup?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "arrive")
+						mui.openWindow('/statusTrailerArrive?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "packing")
+						mui.openWindow('/statusTrailerPacking?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "packed")
+						mui.openWindow('/statusTrailerPacked?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "portarrive")
+						mui.openWindow('/statusTrailerPortArrive?orderid=' + text3 + '&billcode=' + text4 + '&billNo=' + text1.replace("派车单号：", ""));
+					else if(text2 == "finish")
+						mui.alert("该订单已完成所有状态反馈");
+				});
+				//			$('body').on("tap",'#share',function() {
+				//				var n = $(this).parents('.content-item').index();
+				//				var text3 = $(".maincontent").find(".content-item:eq("+n+")").find('input').eq(0).attr('id');
+				//				mui.openWindow('/shareStatusBack?type=tc&ids='+text3);
+				//			})
+			})
+			//			trace({
+			//			"row_number":3,//每行有几个圆
+			//			"col_number":3,//每列有几个圆
+			//			"total_number":7,//一共有多少个圆
+			//			"datainit":[
+			//				{"name":"接单","time":"XX-XX-XX XX:XX"},
+			//				{"name":"派车","time":"XX-XX-XX XX:XX"},
+			//				{"name":"提箱","time":"XX-XX-XX XX:XX"},
+			//				{"name":"到厂","time":"XX-XX-XX XX:XX"},
+			//				{"name":"装箱","time":""},
+			//				{"name":"装完","time":""},
+			//				{"name":"进港","time":""}
+			//			]
+			//		});
+		</script>
+	</body>
+
+</html>

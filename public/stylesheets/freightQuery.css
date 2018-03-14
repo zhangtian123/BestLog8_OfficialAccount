@@ -1,0 +1,146 @@
+.number-choose{
+	position: fixed;
+	top:0rem;
+	width: 100%;
+	padding: 0.8rem 15%;
+	border-top: solid 0.1rem rgb(220,220,220);
+	border-bottom: solid 0.1rem rgb(220,220,220);
+	font-size: 1.1rem;
+	background-color: #FFFFFF
+}
+.mui-numbox{
+	position: absolute;
+	top: 0.3rem;
+	right: 0rem;
+	background-color: #FFFFFF;
+	border: none;
+}
+.mui-numbox [class*=btn-numbox], .mui-numbox [class*=numbox-btn]{
+	background-color: #FFFFFF;
+}
+.mui-numbox input
+{
+	position: relative;
+	top:-0.3rem;
+}
+.mui-numbox .mui-input-numbox, .mui-numbox .mui-numbox-input{	
+	border-right: solid 0px #ccc!important;
+	border-left: solid 0px #ccc!important;
+}
+.mui-numbox button:nth-child(1){
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url(../images/减.png);
+	background-size: contain;
+}
+.mui-numbox button:nth-child(2){
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url(../images/加.png);
+	background-size: contain;
+}
+.number-item{
+	position: relative;
+	line-height: 2.2rem;
+}
+.query-items{
+	margin-top: 7rem;
+}
+.item{
+	position: relative;
+	line-height: 2rem;
+	padding-left: 1rem;
+}
+.item span:nth-child(2){
+	padding-left: 1rem;
+}
+.item .img1
+{
+	position: absolute;
+	top: 0.3rem;
+	left:0rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url(../images/轮船.png);
+	background-size: contain
+}
+.item .img2
+{
+	position: absolute;
+	top: 0.3rem;
+	left:0rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url(../images/clock.png);
+	background-size: contain
+}
+.item .img3
+{
+	position: absolute;
+	top: 0.3rem;
+	left:0rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url(../images/box.png);
+	background-size: contain
+}
+.item .img4
+{
+	position: absolute;
+	top: 0.3rem;
+	left:0rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url(../images/iconfont-美金.png);
+	background-size: contain
+}
+.mark-benefit{
+	position: absolute;
+	bottom: 0rem;
+	right:0rem;
+	width: 8rem;
+	height: 3rem;
+	background-image: url(../images/最经济1.png);
+	background-size: contain;
+}
+.mark-fast{
+	position: absolute;
+	bottom: 0rem;
+	right:0rem;
+	width: 8rem;
+	height: 3rem;
+	background-image: url(../images/最快捷1.png);
+	background-size: contain;
+}
+.side-number-choose{
+	position: relative;
+	top: 2rem;
+	left: -1rem;
+	width: 100%;
+}
+.side-number-choose .mui-numbox{
+	position: relative;
+	left: 2rem;
+}
+.usual{
+	text-align:left;
+}
+.usual label{
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	margin-top:0.5rem;
+	background-color: rgb(255,128,80);
+	color:#FFFFFF;
+	border-radius:2rem;
+}
+.portfuzzy{
+	position: relative;
+	margin-top: 1rem;
+}
+.portfuzzy img{
+	position: absolute;
+	left: 0.5rem;
+	top:0rem;
+	width: 2.4rem;
+	z-index: 5;
+}

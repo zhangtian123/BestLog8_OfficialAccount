@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/stylesheets/base.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!-- 菜单容器 -->
+			<aside id="offCanvasSide" class="mui-off-canvas-left sidebg">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="wrapper">
+						<div id="offCanvasHide" class="sidebar-returnicon"></div>
+						<h3>订单精确筛选</h3>
+						<hr />
+						<form class="orderfilter">
+							<div class="mui-input-row mui-radio mui-left">
+								<label>未审核</label>
+								<input name="radio" type="radio" value="false" checked="checked">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>已审核</label>
+								<input name="radio" type="radio" value="true">
+							</div>
+							<div class="mui-input-row">
+								<label><img src="/images/我的订单.png" width="25px;"></label>
+								<input type="text" name="orderno" class="mui-input-clear" placeholder="请输入订单号" data-input-clear="5" />
+								<span class="mui-icon mui-icon-clear mui-hidden"></span>
+							</div>
+							<div class="mui-input-row">
+								<label><img src="/images/account.png" width="25px;"></label>
+								<input type="text" name="customsop" class="mui-input-clear" placeholder="请输入客户委托号" data-input-clear="5" />
+								<span class="mui-icon mui-icon-clear mui-hidden"></span>
+							</div>
+						</form>
+						<button type="button" id="submit" class="mui-btn mui-btn-outlined bigbutton">确定</button>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+				<div id="offCanvasShow" class="iconbg mui-action-menu mui-pull-left">
+					<div class="sidebaricon"></div>
+				</div>
+				<!-- 主页面内容容器 -->
+				<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="maincontent">
+
+						</div>
+					</div>
+				</div>
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/mui.picker.min.js"></script>
+		<script src="/javascripts/orderList.js"></script>
+		<script src="/javascripts/tracetrailer.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			//点击自定义按钮，打开侧滑菜单；
+			/*document.querySelector('.iconbg').addEventListener('tap', openMenu);
+			//menu页面点击后关闭菜单；*/
+			mui.init();
+
+			var currentlist = 0;
+			var count = 0;
+			var downflag = 0;
+			var upflag = 0;
+			var Totalcount = 0;
+			var DATA;
+
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					var flag = 0;
+					var aDiv = document.body.querySelector('.maincontent');
+					aDiv.innerHTML = "";
+					for(var o in DATA) {
+						var result = eval(DATA[o]);
+						if(upflag == 0) {
+							result.shift();
+							downflag = 1;
+							upflag = 1;
+						}
+						$.each(result, function(key, value) {
+							//alert(flag1+" "+currentlist+" "+flag);
+							if(flag < 3) {
+								var oDiv = document.createElement('div');
+								oDiv.className = 'mui-card content-item';
+								Inner(value.BILLNO, value.BILLID, value.REFNO, value.CARGONAME, value.CTNS, value.PACK, value.WEIGHT, value.MEASURE, value.SEA_VESSEL, value.SEA_VOYNO, value.SHIPOWNER, value.SEA_SAILLINE, value.CNTRNUMSTR, oDiv);
+								aDiv.appendChild(oDiv);
+								flag++;
+							}
+						})
+					}
+					currentlist = 3;
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+				}, 1500);
+			}
+			var count = 0;
+
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((currentlist >= Totalcount)); //参数为true代表没有更多数据了。
+					var aDiv = document.body.querySelector('.maincontent');
+					var flag1 = 0;
+					var flag = 0;
+					//alert(flag1+" "+currentlist+" "+flag);
+					for(var o in DATA) {
+						var result = eval(DATA[o]);
+						if(downflag == 0) {
+							result.shift();
+							downflag = 1;
+							upflag = 1;
+						}
+						$.each(result, function(key, value) {
+							//alert(flag1+" "+currentlist+" "+flag);
+							if(flag1 >= currentlist && flag < 3) {
+								var oDiv = document.createElement('div');
+								oDiv.className = 'mui-card content-item';
+								Inner(value.BILLNO, value.BILLID, value.REFNO, value.CARGONAME, value.CTNS, value.PACK, value.WEIGHT, value.MEASURE, value.SEA_VESSEL, value.SEA_VOYNO, value.SHIPOWNER, value.SEA_SAILLINE, value.CNTRNUMSTR, oDiv);
+								aDiv.appendChild(oDiv);
+								flag++;
+								currentlist++;
+								flag1++;
+							} else if(flag1 < currentlist) {
+								flag1++;
+								return true;
+							}
+						})
+					}
+				}, 1500);
+			}
+
+			//侧滑容器父节点
+			mui('.mui-scroll-wrapper').scroll();
+			var offCanvasWrapper = mui('#offCanvasWrapper');
+			//主界面容器
+			var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+			//菜单容器
+			var offCanvasSide = document.getElementById("offCanvasSide");
+
+			//移动效果是否为整体移动
+			var moveTogether = false;
+			//侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+			var classList = offCanvasWrapper[0].classList;
+			//主界面‘显示侧滑菜单’按钮的点击事件
+			document.getElementById('offCanvasShow').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('show');
+			});
+			//菜单界面，‘关闭侧滑菜单’按钮的点击事件
+			document.getElementById('offCanvasHide').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('close');
+			});
+
+			(function($) {
+				var beginresult = $('#begin');
+				var beginbtn = $('#beginbtn');
+				var endresult = $('#end');
+				var endbtn = $('#endbtn');
+
+				beginbtn.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							document.getElementById("begin").innerHTML = rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+
+						});
+					}, false);
+				});
+				endbtn.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							document.getElementById("end").innerHTML = rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+
+						});
+					}, false);
+				});
+
+			})(mui);
+		</script>
+	</body>
+
+</html>

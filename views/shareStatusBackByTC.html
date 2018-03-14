@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title>拖车状态返馈</title>
+	    <script src="/javascripts/mui.min.js"></script>
+	    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="/stylesheets/base.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	    </script>
+	</head>
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+	      		<div class="maincontent">
+					
+				</div>
+			</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/trace.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		var currentlist = 0;
+		var count = 0;
+		var downflag = 0;
+		var upflag = 0;
+		var Totalcount = 0;
+		var DATA;
+		$(document).ready(function(){
+			$.ajax({
+				type:"get",
+				url:"/getTrailerList",
+				data:{ids:'<%= ids%>'},
+				async:true,
+				success:function(data){
+					DATA = data;
+					var result;
+					for(var o in DATA)
+					{
+						result = eval(DATA[o]);
+						Totalcount = result[0].COUNT;
+					}
+					//alert(Totalcount);
+					if (mui.os.plus) {
+						mui.plusReady(function() {
+							setTimeout(function() {
+								mui('#pullrefresh').pullRefresh().pulldownLoading();
+							}, 1000);
+					
+						});
+					} else {
+						mui.ready(function() {
+							mui('#pullrefresh').pullRefresh().pulldownLoading();
+						});
+					}
+				},
+				error:function(){
+					mui.alert("系统处理错误");
+				}
+			})
+		});
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				}
+			}
+		});
+		/**
+		 * 下拉刷新具体业务实现
+		 */
+		function pulldownRefresh() {
+			setTimeout(function() {
+				var flag = 0;
+				currentlist=0;
+				var aDiv = document.body.querySelector('.maincontent');
+				aDiv.innerHTML="";
+				var bDiv = document.getElementsByClassName('content-item')[0];
+				for(var o in DATA)
+				{
+					var result = eval(DATA[o]);
+					if(upflag==0)
+					{
+						result.shift();
+						downflag=1;
+						upflag=1;
+					}
+					//var time1="",time2 ="",time3="",time4="",time5="",time6="",time7="",time="";
+					$.each(result,function(key,value){
+						var time1="",time2 ="",time3="",time4="",time5="",time6="",time7="",time="";
+						//alert(flag1+" "+currentlist+" "+flag);
+						if(flag<3 && currentlist<=Totalcount)
+						{
+							var Detail = value.DETAIL;//alert(JSON.stringify(value));
+							for(var p in Detail)
+							{
+								var detail = Detail[p];
+								switch(detail.NODECODE)
+								{
+									case 'FMS_TCMX05':
+										time="sent";
+										time1=detail.FINISHEDDATE;
+										break;
+									case 'FMS_TCMX06':
+										time="pickup";
+										time2 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_TCMX07':
+										time="arrive";
+										time3 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_TCMX10':
+										time="packing";
+										time4 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_TCMX09':
+										time="packed";
+										time5 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_TCMX08':
+										time="portarrive";
+										time6 = detail.FINISHEDDATE;
+										break;
+									case 'FMS_TCMX11':
+										time="finish";
+										time7 = detail.FINISHEDDATE;
+										break;
+									default:break;
+								}
+							}
+							var oDiv = document.createElement('div');
+							oDiv.className = 'mui-card content-item';
+							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,oDiv);
+							aDiv.appendChild(oDiv);
+							//alert(time1+time2+time3+time4);
+							//alert(value.id);
+							trace({
+								"id":value.BILLID+value.BILLNO,
+								"row_number":3,//每行有几个圆
+								"col_number":3,//每列有几个圆
+								"total_number":7,//一共有多少个圆
+								"datainit":[
+									{"name":"接单","time":time1},
+									{"name":"派车","time":time2},
+									{"name":"提箱","time":time3},
+									{"name":"到厂","time":time4},
+									{"name":"装箱","time":time5},
+									{"name":"装完","time":time6},
+									{"name":"进港","time":time7}
+								]
+							});
+							flag++;
+							currentlist++;
+						}
+					}) 
+				}
+				count = 0;
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+			}, 1500);
+		}
+		var Inner = function(id,orderid,billcode,time,oDiv){
+			oDiv.innerHTML = oDiv.innerHTML+
+			    		'<div class="toplabel"></div>'+
+						'<!--页眉，放置标题-->'+
+						'<div class="mui-card-header">派车单号：'+id+'</div>'+
+						'<input type="hidden" id="'+orderid+'" value="'+time+'"/>'+
+						'<input type="hidden" id="'+billcode+'"/>'+
+						'<!--内容区-->'+
+						'<div class="mui-card-content" style="text-align: center;">'+
+							'<div class="item" style="text-align: left;">'+
+								'<span class="item-title">派车单状态</span>'+
+							'</div>'+
+							'<canvas  id="'+orderid+id+'" width="370px" height="230px" style="width:310px;height:230px;"></canvas>'+
+						'</div>';
+		};
+		
+		</script>
+	</body>
+</html>

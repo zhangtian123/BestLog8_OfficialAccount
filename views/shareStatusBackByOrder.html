@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>订单跟踪状态返馈</title>
+    <script src="/javascripts/mui.min.js"></script>
+    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/base.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+    <style type="text/css" >
+    	.maincontent{padding-top: 0rem;}
+    </style>
+</head>
+<body>
+	<!-- 侧滑导航根容器 -->
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+    <!-- 主页面容器 -->
+    <div class="mui-card">
+    	<div class="mui-card-header"><%= tooltips%></div>
+    	<div class="mui-card-content" style="display:<%= display%>">
+    		<img src="/images/barcode.jpg" style="width:64px;height:64px;"/>
+    	</div>
+    </div>
+  	<div class="mui-inner-wrap">
+    <!-- 主页面内容容器 -->
+	    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+	      <div class="mui-scroll">
+	      	<div class="maincontent">
+	        
+			</div>
+	      </div>
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	</div>
+</div>
+<div style="padding-left:10px;padding-top:10px;color:red;">更多服务请关注公众号：</div>
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/mui.picker.min.js"></script>
+<script src="/javascripts/shareOrderTracing.js"></script>
+<script src="/javascripts/tracetrailer.js"></script>
+<script type="text/javascript" charset="utf-8">
+    //点击自定义按钮，打开侧滑菜单；
+    /*document.querySelector('.iconbg').addEventListener('tap', openMenu);
+    //menu页面点击后关闭菜单；*/
+    //mui.init();
+    var ids='<%= ids%>'
+    var currentlist = 0;
+	var count = 0;
+	var downflag = 0;
+	var upflag = 0;
+	var Totalcount = 0;
+	var DATA;
+	
+    mui.init({
+		pullRefresh: {
+			container: '#pullrefresh',
+			down: {
+				callback: pulldownRefresh
+			}
+		}
+	});
+	/**
+	 * 下拉刷新具体业务实现
+	 */
+	function pulldownRefresh() {
+		setTimeout(function() {
+			var flag = 0;
+			var aDiv = document.body.querySelector('.maincontent');
+			aDiv.innerHTML="";
+			array=[];
+			for(var o in DATA)
+			{
+				var result = eval(DATA[o]);
+				if(upflag==0)
+				{
+					result.shift();
+					downflag=1;
+					upflag=1;
+				}
+				$.each(result,function(key,value){
+					//alert(flag1+" "+currentlist+" "+flag);
+					if(flag<3)
+					{
+						var oDiv = document.createElement('div');
+						oDiv.className = 'mui-card content-item';
+						Inner(value.ORDERNO,value.ORDERID,value.CUSTOMSCOMPANY,value.CUSTOMSOP,value.SONO,value.HBLNO,value.CNTRNUMSTR,oDiv);
+						aDiv.appendChild(oDiv);
+						flag++;
+					}
+				}) 
+			}
+			currentlist = 3;
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+		}, 1500);
+	}
+</script>
+</body>
+</html>

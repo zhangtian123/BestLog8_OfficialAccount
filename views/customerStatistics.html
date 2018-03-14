@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>客户统计</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="/stylesheets/mui.min.css">
+	</head>
+
+	<body>
+		<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 315px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			/*.mui-table-view-cell td:nth-child(2){
+				width: 25%;
+				text-align: center;
+			}
+			
+			.mui-table-view-cell tr{
+				text-align: center;
+			}*/
+			/* Border styles */
+			
+			.mui-table-view-cell thead,
+			.mui-table-view-cell tr {
+				border-top-width: 1px;
+				border-top-style: solid;
+				border-top-color: rgb(230, 189, 189);
+			}
+			
+			.mui-table-view-cell table {
+				border-bottom-width: 1px;
+				border-bottom-style: solid;
+				border-bottom-color: rgb(230, 189, 189);
+			}
+			/* Padding and font style */
+			
+			.mui-table-view-cell td,
+			.mui-table-view-cell th {
+				padding: 1px 5px;
+				font-size: 10px;
+				font-family: Verdana;
+				color: rgb(17, 106, 104);
+			}
+			/* Alternating background colors */
+			
+			.mui-table-view-cell tbody tr:nth-child(even) {
+				background: rgb(238, 211, 210)
+			}
+			
+			.mui-table-view-cell tbody tr:nth-child(odd) {
+				background: #FFF
+			}
+		</style>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">客户统计</h1>
+		</header>
+
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							当天
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							当周
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+							上周
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+							上月
+						</a>
+						<!--<a class="mui-control-item" href="#item5mobile">
+							统计周期：
+						</a>-->
+					</div>
+				</div>
+				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+
+							</div>
+						</div>
+					</div>
+
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll4" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="item5mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll5" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<script src="/javascripts/mui.min.js"></script>
+		<script src="/javascripts/date.js"></script>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+			(function($) {
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+
+				var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				var item4 = document.getElementById('item4mobile');
+				var item5 = document.getElementById('item5mobile');
+
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					var currentSlider = e.detail.slideNumber;
+					if(currentSlider === 1) {
+						if(item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								//item2.querySelector('.mui-scroll').innerHTML = html2;
+								InnerMainDetail(currentSlider, item2.querySelector('.mui-scroll'));
+								addTapEvent(currentSlider);
+							}, 500);
+						}
+					} else if(currentSlider === 2) {
+						if(item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								//								item3.querySelector('.mui-scroll').innerHTML = html3;
+								InnerMainDetail(currentSlider, item3.querySelector('.mui-scroll'));
+								addTapEvent(currentSlider);
+							}, 500);
+						}
+					} else if(currentSlider === 3) {
+						if(item4.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								//								item4.querySelector('.mui-scroll').innerHTML = html3;
+								InnerMainDetail(currentSlider, item4.querySelector('.mui-scroll'));
+								addTapEvent(currentSlider);
+							}, 500);
+						}
+					} else if(currentSlider === 4) {
+						if(item5.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								//								item5.querySelector('.mui-scroll').innerHTML = html3;
+								InnerMainDetail(currentSlider, item5.querySelector('.mui-scroll'));
+								addTapEvent(currentSlider);
+							}, 500);
+						}
+					}
+				});
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				$('.mui-input-group').on('change', 'input', function() {
+					if(this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						//						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+			})(mui);
+
+			mui.ready(function() {
+				var currentSlider = mui("#slider").slider().getSlideNumber();
+				var item1 = document.getElementById('item1mobile');
+				InnerMainDetail(currentSlider, item1.querySelector('.mui-scroll'));
+				//	item1.querySelector('.mui-scroll').appendChild(mDiv);
+				addTapEvent(currentSlider);
+			})
+
+			var array = [];
+
+			function addTapEvent(currentIndex) {
+				mui(".mui-table-view").on('tap', '#Detail' + currentIndex, function() {
+					var sortType = this.innerHTML;
+					var groupBy;
+					var beginDate;
+					var endDate;
+					//					var currentSlider = mui("#slider").slider().getSlideNumber();
+					//是否是第一次点击查看，只有第一次点击查看详细条目才加入html
+					if(!array[sortType + currentIndex]) {
+						array[sortType + currentIndex] = 1;
+						var aDiv;
+						switch(sortType) {
+							case "按行业":
+								aDiv = mui('#detailFirst' + currentIndex)[0];
+								groupBy = "INDUSTRY";
+								break;
+							case "按省份":
+								aDiv = mui('#detailSecond' + currentIndex)[0];
+								groupBy = "PROVINCE";
+								break;
+						}
+
+						switch(currentIndex) {
+							case 0:
+								beginDate = endDate = formatDate(new Date());
+								break;
+							case 1:
+								beginDate = getWeekStartDate();
+								endDate = getWeekEndDate();
+								break;
+							case 2:
+								beginDate = getLastWeekStartDate();
+								endDate = getLastWeekEndDate();
+								break;
+							case 3:
+								beginDate = getLastMonthStartDate();
+								endDate = getLastMonthEndDate();
+								break;
+						}
+
+						var oDiv = document.createElement('thead');
+						InnerDetail1(sortType, oDiv);
+						aDiv.appendChild(oDiv);
+						$.ajax({
+							type: "get",
+							url: "/getCustomerStatistics",
+							data: {
+								beginDate: beginDate,
+								endDate: endDate,
+								groupBy: groupBy,
+							},
+							async: true,
+							success: function(data) {
+								var tBody = document.createElement('tbody');
+								var m = 2;
+								for(var o in data) {
+									var result = eval(data[o]);
+									result.shift();
+									$.each(result, function(key, value) {
+										var oDiv = document.createElement('tr');
+										InnerDetail2(value.GroupPro, value.RegCount, value.CheckCount, value.RefuseCount, value.OrderCount, oDiv);
+										//                                      InnerDetail2(3, 2, 1, 1, 2, oDiv);
+										tBody.appendChild(oDiv);
+										//										m++;
+									})
+								}
+
+								aDiv.appendChild(tBody);
+							}
+						})
+					}
+				})
+			}
+			var InnerMainDetail = function(currentIndex, oDiv) {
+				oDiv.innerHTML =
+					'<ul class="mui-table-view mui-table-view-chevron">' +
+					'<li class="mui-table-view-cell mui-collapse">' +
+					'<a class="mui-navigate-right" id="Detail' + currentIndex + '" href="#">按行业</a>' +
+					'<ul class="mui-table-view mui-table-view-chevron">' +
+					'<li class="mui-table-view-cell" style="width:100%;padding: 20px 20px;">' +
+					'<table id="detailFirst' + currentIndex + '" width="100%"></table>' +
+					'</li>' +
+					'</ul>' +
+					'</li>' +
+					'<li class="mui-table-view-cell mui-collapse">' +
+					'<a class="mui-navigate-right" id="Detail' + currentIndex + '" href="#">按省份</a>' +
+					'<ul class="mui-table-view mui-table-view-chevron">' +
+					'<li class="mui-table-view-cell" style="width:100%;padding: 20px 20px;">' +
+					'<table id="detailSecond' + currentIndex + '" width="100%"></table>' +
+					'</li>' +
+					'</ul>' +
+					'</li>' +
+					'</ul>';
+			}
+
+			var InnerDetail1 = function(sortType, oDiv) {
+				oDiv.innerHTML = oDiv.innerHTML +
+					'<th>' + sortType.replace("按", "") + '</th>' +
+					'<th>注册数</th>' +
+					'<th>审批数</th>' +
+					'<th>拒绝数</th>' +
+					'<th>下单数</th>';
+			}
+
+			var InnerDetail2 = function(title, RegisterCount, CheckedCount, RejectedCount, OrderedCount, oDiv) {
+				oDiv.innerHTML = oDiv.innerHTML +
+					'<td>' + title + '</td>' +
+					'<td>' + RegisterCount + '</td>' +
+					'<td>' + CheckedCount + '</td>' +
+					'<td>' + RejectedCount + '</td>' +
+					'<td>' + OrderedCount + '</td>';
+			}
+		</script>
+
+	</body>
+
+</html>

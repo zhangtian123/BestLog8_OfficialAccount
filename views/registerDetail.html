@@ -1,0 +1,159 @@
+<!--
+	作者：lcf
+	时间：2017-07-06
+	描述：注册申请详情
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="/javascripts/mui.min.js"></script>
+    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/base.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+<!-- 主页面容器 -->
+<div class="mui-inner-wrap">
+<!-- 主页面内容容器 -->
+    <div class="mui-content mui-scroll-wrapper" style="background-color: #FFFFFF;">
+    	<div class="mui-scroll detailcontent">
+        <!-- 主界面具体展示内容 -->
+			<!--页眉，放置标题-->
+			<div class="mui-card-header" style="position: relative;">
+				<img src="/images/account.png" width="25px;">
+				<span class="positioncontrol">用户名：<%= registeruser%></span>
+			</div>
+			<!--内容区-->
+			<div class="mui-card-content" style="text-align: center;">
+				<div class="item">
+					<span class="item-title">企业税号：</span>
+					<span><%= taxnumber%></span>
+					<span hidden="hidden" id="billid"><%= BILLID%></span>
+				</div>
+				<div class="item">
+					<span class="item-title">企业中文名：</span>
+					<span><%= COMPANYCN%></span>
+				</div>
+				<div class="item">
+					<span class="item-title">企业英文名：</span>
+					<span><%= COMPANY%></span>
+				</div>
+				<div class="item">
+					<span class="item-title">企业中文地址：</span>
+					<span><%= REGADDRESS%></span>
+				</div>
+				<div class="item">
+					<span class="item-title">企业英文地址：</span>
+					<span><%= REGADDRESSEN%></span>
+				</div>
+				<div class="item">
+					<span class="item-title">企业邮箱：</span>
+					<span><%= EMAIL%></span>
+				</div>
+				<div class="item">
+					<span class="item-title">企业资质材料：</span>
+					<div class="photobar"><img src="../<%- STORAGEPATH%>"></div>
+				</div><br>
+				<div class="buttonbar">
+					<button type="button" id="agree" class="mui-btn mui-btn-primary">通过</button>
+					<button type="button" id="reject" class="mui-btn mui-btn-primary">驳回</button>
+				</div>
+			</div>
+	    </div>
+    </div>  
+    <div class="mui-off-canvas-backdrop"></div>
+</div>
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/mui.picker.min.js"></script>
+<!--<script src="/javascripts/registerDetail.js"></script>-->
+<script type="text/javascript">
+	mui('.mui-scroll-wrapper').scroll();
+	
+	
+/*通过注册申请*/
+$('body').on("tap",'#agree',function() {
+	var btnArray = ['是','否'];
+	mui.confirm('确定通过此注册申请？','确认',btnArray,function(e){
+		if(e.index==0){
+			var n = $(this).parents('.content-item').index();
+			n = n + 1;
+			var text2 = $('#billid')[0].innerHTML;
+			$.ajax({
+				type:"post",
+				url:"/agreeregister",
+				data:{
+					BILLID:text2,
+				},
+				async:true,
+				success:function(data){
+					var result = eval(data);
+					if(result.result == 0)
+					{
+						$(".maincontent").find(".content-item:eq("+n+")").remove();
+						mui.alert("成功通过");
+					}
+					else
+					{
+						mui.alert("系统处理错误");
+					}
+				},
+				error:function(){
+					mui.alert("系统处理错误");
+				}
+			});
+		}
+		else{
+			mui.alert("未通过");
+		}
+	})
+})
+
+/*驳回*/
+$('body').on("tap","#reject",function(e){
+	e.preventDefault();
+	var btnArray = ['确定','取消'];
+	mui.prompt('请输入驳回理由：','信息不对','驳回',btnArray,function(e){
+		if(e.index == 0){
+			var n = $(this).parents('.content-item').index();
+			n = n + 1;
+			var text2 = $('#billid')[0].innerHTML;
+			$.ajax({
+				type:"post",
+				url:"/rejectregister",
+				data:{
+					BILLID:text2,
+					reason:e.value,
+				},
+				async:true,
+				success:function(data){
+					var result = eval(data);
+					if(result.result == 0)
+					{
+						$(".maincontent").find(".content-item:eq("+n+")").remove();
+						mui.alert("成功驳回");
+					}
+					else
+					{
+						mui.alert("系统处理错误");
+					}
+				},
+				error:function(){
+					mui.alert("系统处理错误");
+				}
+			});
+		}
+		else{
+			mui.alert("取消");
+		}
+	})
+})
+
+</script>
+</body>
+</html>
