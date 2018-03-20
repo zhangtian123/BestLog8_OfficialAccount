@@ -1,17 +1,11 @@
 body
 {
-	background-color: #fff;
+	background-color: #ebebeb;
 	background-size: 100%;
 	font-family: "microsoft yahei";
 }
 
-.contain
-{
-	position: relative;
-	margin-top:10%;
-	text-align: center;
-	height: 100%;
-}
+
 
 .register
 {
@@ -25,18 +19,11 @@ body
 .register>button,button.submit
 {
 	width: 70%;
-	height: 3rem;
-	line-height: 1rem;
-	background-color: #495a80;
 	color:#fff;
-	margin: 15% auto 2% auto;
-	font-size: 1.5rem;
-	font-weight: 300;
-	border-radius: 3rem;
 }
 .mui-input-row
 {
-	border-bottom: solid .1rem rgb(200,200,200);
+	border-bottom: solid .1rem #ebebeb
 }
 .mui-input-row img{
 	position: relative;
@@ -51,10 +38,7 @@ body
 	text-align: left;
 }
 .mui-input-row input{
-	position: relative;
-	top:0.6rem;
-	left: -2.5rem;
-	width:25px;
+	
 }
 .mui-input-row .mui-btn{
 	width: 6rem;
