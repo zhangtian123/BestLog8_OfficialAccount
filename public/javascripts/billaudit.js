@@ -54,6 +54,10 @@ $(document).ready(function(){
 	
 	/*通过侧边栏选择筛选条件*/
 	$("#submit").click(function(){
+		offCanvasWrapper.offCanvas('close'); //关闭菜单栏
+//		显示loading动画
+		document.getElementById("over").style.display = "block";
+		document.getElementById("layout").style.display = "block";
 		currentlist=0;
 		var time = $('input[name="radio"]:checked').val();
 		var begin = time;
@@ -74,6 +78,9 @@ $(document).ready(function(){
 			},
 			async:true,
 			success:function(data){
+				//				隐藏loading动画
+				document.getElementById("over").style.display = "none";
+				document.getElementById("layout").style.display = "none";
 				DATA = data;
 				var aDiv = document.body.querySelector('.maincontent');
 				aDiv.innerHTML="";
@@ -84,8 +91,10 @@ $(document).ready(function(){
 				{
 					var result = eval(DATA[o]);
 					result.shift();
+					var myflag=0;
 					$.each(result,function(key,value){
 						//alert(flag1+" "+currentlist+" "+flag);
+						myflag++;
 						if(flag1>=currentlist && flag<3)
 						{
 							var oDiv = document.createElement('div');
@@ -104,10 +113,19 @@ $(document).ready(function(){
 							currentlist+=3;
 							return false;
 						}
-					}) 
+					}) ;
+					if(myflag == 0) {
+						var oDiv = document.createElement('div');
+						oDiv.className = 'nodata';
+						oDiv.innerHTML = "没有数据~";
+						aDiv.appendChild(oDiv);
+					}
 				}
 			},
 			error:function(){
+				//				隐藏loading动画
+				document.getElementById("over").style.display = "none";
+				document.getElementById("layout").style.display = "none";
 				mui.alert("系统处理错误");
 			}
 		});

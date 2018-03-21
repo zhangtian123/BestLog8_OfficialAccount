@@ -1335,10 +1335,10 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
     background-color: #acacb4;
 }
 
-.mui-btn-outlined
+/*.mui-btn-outlined
 {
-    background-color: transparent;
-}
+    background-color:linear-gradient(to right,#36a2ef,#0078cd);
+}*/
 .mui-btn-outlined.mui-btn-primary, .mui-btn-outlined.mui-btn-blue
 {
     color: #007aff;
@@ -2278,7 +2278,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 }
 .mui-table-view-cell.mui-radio.mui-left, .mui-table-view-cell.mui-checkbox.mui-left
 {
-    padding-left: 58px;
+    padding-left: 60px;
 }
 .mui-table-view-cell.mui-active
 {
@@ -2384,7 +2384,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 }
 .mui-table-view-cell > .mui-slider-left > .mui-btn.mui-icon, .mui-table-view-cell > .mui-slider-right > .mui-btn.mui-icon
 {
-    font-size: 30px;
+    font-size: 12px;
 }
 .mui-table-view-cell > .mui-slider-right
 {

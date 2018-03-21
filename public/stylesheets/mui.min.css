@@ -7,16 +7,21 @@
 
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 
-html {
-	font-family: sans-serif;
-	-webkit-text-size-adjust: 100%
-}
+
 
 body {
 	margin: 0
 }
 
-article,
+/*没有数据的提示语*/
+.nodata{
+	font-size: 17px;
+	color:#a8a8a8;
+	text-align: center;
+	top:40px;
+}
+
+rticle,
 aside,
 details,
 figcaption,
@@ -114,7 +119,7 @@ figure {
 
 hr {
 	box-sizing: content-box;
-	height: 0
+	height: 0;
 }
 
 pre {
@@ -136,7 +141,6 @@ select,
 textarea {
 	font: inherit;
 	margin: 0;
-	color: inherit
 }
 
 button {
@@ -152,7 +156,6 @@ button,
 html input[type=button],
 input[type=reset],
 input[type=submit] {
-	cursor: pointer;
 	-webkit-appearance: button
 }
 
@@ -211,11 +214,8 @@ th {
 }
 
 * {
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	-webkit-user-select: none;
 	outline: 0;
-	-webkit-tap-highlight-color: transparent;
 	-webkit-tap-highlight-color: transparent
 }
 
@@ -291,6 +291,7 @@ a:active {
 }
 
 .mui-content-padded {
+	margin: 10px
 }
 
 .mui-inline {
@@ -593,13 +594,17 @@ p {
 }
 
 .mui-scroll-wrapper {
+	position: absolute;
 	z-index: 2;
+	top: 0;
+	bottom: 0;
+	left: 0;
 	overflow: hidden;
-	width: 100%;
-	padding:13px 8px;
+	width: 100%
 }
 
 .mui-scroll {
+	position: absolute;
 	z-index: 1;
 	width: 100%;
 	-webkit-transform: translateZ(0);
@@ -641,7 +646,7 @@ p {
 
 .mui-scrollbar-indicator {
 	position: absolute;
-	mui-scroll-wrapperdisplay: block;
+	display: block;
 	box-sizing: border-box;
 	-webkit-transition: .01s cubic-bezier(.1, .57, .1, 1);
 	transition: .01s cubic-bezier(.1, .57, .1, 1);
@@ -935,37 +940,35 @@ p {
 	}
 }
 
+.daterangebtn{
+	position: relative;
+	cursor: pointer;
+	transition: all;
+	transition-timing-function: linear;
+	text-align: center;
+	white-space: nowrap;
+	color: #333;
+	font-size: 17px;
+	margin-bottom: 10px;
+	padding: 0px 0
+}
+
 .mui-btn,
 button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
-	font-size: 14px;
 	font-weight: 400;
-	line-height: 1.42;
 	position: relative;
-	display: inline-block;
 	margin-bottom: 0;
 	padding: 6px 12px;
 	cursor: pointer;
-	-webkit-transition: all;
 	transition: all;
-	-webkit-transition-timing-function: linear;
 	transition-timing-function: linear;
-	-webkit-transition-duration: .2s;
-	transition-duration: .2s;
 	text-align: center;
-	vertical-align: top;
 	white-space: nowrap;
 	color: #333;
 	border: 1px solid #ccc;
-	border-radius: 3px;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;
-	border-bottom-left-radius: 3px;
-	background-color: #fff;
-	background-clip: padding-box
 }
 
 .mui-btn.mui-active:enabled,
@@ -1095,10 +1098,6 @@ input[type=submit]:enabled:active {
 	color: #fff;
 	border: 1px solid #acacb4;
 	background-color: #acacb4
-}
-
-.mui-btn-outlined {
-	background-color: transparent
 }
 
 .mui-btn-outlined.mui-btn-blue,
@@ -1596,10 +1595,11 @@ input[type=submit]:enabled:active {
 	position: relative;
 	overflow: hidden;
 	margin: 10px;
-	border-radius: 2px;
+	border-radius: 15px;
 	background-color: #fff;
 	background-clip: padding-box;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .3)
+	box-shadow: 0 1px 2px  #a8a8a8;
+	z-index: 0;
 }
 
 .mui-content>.mui-card:first-child {
@@ -1646,8 +1646,8 @@ input[type=submit]:enabled:active {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	min-height: 44px;
-	padding: 10px 15px;
+	min-height: 30px;
+	padding: 3px 15px;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	justify-content: space-between;
@@ -1678,7 +1678,7 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-footer:before,
-.mui-card-header:after {
+/*.mui-card-header:after*/ {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1691,14 +1691,14 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-header {
-	font-size: 17px;
-	border-radius: 2px 2px 0 0
+	font-size: 15px;
+	/*border-radius: 2px 2px 0 0*/
 }
 
-.mui-card-header:after {
+/*.mui-card-header:after {
 	top: auto;
 	bottom: 0
-}
+}*/
 
 .mui-card-header>img:first-child {
 	font-size: 0;
@@ -1714,7 +1714,7 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-content {
-	font-size: 14px;
+	font-size: 12px;
 	position: relative
 }
 
@@ -1736,7 +1736,7 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-header.mui-card-media .mui-media-body {
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 500;
 	line-height: 17px;
 	margin-bottom: 0;
@@ -1745,7 +1745,7 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-header.mui-card-media .mui-media-body p {
-	font-size: 13px;
+	font-size: 12px;
 	margin-bottom: 0
 }
 
@@ -1909,7 +1909,9 @@ input[type=submit]:enabled:active {
 	position: relative;
 	display: block;
 	overflow: hidden;
-	margin: -11px -15px;
+	margin-top:-23px;
+	margin-left:-15px;
+	margin-bottom: -10px;
 	padding: inherit;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -2414,9 +2416,14 @@ input[type=url],
 input[type=week],
 select,
 textarea {
-
+	line-height: 21px;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 15px;
+	padding: 10px 15px;
 	-webkit-user-select: text;
-	border: none;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 3px;
 	outline: 0;
 	background-color: #fff;
 	-webkit-appearance: none
@@ -2586,11 +2593,6 @@ select:focus {
 .mui-input-group .mui-button-row {
 	height: 45px
 }
-
-.mui-input-row {
-	position: relative
-}
-
 .mui-input-row.mui-input-range {
 	overflow: visible;
 	padding-right: 20px
@@ -2660,13 +2662,13 @@ select:focus {
 
 .mui-checkbox.mui-left input[type=checkbox],
 .mui-radio.mui-left input[type=radio] {
-	left: 20px
+	left: 0px
 }
 
 .mui-checkbox.mui-left label,
 .mui-radio.mui-left label {
 	padding-right: 15px;
-	padding-left: 58px
+	padding-left: 30px
 }
 
 .mui-checkbox input[type=checkbox],
@@ -4087,6 +4089,82 @@ body>.mui-progressbar {
 	background-color: #323232
 }
 
+.mui-numbox {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	width: 120px;
+	height: 35px;
+	padding: 0 40px;
+	vertical-align: top;
+	vertical-align: middle;
+	border: solid 1px #bbb;
+	border-radius: 3px;
+	background-color: #efeff4
+}
+
+.mui-numbox [class*=btn-numbox],
+.mui-numbox [class*=numbox-btn] {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 100%;
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+	width: 40px;
+	height: 100%;
+	padding: 0;
+	color: #555;
+	border: none;
+	border-radius: 0;
+	background-color: #f9f9f9
+}
+
+.mui-numbox [class*=btn-numbox]:active,
+.mui-numbox [class*=numbox-btn]:active {
+	background-color: #ccc
+}
+
+.mui-numbox [class*=btn-numbox][disabled],
+.mui-numbox [class*=numbox-btn][disabled] {
+	color: silver
+}
+
+.mui-numbox .mui-btn-numbox-plus,
+.mui-numbox .mui-numbox-btn-plus {
+	right: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px
+}
+
+.mui-numbox .mui-btn-numbox-minus,
+.mui-numbox .mui-numbox-btn-minus {
+	left: 0;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px
+}
+
+.mui-numbox .mui-input-numbox,
+.mui-numbox .mui-numbox-input {
+	display: inline-block;
+	overflow: hidden;
+	width: 100%!important;
+	height: 100%;
+	margin: 0;
+	padding: 0 3px!important;
+	text-align: center;
+	text-overflow: ellipsis;
+	word-break: normal;
+	border: none!important;
+	border-right: solid 1px #ccc!important;
+	border-left: solid 1px #ccc!important;
+	border-radius: 0!important
+}
+
+.mui-input-row .mui-numbox {
+	float: right;
+	margin: 2px 8px
+}
 
 @font-face {
 	font-family: Muiicons;
