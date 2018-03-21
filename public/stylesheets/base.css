@@ -237,13 +237,13 @@ label {
 /*通过/驳回按钮*/ 
 .smallbtn-audit {
 	display: inline-block;
-	padding: 0px 60px;
+	padding: 5px 20px;
 	font-size: 15px;
 	color: white;
+	height:30px;
 	vertical-align: middle;
-	text-align: center;
 	background: linear-gradient(to right, #36a2ef, #0078cd);
-	line-height: 30px;
+	line-height: 10px;
 }
 
 .orderfilter {}
@@ -362,7 +362,7 @@ label {
 	/*background-color: #495A80;*/
 	width: 70px;
 	height: 25px;
-	line-height: 30px;
+	/*line-height: 30px;*/
 	border-radius: 1rem;
 }
 
