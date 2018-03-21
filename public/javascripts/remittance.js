@@ -149,8 +149,8 @@ $(document).ready(function() {
 					oDiv.className = 'item-row';
 					InnerDetail1(oDiv);
 					aDiv.append(oDiv);
-					var oDiv = document.createElement('hr');
-					aDiv.append(oDiv);
+//					var oDiv = document.createElement('hr');
+//					aDiv.append(oDiv);
 					var m = 1;
 					for(var o in data) {
 						var result = eval(data[o]);
@@ -167,8 +167,8 @@ $(document).ready(function() {
 					oDiv.className = 'item-row';
 					InnerDetail3(m, totalprice[0], totalprice[1], oDiv);
 					aDiv.append(oDiv);
-					var oDiv = document.createElement('hr');
-					aDiv.append(oDiv);
+//					var oDiv = document.createElement('hr');
+//					aDiv.append(oDiv);
 					var oDiv = document.createElement('div');
 					oDiv.className = 'buttonbar';
 					var time = $('input[name="radio"]:checked').val();
@@ -315,26 +315,26 @@ var Inner = function(id, billid, currency, money, deal, submittime, latesttime, 
 
 var InnerDetail1 = function(oDiv) {
 	oDiv.innerHTML = oDiv.innerHTML +
-		'<li class="item-table-border1">序号</li>' +
-		'<li>账单条目</li>' +
-		'<li>币别</li>' +
-		'<li>金额</li>';
+		'<li class="item-table-border1 imp-col-ora">序号</li>' +
+		'<li class="item-table-border2 imp-col-ora">账单条目</li>' +
+		'<li class="item-table-border2 imp-col-ora">币别</li>' +
+		'<li class="item-table-border5 imp-col-ora">金额</li>';
 }
 
 var InnerDetail2 = function(title, FeeName, Currency, Price, oDiv) {
 	oDiv.innerHTML = oDiv.innerHTML +
-		'<li item-table-border1>' + title + '</li>' +
-		'<li>' + FeeName + '</li>' +
-		'<li>' + Currency + '</li>' +
-		'<li>' + Price + '</li>';
+		'<li class="item-table-border1">' + title + '</li>' +
+		'<li class="item-table-border2" >' + FeeName + '</li>' +
+		'<li class="item-table-border2">' + Currency + '</li>' +
+		'<li class="item-table-border5">' + Price + '</li>';
 }
 
 var InnerDetail3 = function(title, totalprice0, totalprice1, oDiv) {
 	oDiv.innerHTML = oDiv.innerHTML +
-		'<li>' + title + '</li>' +
-		'<li>总计</li>' +
-		'<li>' + totalprice0 + '</li>' +
-		'<li>' + totalprice1 + '</li>';
+		'<li class="item-table-border3">' + title + '</li>' +
+		'<li class="item-table-border4">总计</li>' +
+		'<li class="item-table-border4">' + totalprice0 + '</li>' +
+		'<li class="item-table-border6">' + totalprice1 + '</li>';
 	//'<li>TotalPrice</li>';
 }
 
