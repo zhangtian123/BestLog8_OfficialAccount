@@ -135,8 +135,6 @@ $(document).ready(function(){
 					oDiv.className = 'item-row';
 					InnerDetail1(oDiv);
 					aDiv.append(oDiv);
-					var oDiv = document.createElement('hr');
-					aDiv.append(oDiv);
 					var m = 1;
 					for(var o in data)
 					{
@@ -153,8 +151,6 @@ $(document).ready(function(){
 					var oDiv = document.createElement('div');
 					oDiv.className = 'item-row';
 					InnerDetail3(m,totalprice[0],totalprice[1],oDiv);
-					aDiv.append(oDiv);
-					var oDiv = document.createElement('hr');
 					aDiv.append(oDiv);
 					var oDiv = document.createElement('div');
 					oDiv.className = 'buttonbar';
@@ -262,35 +258,39 @@ var Inner = function(id, billid,currency, money, submittime, latesttime, way, br
 	oDiv.innerHTML=oDiv.innerHTML+
 	    		'<div class="toplabel"></div>'+
 				'<!--页眉，放置标题-->'+
-				'<div class="mui-card-header">账单编号：'+id+'</div>'+
+				'<!--页眉，放置标题-->'+'<div class="information">' +
+				'<div class="mui-card-header  imp-info-col">账单编号</div>'+
+				'<div class="mui-card-header imp-info-col" style="margin-left:20px;">' +id+'</div></div>'+
+				'<div class="ticket-style"><div class="circle-l"></div><div class="dashLine"></div><div class="circle-r"></div></div>'+
 				'<input class="getBILLID" type="hidden" id="'+id+'" value="'+billid+'"/>'+
 				'<!--内容区-->'+
 				'<div class="mui-card-content">'+
 					'<div class="item">'+
-						'<span class="item-title">总金额：</span>'+
-						'<span id="totalprice">'+currency+' '+money+'</span>'+
+						'<span class="item-title">总金额</span>'+
+						'<span id="totalprice"  class="info-r">'+currency+' '+money+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">通知日期：</span>'+
-						'<span>'+submittime.replace('T',' ').substr(0,submittime.length-3)+'</span>'+
+						'<span class="item-title">通知日期</span>'+
+						'<span  class="info-r">'+submittime.replace('T',' ').substr(0,submittime.length-3)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">最迟付款日：</span>'+
-						'<span>'+latesttime.replace('T',' ').substr(0,latesttime.length-3)+'</span>'+
+						'<span class="item-title">最迟付款日</span>'+
+						'<span  class="info-r">'+latesttime.replace('T',' ').substr(0,latesttime.length-3)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">结算方式：</span>'+
-						'<span>'+(way==null ? '' : way)+'</span>'+
+						'<span class="item-title">结算方式</span>'+
+						'<span  class="info-r">'+(way==null ? '' : way)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">开户行：</span>'+
-						'<span>'+(branch==null ? '' : branch)+'</span>'+
+						'<span class="item-title">开户行</span>'+
+						'<span  class="info-r">'+(branch==null ? '' : branch)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">银行账号：</span>'+
-						'<span>'+(account==null ? '' : account)+'</span>'+
+						'<span class="item-title">银行账号</span>'+
+						'<span  class="info-r">'+(account==null ? '' : account)+'</span>'+
 					'</div>'+
 				'</div>'+
+				'<div class="ticket-style"  style="margin-top:2px;"><div class="circle-l"></div><div class="dashLine"></div><div class="circle-r"></div></div>'+
 				 '<ul class="mui-table-view"> '+
 			        '<li class="mui-table-view-cell mui-collapse">'+
 			            '<a class="mui-navigate-right" id="Detail" href="#">点击查看详细条目</a>'+
@@ -303,33 +303,33 @@ var Inner = function(id, billid,currency, money, submittime, latesttime, way, br
 var InnerDetail1 = function(oDiv)
 {
 	oDiv.innerHTML = oDiv.innerHTML+
-			'<li>序号</li>'+
-			'<li>账单条目</li>'+
-			'<li>币别</li>'+
-			'<li>金额</li>';
+			'<li class="item-table-border1 imp-col-ora">序号</li>'+
+			'<li class="item-table-border2 imp-col-ora">账单条目</li>'+
+			'<li class="item-table-border2 imp-col-ora">币别</li>'+
+			'<li class="item-table-border5 imp-col-ora">金额</li>';
 }
 
 var InnerDetail2 = function(title, FeeName, Currency, Price, oDiv)
 {
 	oDiv.innerHTML = oDiv.innerHTML+
-			'<li>'+title+'</li>'+
-			'<li>'+FeeName+'</li>'+
-			'<li>'+Currency+'</li>'+
-			'<li>'+Price+'</li>';
+			'<li class="item-table-border1">'+title+'</li>'+
+			'<li class="item-table-border2">'+FeeName+'</li>'+
+			'<li class="item-table-border2">'+Currency+'</li>'+
+			'<li class="item-table-border5">'+Price+'</li>';
 }
 
 var InnerDetail3 = function(title, totalprice0,totalprice1, oDiv)
 {
 	oDiv.innerHTML = oDiv.innerHTML+
-			'<li>'+title+'</li>'+
-			'<li>总计</li>'+
-			'<li>'+totalprice0+'</li>'+
-			'<li>'+totalprice1+'</li>';
+			'<li class="item-table-border3">'+title+'</li>'+
+			'<li class="item-table-border4">总计</li>'+
+			'<li class="item-table-border4">'+totalprice0+'</li>'+
+			'<li class="item-table-border6">'+totalprice1+'</li>';
 }
 
 var InnerDetail4 = function(oDiv)
 {
 	oDiv.innerHTML = oDiv.innerHTML+
-			'<button id="agree" type="button" class="mui-btn mui-btn-primary">通过</button>'+
-			'<button id="reject" type="button" class="mui-btn mui-btn-primary">驳回</button>';
+			'<button id="agree" type="button" class="mui-btn mui-btn-primary smallbtn-audit">通过</button>'+
+			'<button id="reject" type="button" class="mui-btn mui-btn-primary smallbtn-audit">驳回</button>';
 }

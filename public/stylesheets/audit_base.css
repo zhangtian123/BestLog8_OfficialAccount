@@ -1,11 +1,130 @@
 /*侧栏呼出的图标样式*/
 
-body,
+body {
+	font-family: "微软雅黑";
+	color: #79797a;
+	background-color: #ebebeb;
+}
 label {
 	font-family: "微软雅黑";
 	color: #79797a;
 }
 
+/*注册详细页头部*/
+.register-detail-header{
+	color:white;
+	width:100%;
+	height:10rem;
+	background-color: #0078cd;
+	position: fixed;
+}
+
+.positioncontrol {
+	position: absolute;
+	/*left: 4rem;
+	top: 1rem;*/
+	top:15%;
+	text-align: center;
+	width:100%;
+	/*left:40%;*/
+}
+
+/*注册详情企业名称部分*/
+.detail-company-name{
+	position: absolute;
+	left:2%;
+	top:4rem;
+	width:96%;
+	height:7rem;
+	background-color: white;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0.5rem 0 2rem #aaaaaa;
+}
+
+.detail-company-name-title{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	top:5px;
+	left: 10px;
+	vertical-align: bottom;
+	/*line-height: 2rem;*/
+}
+
+/*图片*/
+.detail-img{
+	width:2rem;
+	height:2rem;
+}
+
+.detail-title{
+	margin-left:2.5rem;
+	margin-top:9px;
+	position: absolute;
+	/*vertical-align: bottom;*/
+}
+
+/*具体信息*/
+.detail-normal{
+	left:3rem;
+	top:10px;
+	position:relative;
+	display: flex;
+	flex-direction: row;
+}
+
+.second-line{
+	margin-top:10px;
+}
+
+.address-part-detail{
+	/*position: fixed;*/
+	margin-top:11.5rem;
+	margin-left:2%;
+	width:96%;
+	height:7rem;
+	background-color: white;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0.5rem 0 2rem #aaaaaa;
+}
+
+.other-part-detail{
+	margin-top:0.5rem;
+	margin-left:2%;
+	width:96%;
+	height:13rem;
+	background-color: white;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0.5rem 0 2rem #aaaaaa;
+}
+
+.other-part-img{
+	width:4rem;
+}
+
+.img-margin{
+	margin-left:1rem;
+}
+
+
+
+/*.注册审核彩色边*/
+.colorful{
+	position:absolute;
+	left:0;
+	top:0;
+	width:0.5rem;
+	height:100%;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	background: linear-gradient(to top,#36a2ef,#ff9a76);
+}
 /*详细条目表上边框+左边框*/
 .item-table-border1{
 	border-top:solid 1px #ff9a76;
@@ -31,10 +150,10 @@ label {
 	border-top:solid 1px #ff9a76;
 	border-right:solid 1px #ff9a76;
 }
-/*详细条目表上边框+左边框+下边框*/
-.item-table-border3{
+/*详细条目表上边框+右边框+下边框*/
+.item-table-border6{
 	border-top:solid 1px #ff9a76;
-	border-left:solid 1px #ff9a76;
+	border-right:solid 1px #ff9a76;
 	border-bottom:solid 1px #ff9a76;
 }
 
@@ -88,6 +207,10 @@ label {
 	float: right;
 }
 
+.a-little-left{
+	margin-left:20px;
+}
+
 
 /*深色字体*/
 
@@ -100,6 +223,10 @@ label {
 
 .imp-info-col {
 	color: #0078cd;
+}
+
+.imp-col-ora{
+	color:#df3c01;
 }
 
 
@@ -155,22 +282,22 @@ label {
 
 .iconbg {
 	position: fixed;
-	top: 1rem;
-	left: 1rem;
-	width: 3rem;
-	height: 3rem;
-	background-color: rgba(100, 100, 100, 0.5);
+	/*top: 1rem;*/
+	left: -0.5rem;
+	width: 2rem;
+	height: 2rem;
+	background-color: #ebebeb;
 	border-radius: 50%;
 	z-index: 10;
 }
 
 .sidebaricon {
 	position: absolute;
-	top: 0.5rem;
-	left: 0.5rem;
-	width: 2rem;
-	height: 2rem;
-	background-image: url("/images/Category (1).png");
+	top: 0.3rem;
+	left: 0.2rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url("/images/filter.png");
 	background-size: contain;
 }
 
@@ -269,7 +396,7 @@ label {
 /*通过/驳回按钮*/ 
 .smallbtn-audit {
 	display: inline-block;
-	padding: 5px 20px;
+	/*padding: px 20px;*/
 	font-size: 15px;
 	color: white;
 	height:30px;
@@ -295,9 +422,23 @@ label {
 	left: -2rem;
 }
 
+/*分享*/
+.share-btn{
+	/*background-image: url(../images/share.png);*/
+	width:1.5rem;
+	height:1.5rem;
+	margin-top:8px;
+	/*margin-left:5px;*/
+}
+
+.share-title-id{
+	margin-left:10px;
+}
 
 /*卡片条目的样式*/
-
+.mui-collapse-content{
+	/*border-radius: 15px;*/
+}
 .mui-collapse-content hr {
 	margin: 0.2rem 0;
 }
@@ -307,7 +448,7 @@ label {
 }
 
 .mui-card-content {
-	padding: 0.5rem 0rem 0rem 1rem;
+	padding: 0rem 1rem 0rem 1rem;
 }
 
 
@@ -387,33 +528,36 @@ label {
 
 .buttonbar {
 	display: inline-block;
+	margin-top:7px;
+	justify-content: space-around;
+	
 }
 .buttonbar button {
 	/*	width: 4rem;*/
 	/*background-color: #495A80;*/
-	width: 70px;
+	width: 5rem;
 	height: 25px;
 	/*line-height: 30px;*/
 	border-radius: 1rem;
 }
 
 .buttonbar button:nth-child(2) {
-	margin-left: 2rem;
+	margin-left: 3rem;
 }
 
 .right-text {
 	position: relative;
-	left: -2rem;
+	/*left: -2rem;*/
 }
 
 
 /*详情的主页样式*/
 
-.detailcontent {
+/*.detailcontent {
 	width: 90%;
 	padding-top: 2rem;
 	margin: 0 5%;
-}
+}*/
 
 .photobar {
 	width: 8rem;
@@ -430,12 +574,6 @@ label {
 
 .detailcontent .item {
 	line-height: 2rem;
-}
-
-.positioncontrol {
-	position: absolute;
-	left: 4rem;
-	top: 1rem;
 }
 
 

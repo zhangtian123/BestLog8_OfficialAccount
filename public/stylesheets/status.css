@@ -49,10 +49,17 @@
 	text-align: center;
 	border-bottom: 3px solid #0078cd;
 }
-.GuideWord{
+
+.GuideWord {
 	font-size: 1.2rem;
 	color: #79797a;
 }
+
+.GuideWordHover {
+	font-size: 1.2rem;
+	color: #0078cd;
+}
+
 .row {
 	display: flex;
 	flex-direction: row;
@@ -80,6 +87,7 @@
 	width: 70%;
 	height: 150px;
 	margin: 15px 0 0 20px;
+	padding: 5px 5px;
 	/*border: none;
 	border-bottom: 1px solid #ebebeb;*/
 	border: 1px solid #ebebeb;
@@ -90,11 +98,12 @@
 	background-color: #0078cd;
 	font-size: 1rem;
 	color: white;
-	width:50%;
-	height: 3%;
+	width: 50%;
+	height: 30px;
 	text-align: center;
 	border-radius: 15px;
 	margin: 20px 0 0 25%;
+	border: none;
 }
 
 
@@ -120,6 +129,7 @@
 	width: 65%;
 	height: 100px;
 	margin: 5px 0 0 6%;
+	padding: 5px 5px;
 	border: none;
 	border-bottom: 1px solid gray;
 	border-radius: 5px;
@@ -158,6 +168,7 @@
 	width: 65%;
 	height: 60px;
 	margin: 5px 0 0 5%;
+	padding: 5px 5px;
 	border: none;
 	border-bottom: 1px solid gray;
 	border-radius: 5px;
@@ -176,9 +187,9 @@
 
 .centerBackPickup {
 	background-color: white;
-	width: 340px;
+	width: 90%;
 	height: 450px;
-	margin: -80px 0 0 20px;
+	margin: -80px 0 0 5%;
 	border-radius: 5px;
 	z-index: 99;
 }
@@ -204,6 +215,7 @@
 	width: 65%;
 	height: 40px;
 	margin: 15px 0 0 20px;
+	padding: 5px 5px;
 	border: none;
 	border-bottom: 1px solid gray;
 	/*border: 1px solid gray;*/
@@ -212,6 +224,13 @@
 
 
 /*图片*/
+
+.imageBox {
+	position: absolute;
+	width: 80%;
+	height: 10%;
+	margin-left: 20px;
+}
 
 .album {
 	width: 90%;
@@ -246,9 +265,8 @@
 	margin: -8px 0 0 -8px;
 }
 
-.albumLabel{
+.albumLabel {
 	font-size: 1rem;
 	color: #79797a;
 	padding: 10px 0 0 14%;
-
 }

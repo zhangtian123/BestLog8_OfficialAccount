@@ -24,7 +24,7 @@ article,
 	font-size: 17px;
 	color:#a8a8a8;
 	text-align: center;
-	top:40px;
+	margin-top:45%;
 }
 
 article,
@@ -966,9 +966,11 @@ p {
 	text-align: center;
 	white-space: nowrap;
 	color: #333;
-	font-size: 17px;
+	font-size: 15px;
 	margin-bottom: 10px;
-	padding: 0px 0
+	padding: 0px 0;
+	width: 10rem;
+	color:#a8a8a8;
 }
 
 
@@ -1675,23 +1677,24 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card .mui-table-view {
-	margin-bottom: 0;
+	/*margin-bottom: 0;
 	border-top: 0;
-	border-bottom: 0;
-	border-radius: 6px
+	border-bottom: 0;*/
+	/*border-radius: 15px;*/
+	/*border-bottom-right-radius: 15px;*/
 }
 
 .mui-card .mui-table-view .mui-table-view-cell:first-child,
 .mui-card .mui-table-view .mui-table-view-divider:first-child {
 	top: 0;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px
 }
 
 .mui-card .mui-table-view .mui-table-view-cell:last-child,
 .mui-card .mui-table-view .mui-table-view-divider:last-child {
-	border-bottom-right-radius: 6px;
-	border-bottom-left-radius: 6px
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px
 }
 
 .mui-card .mui-table-view:after,
@@ -1708,7 +1711,7 @@ input[type=submit]:enabled:active {
 	display: -webkit-flex;
 	display: flex;
 
-	min-height: 44px;
+	/*min-height: 44px;*/
 	padding: 10px 15px;
 
 	/*min-height: 30px;
@@ -1744,7 +1747,7 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-footer:before,
-.mui-card-header:after {
+/*.mui-card-header:after*/ {
 
 	position: absolute;
 	top: 0;
@@ -1820,6 +1823,8 @@ input[type=submit]:enabled:active {
 }
 
 .mui-table-view {
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
 	position: relative;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -1986,7 +1991,7 @@ input[type=submit]:enabled:active {
 	margin-left:-15px;
 	margin-bottom: -10px;*/
 
-	padding: inherit;
+	padding-left: 10px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	color: inherit

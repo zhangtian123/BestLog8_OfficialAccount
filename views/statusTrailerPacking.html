@@ -26,7 +26,7 @@
 				<!--导航栏-->
 				<div class="guideBar">
 					<div id="left" class="GuideTextHover">
-						<a id="inputInformation" class="GuideWord">填写信息</a>
+						<a id="inputInformation" class="GuideWordHover" >填写信息</a>
 					</div>
 					<div id="right" class="GuideText">
 						<a id="upload" class="GuideWord">拍照上传</a>
@@ -45,9 +45,9 @@
 				</div>
 
 				<!--拍照上传-->
-				<div id="images" style="position: absolute;width:300px;height:150px;margin-left: 20px;">
+				<div id="images" class="imageBox">
 					<div class="feedback" style="text-align:center; ">
-						<label class="albumLabel" >点击图标：</label>
+						<!--<label class="albumLabel" >点击图标：</label>-->
 						<img id="btn" class="image-item" src="/images/camera.png"><img>
 						<div class="album"></div>
 					</div>
@@ -159,12 +159,16 @@
 					document.getElementById("information").style.zIndex = ""
 					document.getElementById("left").setAttribute('class', 'GuideTextHover')
 					document.getElementById("right").setAttribute('class', 'GuideText')
+					document.getElementById("inputInformation").setAttribute('class', 'GuideWordHover')
+					document.getElementById("upload").setAttribute('class', 'GuideWord')
 				});
 				$("#upload").click(function() {
 					document.getElementById("images").style.zIndex = ""
 					document.getElementById("information").style.zIndex = "-9999"
 					document.getElementById("left").setAttribute('class', 'GuideText')
 					document.getElementById("right").setAttribute('class', 'GuideTextHover')
+					document.getElementById("inputInformation").setAttribute('class', 'GuideWord')
+					document.getElementById("upload").setAttribute('class', 'GuideWordHover')
 				});
 				var urlperson=decodeURI(location.search);
 			    var theRequest = new Object();
