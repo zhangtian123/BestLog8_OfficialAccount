@@ -31,12 +31,8 @@
 	text-align:left;
 }
 .usual label{
-	display: inline-block;
-	padding: 0.5rem 1rem;
-	margin-top:0.5rem;
-	background-color: rgb(255,128,80);
-	color:#FFFFFF;
-	border-radius:2rem;
+	color: #0078cd;
+	line-height: 2rem;
 }
 
 #port-info{
@@ -64,7 +60,6 @@
 	border: none;
 	width: 22px;
 	height: 22px;
-	
 }
 #renderQuote{
 	background: url(../images/quote.png)no-repeat left top;	
@@ -74,3 +69,16 @@
 	background: url(../images/share.png)no-repeat left top;	
 	background-size: 22px;
 }
+
+/************************侧边栏**********************/
+#sidebar-card{
+	margin-bottom: 20px;
+}
+.mui-input-clear{
+	border: none;
+}
+.mui-input-row{border-bottom:0px;}
+.searchable-select {
+    width: 100%;
+}
+

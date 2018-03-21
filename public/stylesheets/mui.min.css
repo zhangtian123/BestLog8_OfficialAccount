@@ -2413,38 +2413,7 @@ textarea:focus {
 	-webkit-user-modify: read-write-plaintext-only
 }
 
-input[type=color],
-input[type=date],
-input[type=datetime-local],
-input[type=datetime],
-input[type=email],
-input[type=month],
-input[type=number],
-input[type=password],
-input[type=search],
-input[type=tel],
-input[type=text],
-input[type=time],
-input[type=url],
-input[type=week],
-select,
-textarea {
-	line-height: 21px;
-	width: 100%;
-	height: 40px;
-	margin-bottom: 15px;
 
-	/*padding: 5px 5px;*/
-
-	padding: 10px 15px;
-
-	-webkit-user-select: text;
-	border: 1px solid rgba(0, 0, 0, .2);
-	border-radius: 3px;
-	outline: 0;
-	background-color: #fff;
-	-webkit-appearance: none
-}
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -6791,30 +6760,6 @@ body>.mui-progressbar {
  	-webkit-tap-highlight-color: transparent;
  	-webkit-tap-highlight-color: transparent;
  	-webkit-user-modify: read-write-plaintext-only
- }
-
- input[type=color],
- input[type=date],
- input[type=datetime-local],
- input[type=datetime],
- input[type=email],
- input[type=month],
- input[type=number],
- input[type=password],
- input[type=search],
- input[type=tel],
- input[type=text],
- input[type=time],
- input[type=url],
- input[type=week],
- select,
- textarea {
-
- 	-webkit-user-select: text;
- 	border: none;
- 	outline: 0;
- 	background-color: #fff;
- 	-webkit-appearance: none
  }
 
  input[type=number]::-webkit-inner-spin-button,
