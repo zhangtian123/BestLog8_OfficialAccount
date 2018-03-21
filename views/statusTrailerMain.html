@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>状态反馈</title>
+		<title></title>
 		<script src="/javascripts/mui.min.js"></script>
 		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/stylesheets/base.css" />
@@ -136,8 +136,8 @@
 								//alert(value.id);
 								trace({
 									"id": value.BILLID + value.BILLNO,
-									"row_number": 4, //每行有几个圆
-									"col_number": 2, //每列有几个圆
+									"row_number": 3, //每行有几个圆
+									"col_number": 3, //每列有几个圆
 									"total_number": 7, //一共有多少个圆
 									"datainit": [{
 											"name": "接单",
@@ -255,8 +255,8 @@
 								//alert(value.id);
 								trace({
 									"id": value.BILLID + value.BILLNO,
-									"row_number": 4, //每行有几个圆
-									"col_number": 2, //每列有几个圆
+									"row_number": 3, //每行有几个圆
+									"col_number": 3, //每列有几个圆
 									"total_number": 7, //一共有多少个圆
 									"datainit": [{
 											"name": "接单",
@@ -301,7 +301,7 @@
 			}
 			var Inner = function(id, orderid, billcode, containerno, size, type, truckNo, driver, telephone, time, oDiv) {
 				oDiv.innerHTML = oDiv.innerHTML +
-					//'<div class="toplabel"></div>' +
+					'<div class="toplabel"></div>' +
 					'<!--页眉，放置标题-->' +
 					'<div class="mui-card-header">派车单号：' + id + '</div>' +
 					'<input type="hidden" id="' + orderid + '" value="' + time + '"/>' +
@@ -321,14 +321,14 @@
 					'<span>' + (telephone == null ? '' : telephone) + '</span>' +
 					'</div>' +
 					'<div class="item" style="text-align: left;">' +
-					'<span class="item-title">派车单状态:</span>' +
+					'<span class="item-title">派车单状态</span>' +
 					'</div>' +
-					'<canvas  id="' + orderid + id + '" width="370px" height="130px" style="width:310px;height:130px;margin-top:10px;"></canvas>' +
-					'</div>'+
+					'<canvas  id="' + orderid + id + '" width="370px" height="230px" style="width:310px;height:230px;"></canvas>' +
 					'<div class="mui-card-footer"><div class="buttonbar">' +
 					'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>' +
 					//'<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button>'+
-					'</div></div>' ;
+					'</div></div>' +
+					'</div>';
 			};
 
 			$(document).ready(function() {
