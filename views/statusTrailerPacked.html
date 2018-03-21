@@ -7,73 +7,42 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>状态反馈</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
 		<link href="/stylesheets/formsheet.css" rel="stylesheet" />
 		<link href="/stylesheets/feedback.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
-		<!--status.css和feedback.css 是二次修改界面添加的-->
-		<link href="/stylesheets/feedback.css" rel="stylesheet" />
-		<link href="/stylesheets/status.css" rel="stylesheet" /> 
+		<style type="text/css">
+			#btn{
+				/*width:200px;
+				height:50px;
+				background:deeppink;
+				text-align:center;
+				line-height:50px;
+				margin:10px auto;*/
+			}
+			.album{
+				width:100%;
+				display:flex;
+				height:auto;
+				background:#999999;
+				min-height:50px;
+				justify-content:space-around;
+				flex-wrap:wrap;
+			}
+			.album>div{
+				width:24%;
+				height:auto;
+			}
+			.album>div>img{
+				width:100%;
+			}
+		</style>
 	</head>
 
-	<body class="mainBack">
-		<div class="topBack">
-			<div class="statusText">状态：装完</div>
-		</div>
-		<form>
-			<div class="centerBack">
-				<!--导航栏-->
-				<div class="guideBar">
-					<div id="left" class="GuideTextHover">
-						<a id="inputInformation" class="GuideWord">填写信息</a>
-					</div>
-					<div id="right" class="GuideText">
-						<a id="upload" class="GuideWord">拍照上传</a>
-					</div>
-				</div>
-				<!--填写信息-->
-				<div id="information" style="width:100%;position: absolute;padding: 0 0 0 1rem;">
-					<div class="row">
-						<label class="rowTextMulti">时间</label>
-						<input id="result" data-options='{}' class="btnMulti" placeholder="请选择完成时间"/>
-					</div>
-					<div class="row">
-						<label class="rowTextMulti">件数</label>
-						<input placeholder="请输入件数" class="packages"/>
-						<input id='digitpicker' data-options='{}' class="unit" placeholder="请选择单位"/>
-					</div>
-					<div class="row">
-						<label class="rowTextMulti">毛重</label>
-						<input id='weightresult' data-options='{}' class="btnMulti" placeholder="请输入毛重（T）"/>
-					</div>
-					<div class="row">
-						<label class="rowTextMulti">体积</label>
-						<input id='volumeresult' data-options='{}' class="btnMulti" placeholder="请输入体积（m³）"/>
-					</div>
-					<div class="row">
-						<label class="rowTextMulti">描述</label>
-						<textarea id="description" placeholder="请编辑相关描述" class="descriptionPack"></textarea>
-					</div>
-				</div>
-
-				<!--拍照上传-->
-				<div id="images" style="position: absolute;width:300px;height:150px;margin-left: 10%;">
-					<div class="feedback" style="text-align:center; ">
-						<label class="rowTextMulti">点击图标：</label>
-						<img id="btn" class="image-item" src="/images/camera.png"><img>
-						<div class="album"></div>
-					</div>
-				</div>
-
-			</div>
-			<!--提交按钮-->
-			<div>
-				<button id="submit" class="submitInfo">提交</button>
-			</div>
-		</form>
-		<!--<div class="mui-content-padded contain">
+	<body>
+		<div class="mui-content-padded contain">
 			<div class="register">
 				<form>
 					<div class="mui-input-row status-row" style="border: none;">
@@ -113,24 +82,27 @@
 					<div class="feedback" style="text-align:left">  
 			            <div id="btn" class="image-item"></div>
 		                <div class="album" style="display:none"></div>
-			       </div>  
+			        </div>  
+					<!--<div class="mui-input-row" style="border: none;height: 12.5rem;">
+						<label><img src="images/拍照.png" width="25px;"></label>
+						<div class="photo"></div>
+						<button type="button" class="mui-btn">点击拍照</button>
+					</div>-->
 					<button id="submit" type="button" class="mui-btn mui-btn-block submit" style="margin-top: 20%;">提交</button>	
 				</form>
 			</div>
-		</div>-->
+		</div>
 		<script src="/javascripts/jquery-1.11.1.min.js"></script>
 		<script src="/javascripts/mui.min.js"></script>
 		<script src="/javascripts/mui.picker.min.js"></script>
 		<!--<script src="/javascripts/feedbackone.js"></script>
 		<script src="/javascripts/feedbackmore.js"></script>-->
 		<script src="/javascripts/cslCamera.js"></script>
-		<!--二次开发新增的-->
-		<script src="/javascripts/zooming.js"></script>
 		<script type="text/javascript">
 			(function($) {
 				$.init();
 				var result = $('#result')[0];
-				var btns = $('#result');
+				var btns = $('#datetimePicker');
 				btns.each(function(i, btn) {
 					btn.addEventListener('tap', function() {
 						var optionsJson = this.getAttribute('data-options') || '{}';
@@ -193,7 +165,7 @@
 					}]);
 					
 					var showDigitPickerButton = doc.getElementById('digitpicker');
-					var digitResult = doc.getElementById('digitpicker');
+					var digitResult = doc.getElementById('digitResult');
 					showDigitPickerButton.addEventListener('tap', function(event) {
 						digitPicker.show(function(items) {
 							digitResult.innerHTML = JSON.stringify(items[0].text);
@@ -208,19 +180,6 @@
 			var billcode='';
 			var billNo='';
 			$(document).ready(function(){
-				document.getElementById("images").style.zIndex = "-9999"
-				$("#inputInformation").click(function() {
-					document.getElementById("images").style.zIndex = "-9999"
-					document.getElementById("information").style.zIndex = ""
-					document.getElementById("left").setAttribute('class', 'GuideTextHover')
-					document.getElementById("right").setAttribute('class', 'GuideText')
-				});
-				$("#upload").click(function() {
-					document.getElementById("images").style.zIndex = ""
-					document.getElementById("information").style.zIndex = "-9999"
-					document.getElementById("left").setAttribute('class', 'GuideText')
-					document.getElementById("right").setAttribute('class', 'GuideTextHover')
-				});
 				var urlperson=decodeURI(location.search);
 			    var theRequest = new Object();
 			    if (urlperson.indexOf("?") != -1) {
@@ -241,7 +200,7 @@
 			var selectCount=0;
 			$('#submit').click(function(){
 				var result = $('#result').val(); 
-				var numresult = $('#digitpicker').val();
+				var numresult = $('#numresult').val();
 				var weightresult = $('#weightresult').val();
 				var volumeresult = $('#volumeresult').val();
 				var description = $('#description').val();
@@ -282,43 +241,22 @@
 			})
 		</script>
 		<script type="text/javascript">
-			var img = $(".img");
-			var number = 0;
-			var callBack = function(album) {
-				console.log(album);
-				album.forEach(function(val, idx) {
-					number ++;
-					var div = $("<div></div>");
-					div.attr('id','div'+idx)
-					var img = $("<img/>");
-					img.attr("src", val.data);
-					img.attr("data-action", "zoom")
-
-					div.append(img);
-					var img_delete = $("<img/>");
-					img_delete.attr('id', '' + idx)
-					img_delete.attr('src', "/images/delete.png");
-					img_delete.click(function() {
-						var albums = document.getElementsByClassName('album')[0];
-						var divs = albums.getElementsByTagName('div');
-						albums.removeChild(albums.querySelector('#div'+this.id))
-						document.getElementById('btn').style.zIndex = ""
-						number--;
-					})
-					div.append(img_delete);
-					$(".album").append(div);
-					$(".album").show();
-					console.log(number)
-					if(number >= 3) {
-						document.getElementById('btn').style.zIndex = "-99999"
-					} else {
-						document.getElementById('btn').style.zIndex = ""
-					}
-				});
-			}
-
-			var carera = new $.Pgater($("#btn"), callBack);
-		</script>
+		var img=$(".img");
+		var callBack=function(album){
+			//alert(album);
+			console.log(album);
+			console.log(img);
+			album.forEach(function(val,idx){
+				var div=$("<div></div>");
+				var img=$("<img/>");
+				img.attr("src",val.data);
+				div.append(img);
+				$(".album").append(div);
+				$(".album").show();
+			});
+		}
+		var carera=new $.Pgater($("#btn"),callBack);
+	    </script>
 	</body>
 
 </html>

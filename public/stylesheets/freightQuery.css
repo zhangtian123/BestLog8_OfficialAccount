@@ -8,41 +8,8 @@
 	font-size: 1.1rem;
 	background-color: #FFFFFF
 }
-.mui-numbox{
-	position: absolute;
-	top: 0.3rem;
-	right: 0rem;
-	background-color: #FFFFFF;
-	border: none;
-}
-.mui-numbox [class*=btn-numbox], .mui-numbox [class*=numbox-btn]{
-	background-color: #FFFFFF;
-}
-.mui-numbox input
-{
-	position: relative;
-	top:-0.3rem;
-}
-.mui-numbox .mui-input-numbox, .mui-numbox .mui-numbox-input{	
-	border-right: solid 0px #ccc!important;
-	border-left: solid 0px #ccc!important;
-}
-.mui-numbox button:nth-child(1){
-	width: 1.5rem;
-	height: 1.5rem;
-	background-image: url(../images/减.png);
-	background-size: contain;
-}
-.mui-numbox button:nth-child(2){
-	width: 1.5rem;
-	height: 1.5rem;
-	background-image: url(../images/加.png);
-	background-size: contain;
-}
-.number-item{
-	position: relative;
-	line-height: 2.2rem;
-}
+
+
 .query-items{
 	margin-top: 7rem;
 }
@@ -112,16 +79,7 @@
 	background-image: url(../images/最快捷1.png);
 	background-size: contain;
 }
-.side-number-choose{
-	position: relative;
-	top: 2rem;
-	left: -1rem;
-	width: 100%;
-}
-.side-number-choose .mui-numbox{
-	position: relative;
-	left: 2rem;
-}
+
 .usual{
 	text-align:left;
 }
@@ -133,14 +91,4 @@
 	color:#FFFFFF;
 	border-radius:2rem;
 }
-.portfuzzy{
-	position: relative;
-	margin-top: 1rem;
-}
-.portfuzzy img{
-	position: absolute;
-	left: 0.5rem;
-	top:0rem;
-	width: 2.4rem;
-	z-index: 5;
-}
+
