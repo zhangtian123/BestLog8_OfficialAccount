@@ -2,6 +2,9 @@
 		color: #79797a;
 		
 	}
+	.mui-scroll-wrapper {
+		padding:13px 8px;
+	}
 	.contain {
 		height: 100%;
 		margin: 0 auto;
