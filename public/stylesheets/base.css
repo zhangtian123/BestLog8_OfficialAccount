@@ -300,8 +300,8 @@ label {
 	right: 0rem;
 	width: 2rem;
 	height: 2rem;
-	background-image: url("/images/attachment.png");
-	background-size: contain;
+	/*background-image: url("/images/attachment.png");*/
+	background-size:contain;
 	z-index: 10;
 }
 
@@ -356,7 +356,6 @@ label {
 .buttonbar {
 	display: inline-block;
 }
-
 .buttonbar button {
 	/*	width: 4rem;*/
 	/*background-color: #495A80;*/

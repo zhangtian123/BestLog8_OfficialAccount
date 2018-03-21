@@ -92,6 +92,8 @@ exports.carOrderList = function(predicate, values, pageNum, pageSize, orderByPro
 }
 
 exports.trailerFinish = function(Dispatch,NodeCode,UserCode,DocumentList,callback){
+	console.log(Dispatch)
+	console.log(DocumentList)
 	var addstring = '<FWDispatchBll_DispatchNodeFinish xmlns="http://tempuri.org/">' +
 	                       '<Trailer>'+Dispatch+'</Trailer>' +
 	                       '<NodeCode>'+NodeCode+'</NodeCode>' +
