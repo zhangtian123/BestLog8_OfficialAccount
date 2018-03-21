@@ -84,8 +84,10 @@ $(document).ready(function(){
 				{
 					var result = eval(DATA[o]);
 					result.shift();
+					var myflag=0;
 					$.each(result,function(key,value){
 						//alert(flag1+" "+currentlist+" "+flag);
+						myflag++;
 						if(flag1>=currentlist && flag<3)
 						{
 							var oDiv = document.createElement('div');
@@ -105,6 +107,10 @@ $(document).ready(function(){
 							return false;
 						}
 					}) 
+					if(myflag==0){
+						mui.alert("不存在相关记录");
+						offCanvasWrapper.offCanvas('show');
+					}
 				}
 			},
 			error:function(){

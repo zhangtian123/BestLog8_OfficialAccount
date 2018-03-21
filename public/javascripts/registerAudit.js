@@ -56,6 +56,7 @@ $('body').on("tap",'#registerDetail',function(){
 		async:true,
 		success:function(data){
 			var result = eval(data);
+			alert(result.result)
 			if(result.result == 1)
 			{
 				mui.openWindow('/registerDetail');

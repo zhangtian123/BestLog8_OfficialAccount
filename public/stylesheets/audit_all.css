@@ -1861,7 +1861,8 @@ input[type=submit]:enabled:active {
 	font-size: 20px;
 	margin-top: -1px;
 	margin-right: 5px;
-	margin-left: -5px
+	margin-left: -5px;
+	margin-bottom: 5px;
 }
 
 .mui-table-view-icon .mui-table-view-cell:after {
