@@ -2,7 +2,7 @@
 body,label
 {
 	font-family: "微软雅黑";
-	color: rgb(100,100,100);
+	color: #79797a;
 }
 .pointer{
 	cursor: pointer;
@@ -152,7 +152,7 @@ body,label
 	right: 0rem;
 	width: 2rem;
 	height: 2rem;
-	background-image: url("/images/attachment.png");
+	/*background-image: url("/images/attachment.png");*/
 	background-size:contain;
 	z-index: 10;
 }
@@ -201,9 +201,10 @@ body,label
 .buttonbar button
 {
 /*	width: 4rem;*/
-	background-color: #495A80;
+	background-color: #0078c;
 	width: 6rem;
 	height: 2rem;
+	margin-left: 120%;
 	border-radius: 1rem;
 }
 .buttonbar button:nth-child(2)
