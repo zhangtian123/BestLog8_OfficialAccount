@@ -234,7 +234,8 @@ label {
 	/*font-weight: 25px;*/
 }
 
-通过/驳回按钮 .smallbtn-audit {
+/*通过/驳回按钮*/ 
+.smallbtn-audit {
 	display: inline-block;
 	padding: 0px 60px;
 	font-size: 15px;
