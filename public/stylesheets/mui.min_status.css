@@ -36,6 +36,7 @@
 .item {
 	text-align: left;
 	height: 10%;
+	color: #79797a;
 }
 
 .buttonbar {
@@ -467,22 +468,27 @@ input[type=submit]:enabled:active {
 	align-items: center
 }
 
-.mui-card-footer:before,
+.dashLine{
+	border-bottom: 1px dashed #c8c7cc;
+}
+/*.mui-card-footer:before,
 .mui-card-header:after {
 	position: absolute;
 	top: 0;
 	right: 0;
 	left: 0;
-	height: 1px;
+	height: 0px;
 	content: '';
+	border-bottom: 1px dashed #c8c7cc;
 	-webkit-transform: scaleY(.5);
 	transform: scaleY(.5);
 	background-color: #c8c7cc
-}
+}*/
 
 .mui-card-header {
 	font-size: 1rem;
 	border-radius: 2px 2px 0 0;
+	color:#0078cd;
 }
 
 .mui-card-header:after {

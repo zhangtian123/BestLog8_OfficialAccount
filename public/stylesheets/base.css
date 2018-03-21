@@ -85,20 +85,8 @@ body,label
 }
 .wrapper
 {
-	width: 94%;
-	margin: 0 auto;
-	padding: 1rem 0;
-	text-align: center;
-}
-.wrapper h3
-{
-	margin-top: 3rem;
-	font-weight: 300;
-	text-align: left;
-}
-.wrapper label
-{
-	text-align: left;
+	padding: 17px 23px;
+	
 }
 .second-radio{
 	position: relative;
