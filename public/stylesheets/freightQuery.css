@@ -1,83 +1,30 @@
-.number-choose{
-	position: fixed;
-	top:0rem;
-	width: 100%;
-	padding: 0.8rem 15%;
-	border-top: solid 0.1rem rgb(220,220,220);
-	border-bottom: solid 0.1rem rgb(220,220,220);
-	font-size: 1.1rem;
-	background-color: #FFFFFF
-}
-
-
-.query-items{
-	margin-top: 7rem;
+.mui-scroll-wrapper {
+	padding: 0;
 }
 .item{
 	position: relative;
 	line-height: 2rem;
-	padding-left: 1rem;
 }
-.item span:nth-child(2){
-	padding-left: 1rem;
-}
-.item .img1
-{
-	position: absolute;
-	top: 0.3rem;
-	left:0rem;
-	width: 1.5rem;
-	height: 1.5rem;
-	background-image: url(../images/轮船.png);
-	background-size: contain
-}
-.item .img2
-{
-	position: absolute;
-	top: 0.3rem;
-	left:0rem;
-	width: 1.5rem;
-	height: 1.5rem;
-	background-image: url(../images/clock.png);
-	background-size: contain
-}
-.item .img3
-{
-	position: absolute;
-	top: 0.3rem;
-	left:0rem;
-	width: 1.5rem;
-	height: 1.5rem;
-	background-image: url(../images/box.png);
-	background-size: contain
-}
-.item .img4
-{
-	position: absolute;
-	top: 0.3rem;
-	left:0rem;
-	width: 1.5rem;
-	height: 1.5rem;
-	background-image: url(../images/iconfont-美金.png);
-	background-size: contain
-}
+
 .mark-benefit{
 	position: absolute;
-	bottom: 0rem;
-	right:0rem;
-	width: 8rem;
-	height: 3rem;
-	background-image: url(../images/最经济1.png);
-	background-size: contain;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 70px;
+    height: 70px;
+    background: url(../images/low_price.png)no-repeat;
+    background-size: 70px;
+    opacity: 0.8;
 }
 .mark-fast{
 	position: absolute;
-	bottom: 0rem;
-	right:0rem;
-	width: 8rem;
-	height: 3rem;
-	background-image: url(../images/最快捷1.png);
-	background-size: contain;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 70px;
+    height: 70px;
+    background: url(../images/fast.png)no-repeat;
+    background-size: 70px;
+    opacity: 0.8;
 }
 
 .usual{
@@ -92,3 +39,38 @@
 	border-radius:2rem;
 }
 
+#port-info{
+	background:#0078cd;
+	width: 100%; height:150px;
+	color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	line-height:60px;   
+	position: absolute;
+}
+#blue-text{
+	color: #0078cd;
+	margin-right: 5px;
+}
+#card{
+	margin:13px 10px;
+}
+#card:first-child {
+	position: relative;
+	margin-top: 60px;
+}
+#renderQuote,#share{
+	float: right;
+	border: none;
+	width: 22px;
+	height: 22px;
+	
+}
+#renderQuote{
+	background: url(../images/quote.png)no-repeat left top;	
+	background-size: 22px;
+}
+#share{
+	background: url(../images/share.png)no-repeat left top;	
+	background-size: 22px;
+}

@@ -1,17 +1,16 @@
 <!--
 	作者：lcf
 	时间：2017-07-05
-	描述：状态反馈之拖车主页
+	描述：状态反馈之报关主页
 -->
 <!DOCTYPE html>
 <html>
 	<head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	    <title></title>
+	    <title>状态反馈</title>
 	    <script src="/javascripts/mui.min.js"></script>
-	    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
-	    <link rel="stylesheet" href="/stylesheets/base.css" />
+	    <link href="/stylesheets/mui.min_status.css" rel="stylesheet"/>
 	    <script type="text/javascript" charset="utf-8">
 	      	mui.init();
 	    </script>
@@ -138,7 +137,7 @@
 							trace({
 								"id":value.BILLNO,
 								"row_number":3,//每行有几个圆
-								"col_number":3,//每列有几个圆
+								"col_number":1,//每列有几个圆
 								"total_number":3,//一共有多少个圆
 								"datainit":[
 									{"name":"接单","time":time1},
@@ -236,7 +235,7 @@
 							trace({
 								"id":value.BILLNO,
 								"row_number":3,//每行有几个圆
-								"col_number":3,//每列有几个圆
+								"col_number":1,//每列有几个圆
 								"total_number":3,//一共有多少个圆
 								"datainit":[
 									{"name":"接单","time":time1},
@@ -282,12 +281,13 @@
 							'<div class="item" style="text-align: left;">'+
 								'<span class="item-title">报关单状态</span>'+
 							'</div>'+
-							'<canvas id="'+id+'" width="370px" height="100px" style="width:310px;height:100px;">'+
+							'<canvas id="'+id+'" style="width:100%;height:20%;margin:5% 0 0 12%;">'+
 							'</canvas>'+
-							'<div class="mui-card-footer"><div class="buttonbar">'+
-								'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>'+
-							'</div></div>'+
-						'</div>';
+							
+						'</div>'+
+						'<div class="mui-card-footer" style="margin-top:-30%;"> <div class="buttonbar">'+
+							'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>'+
+						'</div></div>';
 		};
 		
 		$(document).ready(function(){

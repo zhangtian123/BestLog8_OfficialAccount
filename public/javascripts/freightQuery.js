@@ -56,6 +56,7 @@ $(document).ready(function(){
 		//这边用AL AQABAH和ADELAIDE做测试因为数据库中只有这个数据
 //		var loadingportresult = "AL AQABAH"; 
 //		var desportresult = "ADELAIDE";
+
 		//装运港
 		var loadingportresult = $('#loadingport').val(); 
 		//目的港
@@ -96,9 +97,12 @@ $(document).ready(function(){
 				},
 				async:true,
 				success:function(data){
+					
+					alert($('#port-info').text);
 					var index=0;
 					var aDiv = document.body.querySelector('.query-items');
 					//var oDiv = document.getElementsByClassName('maincontent')[0];
+
 					aDiv.innerHTML='';
 					for(var o in data)
 					{
@@ -114,17 +118,16 @@ $(document).ready(function(){
 							{
 								transtype="非直达";
 							}
+							$('#port-info').text(loadingportresult+'-'+transtype+'-'+desportresult); //将港口信息返回主界面
 							var oDiv = document.createElement('div');
-							oDiv.className = 'mui-card content-item';
+							oDiv.id = 'card';
 							Inner(index,value.BILLID,value.PORTLOADING,transtype,value.PORTDISCHARGE,value.BASEPORT,value.CUSTOMER,value.SAILINGDATE,value.DAYNUM,value.STARTDATE,value.ENDDATE,value.PRICE20GP,value.PRICE40GP,value.PRICE40HQ,oDiv,value.TotalPrice);
 							aDiv.appendChild(oDiv);
 							index++;
 						})
 					}
 					offCanvasWrapper.offCanvas('close');
-					document.getElementById('test20g').value=test;
-					document.getElementById('test40g').value=test1;
-					document.getElementById('test40h').value = test2;
+
 				}
 			});
 		}
@@ -150,47 +153,41 @@ $(document).ready(function(){
 		})
 	});
 	$('body').on("tap",'#renderQuote',function() {
-		var n = $(this).parents('.content-item').index();
-		var text3 = $(".maincontent").find(".content-item:eq("+n+")").find('.getBILLID').eq(0).val();
+		var n = $(this).parents('#card').index();
+		alert(n);
+		var text3 = $(".maincontent").find("#card:eq("+n+")").find('.getBILLID').eq(0).val();
 		mui.openWindow('/renderQuote?id='+text3);
 	})
 })
 
 var Inner = function(index,id,begin,line,end,port,company,time,sail,expirydatebegin,expirydateend,GPprice20,GPprice40,HCprice40,oDiv,TotalPrice){
 	oDiv.innerHTML = oDiv.innerHTML+
-				'<div class="toplabel"></div>'+
-				'<!--页眉，放置标题-->'+
-				'<div class="mui-card-header">'+
-					'<span class="left-text">'+begin+'-'+line+'-'+end+'</span>'+
-					'<span class="right-text">'+(port==null ? '' : port)+'</span>'+
-				(isuser ? '<button id="renderQuote" type="button" class="mui-btn mui-btn-primary">生成报价</button></div>' : '<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button></div>')+
-				'<input class="getBILLID" type="hidden"'+' value="'+id+'"/>'+
-				'<!--内容区-->'+
-				'<div class="mui-card-content">';
+
+	'<div class="item">'+
+	'船公司<span id="blue-text">'+(company==null ? '' : company)+
+	'</span>船期<span id="blue-text">'+(time==null ? '' : time)+
+	'</span>航程<span id="blue-text">'+(sail==null ? '' : sail)+'天</span>'+(port==null ? '' : port)
+	+(isuser ? '<button id="renderQuote" type="button"></button></div>' : '<button id="share" type="button"></button></div>')+
+	'<input class="getBILLID" type="hidden"'+' value="'+id+'"/>'+
+	'</div>';
 	if(index==0)
 		oDiv.innerHTML = oDiv.innerHTML+'<div class="mark-benefit"></div>';
 	else if(index==1)
 		oDiv.innerHTML = oDiv.innerHTML+'<div class="mark-fast"></div>';
 	oDiv.innerHTML = oDiv.innerHTML+
-					'<div class="item">'+
-						'<div class="img1"></div>'+
-						'<span>船公司/船期/航程：</span>'+
-						'<span>'+(company==null ? '' : company)+'/'+(time==null ? '' : time)+'/'+(sail==null ? '' : sail)+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<div class="img2"></div>'+
-						'<span>有效期：</span>'+
-						'<span>'+(expirydatebegin==null ? '' : expirydatebegin.replace('T',' ').substr(0,expirydatebegin.length-3))+'至'+(expirydateend==null ? '' : expirydateend.replace('T',' ').substr(0,expirydateend.length-3))+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<div class="img3"></div>'+
-						'<span>20GP/40GP/40HC：</span>'+
-						'<span>'+(GPprice20==null ? '' : GPprice20)+'/'+(GPprice40==null ? '' : GPprice40)+'/'+(HCprice40==null ? '' : HCprice40)+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<div class="img4"></div>'+
-						'<span>运费：</span>'+
-						'<span>'+TotalPrice+'</span>'+
-					'</div>'+
-				'</div>';	
+
+	'<div class="item">'+
+	'<span>有效期：</span>'+
+	'<span>'+(expirydatebegin==null ? '' : expirydatebegin.replace('T',' ').substr(0,expirydatebegin.length-9))+'-'+(expirydateend==null ? '' : expirydateend.replace('T',' ').substr(0,expirydateend.length-9))+'</span>'+
+	'</div>'+
+	'<div class="item">'+
+	'<span>20GP/40GP/40HC：</span>'+
+	'<span>'+(GPprice20==null ? '' : GPprice20)+'/'+(GPprice40==null ? '' : GPprice40)+'/'+(HCprice40==null ? '' : HCprice40)+'</span>'+
+	'</div>'+
+	'<hr style="border:1px dashed #ebebeb;">'+
+	'<div class="item">'+
+	'<span>运费：</span>'+
+	'<span>'+TotalPrice+'</span>'+
+	'</div>'+
+	'</div>';	
 }
