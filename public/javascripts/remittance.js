@@ -107,10 +107,8 @@ $(document).ready(function() {
 						}
 					});
 					if(myflag == 0) {
-						var oDiv = document.createElement('div');
-						oDiv.className = 'nodata';
-						oDiv.innerHTML = "没有数据~";
-						aDiv.appendChild(oDiv);
+						mui.alert("不存在相关记录");
+						offCanvasWrapper.offCanvas('show');
 					}
 				}
 			},
