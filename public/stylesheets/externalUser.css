@@ -1,7 +1,9 @@
 	body{
 		color: #79797a;
-		font-size: 12pt;
+		
 	}
+
+
 	.contain {
 		height: 100%;
 		margin: 0 auto;
@@ -17,17 +19,21 @@
 	#card-title{
 		color:#0078cd;
 	}
+
 	#input-title{
 		width: 35%;
 	}
+	.mui-input-clear,.searchable-select{
+		width:65%;
+	}
+	#short-row #input-title{width: 50%;}
+	#short-row .mui-input-clear{width: 50%;}
+
 	#input-title,#requester,#pol,#pod{
 		float: left;
 	}
 	.mui-input-row,.portfuzzy{
 		padding: 10px 0;
-	}
-	.mui-input-clear,.searchable-select{
-		width:65%;
 	}
 	.mui-btn-numbox-minus{
 
@@ -58,22 +64,15 @@
 	/*color of placeholder */
 	input::-webkit-input-placeholder{
 		color:#a8a8a8;
-		font-size: 12pt;
 	}
 	input::-moz-placeholder{   /* Mozilla Firefox 19+ */
 		color:#a8a8a8;
-		font-size: 12pt;
 	}
 	input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
 		color:#a8a8a8;
-		font-size: 12pt;
 	}
 	input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
-		color:#a8a8a8;font-size: 12pt;
-	}
-
-	 {
-		width: 65%;
+		color:#a8a8a8;
 	}
 
 	#short-row{
