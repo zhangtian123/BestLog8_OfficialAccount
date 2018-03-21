@@ -28,7 +28,6 @@ $(document).ready(function() {
 				result = eval(DATA[o]);
 				Totalcount = result[0].COUNT;
 			}
-			//alert(Totalcount);
 			if(mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
@@ -97,7 +96,6 @@ $(document).ready(function() {
 							oDiv.className = 'mui-card content-item';
 //							oDiv.className='card';
 							Inner(value.BILLNO, value.BILLID, value.CURRENCY, value.TOTALAMOUNT, value.CUSTOMER, value.BILLDATE, value.LASTDATE, value.PAYTYPE, value.BANKNAME, value.ACCOUNTNO, oDiv);
-							alert(value.BILLNO)
 							aDiv.appendChild(oDiv);
 							flag++;
 						} else if(flag1 < currentlist) {
