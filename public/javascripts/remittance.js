@@ -306,7 +306,7 @@ var Inner = function(id, billid, currency, money, deal, submittime, latesttime, 
 		'<div class="ticket-style" style="margin-top:2px;"><div class="circle-l"></div><div class="dashLine"></div><div class="circle-r"></div></div>'+
 		'<ul class="mui-table-view"> ' +
 		'<li class="mui-table-view-cell mui-collapse">' +
-		'<a class="mui-navigate-right" id="Detail" href="#">点击查看详细条目</a>' +
+		'<a class="mui-navigate-right" id="Detail" href="#">查看详细条目</a>' +
 		'<div class="mui-collapse-content">' +
 		'</div>' +
 		'</li>' +
@@ -315,7 +315,7 @@ var Inner = function(id, billid, currency, money, deal, submittime, latesttime, 
 
 var InnerDetail1 = function(oDiv) {
 	oDiv.innerHTML = oDiv.innerHTML +
-		'<li>序号</li>' +
+		'<li class="item-table-border1">序号</li>' +
 		'<li>账单条目</li>' +
 		'<li>币别</li>' +
 		'<li>金额</li>';
@@ -323,7 +323,7 @@ var InnerDetail1 = function(oDiv) {
 
 var InnerDetail2 = function(title, FeeName, Currency, Price, oDiv) {
 	oDiv.innerHTML = oDiv.innerHTML +
-		'<li>' + title + '</li>' +
+		'<li item-table-border1>' + title + '</li>' +
 		'<li>' + FeeName + '</li>' +
 		'<li>' + Currency + '</li>' +
 		'<li>' + Price + '</li>';

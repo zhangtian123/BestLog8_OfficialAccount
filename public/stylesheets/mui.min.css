@@ -2260,6 +2260,7 @@ input[type=submit]:enabled:active {
 
 .mui-table-view-cell.mui-collapse>.mui-navigate-right:after,
 .mui-table-view-cell.mui-collapse>.mui-push-right:after {
+	color:#0078cd;
 	content: '\e581'
 }
 

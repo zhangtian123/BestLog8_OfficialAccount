@@ -1,0 +1,94 @@
+	body{
+		color: #79797a;
+		
+	}
+	.contain {
+		height: 100%;
+		margin: 0 auto;
+		width: 100%;
+	}
+	
+	#card{
+		background: #fff;
+		padding:7px 13px ;
+		box-shadow: 0 1px 5px #a8a8a8;
+		margin-bottom:13px;
+	}
+	#card-title{
+		color:#0078cd;
+	}
+
+	#input-title{
+		width: 35%;
+	}
+	.mui-input-clear,.searchable-select{
+		width:65%;
+	}
+	#short-row #input-title{width: 50%;}
+	#short-row .mui-input-clear{width: 50%;}
+
+	#input-title,#requester,#pol,#pod{
+		float: left;
+	}
+	.mui-input-row,.portfuzzy{
+		padding: 10px 0;
+	}
+	.mui-btn-numbox-minus{
+
+		background: url(../images/minus.png)no-repeat left top;
+
+	}
+	.mui-btn-numbox-plus{
+
+		background: url("../images/plus.png")no-repeat left top;
+	}
+	.mui-btn-numbox-minus,.mui-input-numbox,.mui-btn-numbox-plus{
+		float: left;
+		background-size: 18px;
+		width: 18px;
+		height: 18px;
+		border: none;
+	}
+	#number-item-title,.mui-numbox{
+		float: left;
+	}
+	.side-number-choose{
+		width: 100%;
+		padding: 15px 0;
+	}
+	.number-item{width: 33%;float: left;}
+
+
+	/*color of placeholder */
+	input::-webkit-input-placeholder{
+		color:#a8a8a8;
+	}
+	input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+		color:#a8a8a8;
+	}
+	input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+		color:#a8a8a8;
+	}
+	input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+		color:#a8a8a8;
+	}
+
+	#short-row{
+		width: 50%;
+		float: left;
+	}
+	form{
+		margin: 0 auto;
+		width: 100%;
+	}
+	#submit{
+		display:block;
+		width: 60%;
+		color:white;
+		border: 1px solid #dddadd;
+		background: linear-gradient(to right,#36a2ef,#0078cd);
+		box-shadow: 0px 2px 6px #36a2ef;
+		border-radius: 40px;
+		line-height: 14pt;
+		margin-left: 20%
+	}
