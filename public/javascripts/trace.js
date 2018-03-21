@@ -394,7 +394,10 @@ function trace(data){
 		/*首先要根据状态判断到底利用哪种方式来对这个点和线进行渲染*/
 		var tempx=0;
 		var tempy=0;
-		var widthSpace = window.innerWidth/8;
+//		var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;
+		var windowWidth = document.documentElement.offsetWidth || document.body.offsetWidth ;
+		console.log(windowWidth)
+		var widthSpace = windowWidth/10;
 		/*初始化画布*/
 		var canvas = document.getElementById(data.id);
         if (canvas == null)
@@ -419,8 +422,8 @@ function trace(data){
 		    }
 		    
 		    //圆角矩形尺寸参数
-		    var width = widthSpace*1.2;
-		    var height = 0.5*widthSpace;
+		    var width = widthSpace*0.6;
+		    var height = 0.3*widthSpace;
 		    var radius = 10;
 		    if(width < 2 * radius)
 		    	radius = width / 2;
@@ -443,7 +446,7 @@ function trace(data){
 		    
         	if(status == 1){
         		//第一种画线情况,右横线
-        		var x = tempx + (index-1)*widthSpace*2;
+        		var x = tempx + (index-1)*widthSpace*1;
         		var y = tempy;
         		if (emptyFlag == false){
         			var grad = context.createLinearGradient(x, y, x + width, y);
@@ -478,7 +481,7 @@ function trace(data){
         	}else if(status == 2){
         		//第二种画线情况，右下竖线
         		
-        		var x = tempx + widthSpace*6;
+        		var x = tempx + widthSpace*3;
         		var y = tempy;
         		if (emptyFlag == false){
         			var grad = context.createLinearGradient(x, y, x + width, y);
@@ -520,8 +523,8 @@ function trace(data){
         	}else if(status == 3){
         		//第三种画线情况，左横线
         		
-        		var x = tempx + widthSpace*6;
-        		x = x - (index-5)*widthSpace*2;
+        		var x = tempx + widthSpace*3;
+        		x = x - (index-5)*widthSpace*1;
         		var y = tempy + 70;
         		if (emptyFlag == false){
         			var grad = context.createLinearGradient(x, y, x + width, y);
@@ -556,7 +559,7 @@ function trace(data){
         	}else{
         		//第五种画线情况，无横线
         		//绘制圆角矩形
-				var x = tempx + widthSpace*2;
+				var x = tempx + widthSpace*1;
 				var y = tempy + 70;
 				if (emptyFlag == false){
         			var grad = context.createLinearGradient(x, y, x + width, y);
