@@ -1,0 +1,254 @@
+.mainBack {
+	background-color: #ebebeb;
+	width: window.innerWidth;
+	height: window.innerHeight;
+	margin: 0px;
+}
+
+.topBack {
+	background-color: #0078cd;
+	width: 100%;
+	height: 150px;
+	z-index: 9;
+	text-align: center;
+}
+
+.statusText {
+	color: white;
+	padding-top: 20px;
+}
+
+.centerBack {
+	background-color: white;
+	width: 90%;
+	height: 300px;
+	margin: -80px 0 0 5%;
+	border-radius: 5px;
+	z-index: 99;
+}
+
+.guideBar {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	padding: 10px 3px 0 3px;
+}
+
+.GuideText {
+	width: 50%;
+	height: 30px;
+	padding-bottom: 10px;
+	text-align: center;
+	/*border-bottom: 3px solid #0078cd;*/
+}
+
+.GuideTextHover {
+	width: 50%;
+	height: 30px;
+	padding-bottom: 10px;
+	text-align: center;
+	border-bottom: 3px solid #0078cd;
+}
+.GuideWord{
+	font-size: 1.2rem;
+	color: #79797a;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	padding-top: 10px;
+}
+
+.rowText {
+	font-size: 1rem;
+	color: #79797a;
+	padding: 20px 0 0 30px;
+}
+
+.btn {
+	width: 70%;
+	height: 25px;
+	margin: 20px 0 0 20px;
+	padding: 5px 5px;
+	/*border: none;
+	border-bottom: 1px solid #ebebeb;*/
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+}
+
+.description {
+	width: 70%;
+	height: 150px;
+	margin: 15px 0 0 20px;
+	/*border: none;
+	border-bottom: 1px solid #ebebeb;*/
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+}
+
+.submitInfo {
+	background-color: #0078cd;
+	font-size: 1rem;
+	color: white;
+	width:50%;
+	height: 3%;
+	text-align: center;
+	border-radius: 15px;
+	margin: 20px 0 0 25%;
+}
+
+
+/*statusTrailerSent，Pack css*/
+
+.rowTextMulti {
+	font-size: 1rem;
+	color: #79797a;
+	padding: 10px 0 0 20px;
+}
+
+.btnMulti {
+	width: 65%;
+	height: 20px;
+	margin: 3% 0 0 20px;
+	padding: 5px 5px;
+	border: none;
+	border-bottom: 1px solid gray;
+	border-radius: 3px;
+}
+
+.descriptionMulti {
+	width: 65%;
+	height: 100px;
+	margin: 5px 0 0 6%;
+	border: none;
+	border-bottom: 1px solid gray;
+	border-radius: 5px;
+}
+
+
+/*statusTrailerPacked .css*/
+
+.rowTextPack {
+	font-size: 1rem;
+	color: #79797a;
+	padding: 10px 0 0 10px;
+}
+
+.packages {
+	width: 30%;
+	height: 20px;
+	margin: 10px 0 0 5%;
+	padding: 5px 5px;
+	border: none;
+	border-bottom: 1px solid gray;
+	border-radius: 3px;
+}
+
+.unit {
+	width: 33%;
+	height: 20px;
+	margin: 10px 0 0 10px;
+	padding: 5px 5px;
+	border: none;
+	border-bottom: 1px solid gray;
+	border-radius: 3px;
+}
+
+.descriptionPack {
+	width: 65%;
+	height: 60px;
+	margin: 5px 0 0 5%;
+	border: none;
+	border-bottom: 1px solid gray;
+	border-radius: 5px;
+}
+
+
+/*statusTrailerPickup 提箱*/
+
+.GuideTextPickup {
+	width: 100%;
+	height: 30px;
+	padding-bottom: 10px;
+	text-align: center;
+	border-bottom: 3px solid #0078cd;
+}
+
+.centerBackPickup {
+	background-color: white;
+	width: 340px;
+	height: 450px;
+	margin: -80px 0 0 20px;
+	border-radius: 5px;
+	z-index: 99;
+}
+
+.rowTextPickup {
+	font-size: 15px;
+	color: #79797a;
+	padding: 15px 0 0 30px;
+}
+
+.btnPickup {
+	width: 65%;
+	height: 20px;
+	margin: 15px 0 0 20px;
+	padding: 5px 5px;
+	border: none;
+	border-bottom: 1px solid gray;
+	/*border: 1px solid gray;*/
+	border-radius: 5px;
+}
+
+.descriptionPickup {
+	width: 65%;
+	height: 40px;
+	margin: 15px 0 0 20px;
+	border: none;
+	border-bottom: 1px solid gray;
+	/*border: 1px solid gray;*/
+	border-radius: 5px;
+}
+
+
+/*图片*/
+
+.album {
+	width: 90%;
+	display: flex;
+	height: auto;
+	background: white;
+	min-height: 50px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin: 35% 0 0 5%;
+	position: absolute;
+}
+
+.album>div {
+	width: 30%;
+	height: 30%;
+	position: relative;
+}
+
+.album>div>img:first-child {
+	max-width: 100%;
+	max-height: 90px;
+}
+
+
+/*这是为了delete图标设置的*/
+
+.album>div>img:last-child {
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	margin: -8px 0 0 -8px;
+}
+
+.albumLabel{
+	font-size: 1rem;
+	color: #79797a;
+	padding: 10px 0 0 14%;
+
+}
