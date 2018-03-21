@@ -7,15 +7,18 @@
 
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 
+
 html {
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%
 }
+
 body {
 	margin: 0
 }
 
 article,
+
 /*没有数据的提示语*/
 .nodata{
 	font-size: 17px;
@@ -35,10 +38,10 @@ hgroup,
 main,
 nav,
 section,
-summary
-{
-    display: block;
+summary {
+	display: block
 }
+
 audio,
 canvas,
 progress,
@@ -146,6 +149,7 @@ textarea {
 	font: inherit;
 	margin: 0;
 	color: inherit
+
 }
 
 button {
@@ -223,10 +227,13 @@ th {
 
 * {
 
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	-webkit-user-select: none;
 	outline: 0;
+	-webkit-tap-highlight-color: transparent;
 
-	-webkit-tap-highlight-color: transparent
+
 }
 
 body {
@@ -950,8 +957,7 @@ p {
 	}
 }
 
-<<<<<<< HEAD
-=======
+
 .daterangebtn{
 	position: relative;
 	cursor: pointer;
@@ -971,7 +977,35 @@ button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
+
+	font-size: 14px;
 	font-weight: 400;
+	line-height: 1.42;
+	position: relative;
+	display: inline-block;
+	margin-bottom: 0;
+	padding: 6px 12px;
+	cursor: pointer;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .2s;
+	transition-duration: .2s;
+	text-align: center;
+	vertical-align: top;
+	white-space: nowrap;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	background-color: #fff;
+	background-clip: padding-box
+
+	/*font-weight: 400;
 	position: relative;
 	margin-bottom: 0;
 	padding: 6px 12px;
@@ -981,7 +1015,7 @@ input[type=submit] {
 	text-align: center;
 	white-space: nowrap;
 	color: #333;
-	border: 1px solid #ccc;
+	border: 1px solid #ccc;*/
 
 }
 
@@ -1016,8 +1050,9 @@ input[type=submit]:disabled {
 .mui-btn-primary,
 input[type=submit] {
 	color: #fff;
-	border: 1px solid #007aff;
-	background-color: #007aff
+
+	border: 1px solid #36a2ef;
+	background: linear-gradient(to right,#36a2ef,#0078cd);
 
 }
 
@@ -1115,11 +1150,10 @@ input[type=submit]:enabled:active {
 	background-color: #acacb4
 }
 
-
+<<<<<<< HEAD
 .mui-btn-outlined {
 	background-color: transparent
 }
-
 
 
 .mui-btn-outlined.mui-btn-blue,
@@ -1615,22 +1649,19 @@ input[type=submit]:enabled:active {
 .mui-card {
 	font-size: 14px;
 	position: relative;
-<<<<<<< HEAD
-	/*overflow:hidden*/
-	;
-=======
-	overflow: hidden;
->>>>>>> 09b7755a233987f8494554788c547b47e95bc7d4
+
+	/*overflow: hidden;*/
+
 	margin: 10px;
 	border-radius: 15px;
 	background-color: #fff;
 	background-clip: padding-box;
-<<<<<<< HEAD
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .3)
-=======
+
+	/*box-shadow: 0 1px 2px rgba(0, 0, 0, .3)*/
+
 	box-shadow: 0 1px 2px  #a8a8a8;
 	z-index: 0;
->>>>>>> 09b7755a233987f8494554788c547b47e95bc7d4
+
 }
 
 .mui-content>.mui-card:first-child {
@@ -1677,13 +1708,13 @@ input[type=submit]:enabled:active {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-<<<<<<< HEAD
-	min-height: 44px;
-	padding: 10px 15px;
-=======
+
+	/*min-height: 44px;
+	padding: 10px 15px;*/
+
 	min-height: 30px;
 	padding: 3px 15px;
->>>>>>> 09b7755a233987f8494554788c547b47e95bc7d4
+
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	justify-content: space-between;
@@ -1714,9 +1745,8 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-footer:before,
-<<<<<<< HEAD
 .mui-card-header:after {
-/*.mui-card-header:after*/ {
+
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1729,7 +1759,6 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-header {
-
 	font-size: 17px;
 	border-radius: 2px 2px 0 0
 }
@@ -1737,12 +1766,9 @@ input[type=submit]:enabled:active {
 .mui-card-header:after {
 	top: auto;
 	bottom: 0
+	font-size: 15px;
+	/*border-radius: 2px 2px 0 0*/
 }
-
-/*.mui-card-header:after {
-	top: auto;
-	bottom: 0
-}*/
 
 
 .mui-card-header>img:first-child {
@@ -1781,7 +1807,6 @@ input[type=submit]:enabled:active {
 }
 
 .mui-card-header.mui-card-media .mui-media-body {
-
 	font-size: 12px;
 	font-weight: 500;
 	line-height: 17px;
@@ -1955,9 +1980,13 @@ input[type=submit]:enabled:active {
 	position: relative;
 	display: block;
 	overflow: hidden;
-	margin-top:-23px;
+
+	margin: -11px -15px;
+
+	/*margin-top:-23px;
 	margin-left:-15px;
-	margin-bottom: -10px;
+	margin-bottom: -10px;*/
+
 	padding: inherit;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -2466,7 +2495,11 @@ textarea {
 	width: 100%;
 	height: 40px;
 	margin-bottom: 15px;
+
+	/*padding: 5px 5px;*/
+
 	padding: 10px 15px;
+
 	-webkit-user-select: text;
 	border: 1px solid rgba(0, 0, 0, .2);
 	border-radius: 3px;
@@ -2640,9 +2673,11 @@ select:focus {
 	height: 45px
 }
 
+
 .mui-input-row {
 	position: relative
 }
+
 
 .mui-input-row.mui-input-range {
 	overflow: visible;
@@ -2713,13 +2748,19 @@ select:focus {
 
 .mui-checkbox.mui-left input[type=checkbox],
 .mui-radio.mui-left input[type=radio] {
-	left: 0px
+
+	left: 20px
+
+	/*left: 0px*/
 }
 
 .mui-checkbox.mui-left label,
 .mui-radio.mui-left label {
 	padding-right: 15px;
-	padding-left: 30px
+
+	padding-left: 58px
+
+	/*padding-left: 30px*/
 
 }
 
