@@ -151,11 +151,11 @@ $('body').on("tap","#reject",function(e){
 	
 var Inner = function(usercode, company,companycn, date, regaddress, regaddressen, taxnumber, email, billid, billcode, oDiv){
 	oDiv.innerHTML = oDiv.innerHTML +
-    		'<div class="toplabel"></div>'+
+	  		'<div class="colorful"></div>'+
 			'<!--页眉，放置标题-->'+
 			'<div class="mui-card-header">'+
-				'<span class="left-text">用户名：'+usercode+'</span>'+
-				'<span class="right-text pointer" id="registerDetail">查看详情></span>'+
+				'<span class="left-text">用户名</span><span class="a-little-left">'+usercode+'</span>'+
+				'<span class="right-text pointer" style="float:right" id="registerDetail">查看详情></span>'+
 				'<input type="hidden" id="'+billid+'"/>'+
 				'<input type="hidden" id="'+billcode+'"/>'+
 				'<input type="hidden" id="'+usercode+'"/>'+
@@ -168,17 +168,19 @@ var Inner = function(usercode, company,companycn, date, regaddress, regaddressen
 			'</div>'+
 			'<!--内容区-->'+
 			'<div class="mui-card-content" style="text-align: center;">'+
+				'<div class="item dashLine"></div>'+
 				'<div class="item">'+
-					'<span class="item-title">所在单位：</span>'+
-					'<span>'+company+'</span>'+
+					'<span class="item-title">所在单位</span>'+
+					'<span class="a-little-left">'+company+'</span>'+
 				'</div>'+
 				'<div class="item">'+
-					'<span class="item-title">申请时间：</span>'+
-					'<span>'+(date==null ? "" : date.replace('T',' ').substr(0,date.length-3))+'</span>'+
+					'<span class="item-title">申请时间</span>'+
+					'<span class="a-little-left">'+(date==null ? "" : date.replace('T',' ').substr(0,date.length-3))+'</span>'+
 				'</div>'+
+				
 				'<div class="mui-card-footer"><div class="buttonbar">'+
-					'<button type="button" id="agree" class="mui-btn mui-btn-primary">通过</button>'+
-					'<button type="button" id="reject" class="mui-btn mui-btn-primary">驳回</button>'+
+					'<button type="button" id="agree" class="mui-btn mui-btn-primary smallbtn-audit">通过</button>'+
+					'<button type="button" id="reject" class="mui-btn mui-btn-primary smallbtn-audit">驳回</button>'+
 				'</div></div>'+
 			'</div>';
 }
