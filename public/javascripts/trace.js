@@ -275,8 +275,8 @@ function trace(data){
 	//如果总状态数小于每行的状态数目
 	if(data.total_number <= data.row_number){
 		/*首先要根据状态判断到底利用哪种方式来对这个点和线进行渲染*/
-		var tempx=3;
-		var tempy=3;
+		var tempx=10;
+		var tempy=10;
 		var windowWidth = document.documentElement.offsetWidth || document.body.offsetWidth ;
 		console.log(windowWidth)
 		var widthSpace = windowWidth/10;
@@ -354,8 +354,8 @@ function trace(data){
         		context.textAlign = "center"
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
-        		context.fillStyle = "black";
-        		context.font = "0.4rem 微软雅黑"
+        		context.fillStyle = " #79797a";
+        		context.font = "6px 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -385,8 +385,8 @@ function trace(data){
         		context.textAlign = "center"
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
-        		context.fillStyle = "black";
-        		context.font = "0.4rem 微软雅黑"
+        		context.fillStyle = " #79797a";
+        		context.font = "6px 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -394,8 +394,8 @@ function trace(data){
         }
 	}else{
 		/*首先要根据状态判断到底利用哪种方式来对这个点和线进行渲染*/
-		var tempx=3;
-		var tempy=3;
+		var tempx=10;
+		var tempy=10;
 //		var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;
 		var windowWidth = document.documentElement.offsetWidth || document.body.offsetWidth ;
 		console.log(windowWidth)
@@ -474,8 +474,8 @@ function trace(data){
         		context.textAlign = "center"
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
-        		context.fillStyle = "black";
-        		context.font = "0.5rem 微软雅黑"
+        		context.fillStyle = " #79797a";
+        		context.font = "0.2rem 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -502,12 +502,12 @@ function trace(data){
 				
 				context.fill();
 				context.moveTo(x+width, y+height/2);
-				context.lineTo(x+width+8, y+height/2)
+				context.lineTo(x+width+12, y+height/2)
 				context.stroke();
-				context.moveTo(x+width+8, y+height/2);
-				context.lineTo(x+width+8, y+height/2+70)
+				context.moveTo(x+width+12, y+height/2);
+				context.lineTo(x+width+12, y+height/2+70)
 				context.stroke();
-				context.moveTo(x+width+8, y+height/2+70);
+				context.moveTo(x+width+12, y+height/2+70);
 				context.lineTo(x+width, y+height/2+70)
 				context.stroke();
 				
@@ -517,8 +517,8 @@ function trace(data){
         		context.textAlign = "center"
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
-        		context.fillStyle = "black";
-        		context.font = "0.4rem 微软雅黑"
+        		context.fillStyle = " #79797a";
+        		context.font = "0.2rem 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -551,8 +551,8 @@ function trace(data){
         		context.textAlign = "center"
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
-        		context.fillStyle = "black";
-        		context.font = "0.4rem 微软雅黑"
+        		context.fillStyle = " #79797a";
+        		context.font = "0.2rem 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -561,7 +561,7 @@ function trace(data){
         	}else{
         		//第五种画线情况，无横线
         		//绘制圆角矩形
-				var x = tempx + widthSpace*2;
+				var x = tempx + widthSpace*1.8;
 				var y = tempy + 70;
 				if (emptyFlag == false){
         			var grad = context.createLinearGradient(x, y, x + width, y);
@@ -583,8 +583,8 @@ function trace(data){
         		context.textAlign = "center"
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
-        		context.fillStyle = "black";
-        		context.font = "0.4rem 微软雅黑"
+        		context.fillStyle = " #79797a";
+        		context.font = "0.2rem 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)

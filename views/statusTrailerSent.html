@@ -289,12 +289,12 @@
 						var result = eval(data);
 						if(result.result == 0)
 						{
-							mui.toast("状态反馈成功");
-							setTimeout(mui.openWindow('/stateback2'),1500);
+							mui.alert("状态反馈成功");
+							mui.openWindow('/stateback2')
 						}
 						else
 						{
-							mui.toast("状态反馈失败");
+							mui.alert("状态反馈失败");
 						}
 						//alert(result.result);
 					},
