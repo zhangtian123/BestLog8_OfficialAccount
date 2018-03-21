@@ -1150,7 +1150,6 @@ input[type=submit]:enabled:active {
 	background-color: #acacb4
 }
 
-<<<<<<< HEAD
 .mui-btn-outlined {
 	background-color: transparent
 }
@@ -1709,11 +1708,11 @@ input[type=submit]:enabled:active {
 	display: -webkit-flex;
 	display: flex;
 
-	/*min-height: 44px;
-	padding: 10px 15px;*/
+	min-height: 44px;
+	padding: 10px 15px;
 
-	min-height: 30px;
-	padding: 3px 15px;
+	/*min-height: 30px;
+	padding: 3px 15px;*/
 
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
@@ -1766,7 +1765,7 @@ input[type=submit]:enabled:active {
 .mui-card-header:after {
 	top: auto;
 	bottom: 0
-	font-size: 15px;
+	/*font-size: 15px;*/
 	/*border-radius: 2px 2px 0 0*/
 }
 
