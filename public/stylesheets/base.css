@@ -4,39 +4,6 @@ body,label
 	font-family: "微软雅黑";
 	color: #79797a;
 }
-
-/*详细条目表上边框+左边框*/
-.item-table-border1{
-	border-top:solid 1px #ff9a76;
-	border-left:solid 1px #ff9a76;
-}
-/*详细条目表上边框*/
-.item-table-border2{
-	border-top:solid 1px #ff9a76;
-}
-/*详细条目表上边框+左边框+下边框*/
-.item-table-border3{
-	border-top:solid 1px #ff9a76;
-	border-left:solid 1px #ff9a76;
-	border-bottom:solid 1px #ff9a76;
-}
-/*详细条目表上边框+下边框*/
-.item-table-border4{
-	border-top:solid 1px #ff9a76;
-	border-bottom:solid 1px #ff9a76;
-}
-/*详细条目表上边框+右边框*/
-.item-table-border5{
-	border-top:solid 1px #ff9a76;
-	border-right:solid 1px #ff9a76;
-}
-/*详细条目表上边框+左边框+下边框*/
-.item-table-border3{
-	border-top:solid 1px #ff9a76;
-	border-left:solid 1px #ff9a76;
-	border-bottom:solid 1px #ff9a76;
-}
-
 .overLoading {
 	display: none;
 	position: absolute;
@@ -65,26 +32,12 @@ body,label
 }
 
 
-/*卡片文字行*/
 
-.information {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-
-/*左边字体*/
-
-.info-l {
-	float: left;
-}
 .pointer{
 	cursor: pointer;
 }
 .maincontent{
-	padding-top: 2rem;
-}
+	padding-top: 2rem;}
 .iconbg
 {
 	position: fixed;

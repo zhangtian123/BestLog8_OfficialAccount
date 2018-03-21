@@ -1,57 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="/javascripts/mui.min.js"></script>
-    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/stylesheets/base.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-    </script>
-</head>
-<body>
-	<!-- 侧滑导航根容器 -->
-<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-     <!-- 菜单容器 -->
-    <aside id="offCanvasSide" class="mui-off-canvas-left sidebg">
-    	<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
-	      	<div class="mui-scroll wrapper">
-		    	<div id="offCanvasHide" class="sidebar-returnicon"></div>
-		    	<h3>审核记录筛选</h3><hr />
-				<div class="mui-input-row mui-radio mui-left">
-				    <label>未审核</label>
-				    <input name="radio" type="radio" value="now" checked="checked">
-				</div>
-				<div class="mui-input-row mui-radio mui-left">
-				    <label>已审核</label>
-				    <input name="radio" type="radio" value="history">
-				</div>
-				<div class="second-radio">
-					<div class="mui-input-row mui-radio mui-left">
-					    <label>过去一周</label>
-					    <input name="radio" type="radio" value="lastweek">
-					</div>
-					<div class="mui-input-row mui-radio mui-left">
-					    <label>过去一个月</label>
-					    <input name="radio" type="radio" value="lastmonth">
-					</div>
-					<div class="mui-input-row mui-radio mui-left">
-					    <label>过去三个月</label>
-					    <input name="radio" type="radio" value="lastthreeweek">
-					</div>
-					<div class="mui-input-row mui-radio mui-left">
-					    <label>过去半年</label>
-					    <input name="radio" type="radio" value="lasthalfyear">
-					</div>
-					<div class="mui-input-row mui-radio mui-left">
-					    <label>请款日期区间</label>
-					    <input name="radio" type="radio" value="choose">
-					    <div class="datepicker">
-					    	<button id="beginbtn" data-options='{"type":"date"}' class="btn mui-btn mui-btn-block" style="width: 10rem;"><span id="begin">起始</span></button>
-					    	<button id="endbtn" data-options='{"type":"date"}' class="btn mui-btn mui-btn-block" style="width: 10rem;"><span id="end">终止<span></button>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link href="/stylesheets/audit_all.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/stylesheets/audit_base.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+
+			//radio的点击事件，控制条件显示的部分
+			function radioclick() {
+				if(document.getElementById('uncheckedfunds').checked) {
+					document.getElementById('datelist').style.display = 'none';
+				} else {
+					document.getElementById('datelist').style.display = 'block';
+				}
+				if(document.getElementById('slefdefineddate').checked) {
+					document.getElementById('daterange').style.display = 'block';
+				} else {
+					document.getElementById('daterange').style.display = 'none';
+				}
+			}
+
+			//获取当前日期
+			function nowdate() {
+				var date = new Date();
+				var seperator1 = "-";
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = year + seperator1 + month + seperator1 + strDate;
+				document.getElementById("begin").innerHTML = currentdate;
+				document.getElementById("end").innerHTML = currentdate;
+			}
+		</script>
+	</head>
+
+	<body onload="nowdate()" class="audit-bg">
+		<!-- 侧滑导航根容器 -->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!-- 菜单容器 -->
+			<aside id="offCanvasSide" class="mui-off-canvas-left sidebg">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll wrapper">
+						<div id="offCanvasHide" class="sidetitle">审核记录筛选</div>
+						<hr />
+						<div class="mui-input-row mui-radio mui-left">
+							<label>未审核</label>
+							<input onclick="radioclick()" id="uncheckedfunds" name="radio" type="radio" value="now" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+							<label>已审核</label>
+							<input onclick="radioclick()" id="alreadycheckedfunds" name="radio" type="radio" value="history">
+						</div>
+						<div id="datelist" style="display: none;" class="second-radio">
+							<div class="mui-input-row mui-radio mui-left">
+								<label>过去一周</label>
+								<input onclick="radioclick()" name="radio" type="radio" value="lastweek">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>过去一个月</label>
+								<input onclick="radioclick()" name="radio" type="radio" value="lastmonth">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>过去三个月</label>
+								<input onclick="radioclick()" name="radio" type="radio" value="lastthreeweek">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>过去半年</label>
+								<input onclick="radioclick()" name="radio" type="radio" value="lasthalfyear">
+							</div>
+							<div class="mui-input-row mui-radio mui-left">
+								<label>请款日期区间</label>
+								<input onclick="radioclick()" id="slefdefineddate" name="radio" type="radio" value="choose">
+								<div id="daterange" style="display: none;" class="datepicker">
+									<div id="beginbtn" data-options='{"type":"date"}' class="btn daterangebtn" style="width: 10rem;">从: <span id="begin"></span></div>
+									<div id="endbtn" data-options='{"type":"date"}' class="btn daterangebtn" style="width: 10rem;">到: <span id="end"><span></div>
 					    </div>
 				    </div>
 				</div>
@@ -60,7 +94,12 @@
 	      	<!--这个是背景<div class="sidebarbg"></div>-->
   		</div>
     </aside>
-    <!-- 主页面容器 -->
+    
+    <!--数据加载中提示-->
+    <div id="over" class="overLoading"></div>
+	<div id="layout" class="layoutLoading"><img src="/images/loading.gif" /></div>
+		
+	<!-- 主页面容器 -->
   	<div class="mui-inner-wrap">
     <!-- 主页面内容容器 -->
     	<div id="offCanvasShow" class="iconbg mui-action-menu mui-pull-left">

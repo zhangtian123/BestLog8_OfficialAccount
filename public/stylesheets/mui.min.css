@@ -5111,6 +5111,12 @@ body>.mui-progressbar {
  	width: 100%;
  	padding:13px 8px;
  }
+ 
+ .mui-scroll-wrapper1 {
+ 	z-index: 2;
+ 	overflow: hidden;
+ 	width: 100%;
+ }
 
  .mui-scroll {
  	z-index: 1;
