@@ -5,35 +5,41 @@
 -->
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="/javascripts/mui.min.js"></script>
-    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/stylesheets/base.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-    </script>
-</head>
-<body>
-<!-- 主页面容器 -->
-<div class="mui-inner-wrap">
-<!-- 主页面内容容器 -->
-    <div class="mui-content mui-scroll-wrapper">
-      <div class="mui-scroll maincontent">
-        <!-- 主界面具体展示内容 -->
-      </div>
-    </div>  
-    <div class="mui-off-canvas-backdrop"></div>
-</div>
-  </div>
-<script src="/javascripts/jquery-1.11.1.min.js"></script>
-<script src="/javascripts/mui.picker.min.js"></script>
-<script src="/javascripts/registerAudit.js"></script>
-<script type="text/javascript">
-	mui('.mui-scroll-wrapper').scroll();
-</script>
-</body>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/stylesheets/base.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<!--数据加载中提示-->
+		<div id="over" class="overLoading"></div>
+		<div id="layout" class="layoutLoading"><img src="/images/loading.gif" /></div>
+		<!-- 主页面容器 -->
+		<div class="mui-inner-wrap">
+			<!-- 主页面内容容器 -->
+			<div class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll maincontent">
+					<!-- 主界面具体展示内容 -->
+				</div>
+			</div>
+			<div class="mui-off-canvas-backdrop"></div>
+		</div>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/mui.picker.min.js"></script>
+		<script src="/javascripts/registerAudit.js"></script>
+		<script type="text/javascript">
+			mui('.mui-scroll-wrapper').scroll();
+		</script>
+	</body>
+
 </html>
