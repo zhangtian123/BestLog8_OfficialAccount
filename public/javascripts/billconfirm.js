@@ -345,7 +345,7 @@ var InnerDetail3 = function(title, totalprice0,totalprice1, oDiv)
 
 var InnerDetail4 = function(oDiv)
 {
-	oDiv.innerHTML = oDiv.innerHTML+
+	oDiv.innerHTML = oDiv.innerHTML+'<center>'+
 			'<button id="agree" type="button" class="mui-btn mui-btn-primary smallbtn-audit">通过</button>'+
-			'<button id="reject" type="button" class="mui-btn mui-btn-primary smallbtn-audit">驳回</button>';
+			'<button id="reject" type="button" class="mui-btn mui-btn-primary smallbtn-audit">驳回</button>'+'</center>';
 }

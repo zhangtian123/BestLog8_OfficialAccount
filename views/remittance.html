@@ -64,21 +64,25 @@
 							<input onclick="radioclick()" id="alreadycheckedfunds" name="radio" type="radio" value="history">
 						</div>
 						<div id="datelist" style="display: none;" class="second-radio">
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去一周</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lastweek">
+							<div style="display: flex;flex-direction: row;">
+								<div class="mui-input-row mui-radio mui-left">
+									<label>过去一周</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lastweek">
+								</div>
+								<div class="mui-input-row mui-radio mui-left" style="margin-left:12px;">
+									<label>过去一个月</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lastmonth">
+								</div>
 							</div>
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去一个月</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lastmonth">
-							</div>
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去三个月</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lastthreeweek">
-							</div>
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去半年</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lasthalfyear">
+							<div style="display: flex;flex-direction: row;">
+								<div class="mui-input-row mui-radio mui-left">
+									<label>过去三个月</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lastthreeweek">
+								</div>
+								<div class="mui-input-row mui-radio mui-left">
+									<label>过去半年</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lasthalfyear">
+								</div>
 							</div>
 							<div class="mui-input-row mui-radio mui-left">
 								<label>自定义日期区间</label>
@@ -89,7 +93,7 @@
 					    </div>
 				    </div>
 				</div>
-				<button type="button" id="submit" class="mui-btn mui-btn-outlined bigbutton">确定</button>
+				<center><button type="button" id="submit" class="mui-btn mui-btn-outlined bigbutton">确定</button></center>
 	      	</div>
 	      	<!--这个是背景<div class="sidebarbg"></div>-->
   		</div>

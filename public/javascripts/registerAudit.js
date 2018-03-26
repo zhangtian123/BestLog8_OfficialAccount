@@ -178,7 +178,7 @@ var Inner = function(usercode, company,companycn, date, regaddress, regaddressen
 					'<span class="a-little-left">'+(date==null ? "" : date.replace('T',' ').substr(0,date.length-3))+'</span>'+
 				'</div>'+
 				
-				'<div class="mui-card-footer"><div class="buttonbar">'+
+				'<div class="mui-card-footer"><div class="buttonbar" style="margin-left:15%;">'+
 					'<button type="button" id="agree" class="mui-btn mui-btn-primary smallbtn-audit">通过</button>'+
 					'<button type="button" id="reject" class="mui-btn mui-btn-primary smallbtn-audit">驳回</button>'+
 				'</div></div>'+
