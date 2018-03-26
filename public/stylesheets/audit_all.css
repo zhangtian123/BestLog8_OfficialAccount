@@ -27,7 +27,7 @@ article,
 	margin-top:45%;
 }
 .mui-radio{
-	font-size:12px;
+	font-size:13px;
 }
 article,
 aside,
@@ -2638,7 +2638,7 @@ select:focus {
 
 .mui-input-row label {
 	font-family: 'Helvetica Neue', Helvetica, sans-serif;
-	line-height: 1.1;
+	line-height: 0.5;
 	float: left;
 	width: 35%;
 	padding: 11px 15px
@@ -2778,8 +2778,8 @@ select:focus {
 	top: 4px;
 	right: 20px;
 	display: inline-block;
-	width: 28px;
-	height: 26px;
+	width: 12px;
+	height: 12px;
 	border: 0;
 	outline: 0!important;
 	background-color: transparent;
@@ -2794,7 +2794,7 @@ select:focus {
 .mui-checkbox input[type=checkbox]:before,
 .mui-radio input[type=radio]:before {
 	font-family: Muiicons;
-	font-size: 28px;
+	font-size: 20px;
 	font-weight: 400;
 	line-height: 1;
 	text-decoration: none;
