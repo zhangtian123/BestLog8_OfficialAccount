@@ -86,7 +86,7 @@ body,label
 }
 .wrapper
 {
-	padding: 17px 23px;
+	padding: 4px 15px;
 	
 }
 .second-radio{
@@ -132,7 +132,6 @@ body,label
 	top:0.2rem;
 }
 .orderfilter .mui-input-row{
-	border-bottom: 0.1rem solid rgb(200,200,200);
 }
 .orderfilter input{
 }

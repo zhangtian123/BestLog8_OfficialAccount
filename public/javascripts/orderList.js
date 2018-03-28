@@ -38,11 +38,14 @@ $(document).ready(function() {
 
 	/*通过侧边栏选择筛选条件*/
 	$("#submit").click(function() {
-		var orderno = $('input[name="orderno"]').val();
-		var customsop = $('input[name="customsop"]').val();
+		var no = $('input[name="orderno"]').val();
+		var select=$('#filter-select').val();
 		var isCheck = $('input[name="radio"]:checked').val();
+		var orderno="",customsop="";
 		//选择时间区间时获取时间
 		//alert(orderno+customsop+sono+hblno);
+		if(select=="订单号")orderno=no;
+		else if(select=="客户委托号")customsop=no;
 		$.ajax({
 			type: "get",
 			url: "getShippingOrderList",
@@ -90,7 +93,7 @@ $(document).ready(function() {
 	$('body').on("tap", '#Detail', function() {
 		var n = $(this).parents('.content-item').index();
 		//n = n + 1;
-		var text2 = $(".maincontent").find(".content-item:eq(" + n + ")").find('.getBILLID').eq(0).val();
+		var text2 = $(".maincontent").find("#card:eq(" + n + ")").find('.getBILLID').eq(0).val();
 		if(!array[text2]) {
 			array[text2] = 1;
 			var aDiv = $(this).siblings('.mui-collapse-content');
@@ -187,37 +190,36 @@ $(document).ready(function() {
 
 var Inner = function(billno, billid, customerReqNo, cargoName, num, packageType, weight, measure, vessel, voyno, shipOwner, sailline, CNTRNUMSTR, oDiv) {
 	oDiv.innerHTML = oDiv.innerHTML +
-		'<div class="toplabel"></div>' +
-		'<!--页眉，放置标题-->' +
-		'<div class="mui-card-header">订单号：' + billno +'</div>'+ // '<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button></div>' +
+		'<div class="item"><span id="blue-text">' +
+		'订单号' + billno +'</span></div>'+ // '<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button></div>' +
 		'<input class="getBILLID" type="hidden" id="' + billno + '" value="' + billid + '"/>' +
-		'<!--内容区-->' +
-		'<div class="mui-card-content">' +
+		'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
 		'<div class="item">' +
-		'<span class="item-title">客户委托号：</span>' +
-		'<span>' + (customerReqNo == null ? '' : customerReqNo) + '</span>' +
-		'</div>' +
-		'<div class="item">' +
-		'<span class="item-title">货物名称：</span>' +
-		'<span>' + (cargoName == null ? '' : cargoName) + '</span>' +
+		'<span class="item-title">客户委托号</span>' +
+		'<span style="float:right">' + (customerReqNo == null ? '' : customerReqNo) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">件毛体：</span>' +
-		'<span>' + (num == null ? '' : num) + (packageType == null ? '' : packageType) + '/' + (weight == null ? '' : weight) + '/' + (measure == null ? '' : measure) + '</span>' +
+		'<span class="item-title">货物名称</span>' +
+		'<span style="float:right">' + (cargoName == null ? '' : cargoName) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">船名/航次：</span>' +
-		'<span>' + (vessel == null ? '' : vessel) + '/' + (voyno == null ? '' : voyno) + '</span>' +
+		'<span class="item-title">件毛体</span>' +
+		'<span style="float:right">' + (num == null ? '' : num) + (packageType == null ? '' : packageType) + '/' + (weight == null ? '' : weight) + '/' + (measure == null ? '' : measure) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">船公司/航线：</span>' +
-		'<span>' + (shipOwner == null ? '' : shipOwner) + '/' + (sailline == null ? '' : sailline) + '</span>' +
+		'<span class="item-title">船名/航次</span>' +
+		'<span style="float:right">' + (vessel == null ? '' : vessel) + '/' + (voyno == null ? '' : voyno) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">箱型箱量：</span>' +
-		'<span>' + (CNTRNUMSTR == null ? '' : CNTRNUMSTR) + '</span>' +
+		'<span class="item-title">船公司/航线</span>' +
+		'<span style="float:right">' + (shipOwner == null ? '' : shipOwner) + '/' + (sailline == null ? '' : sailline) + '</span>' +
+		'</div>' +
+		'<div class="item">' +
+		'<span class="item-title">箱型箱量</span>' +
+		'<span style="float:right">' + (CNTRNUMSTR == null ? '' : CNTRNUMSTR) + '</span>' +
 		'</div>' +
 		'</div>' +
+		'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
 		'<ul class="mui-table-view"> ' +
 		'<li class="mui-table-view-cell mui-collapse">' +
 		'<a class="mui-navigate-right" id="Detail" href="#">点击查看订单进度</a>' +

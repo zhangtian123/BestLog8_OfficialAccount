@@ -102,6 +102,12 @@
 	}
 
 	#blue-text{
-	color: #0078cd;
-	margin-right: 5px;
-}
+		color: #0078cd;
+		margin-right: 5px;
+	}
+	input[type="radio"]{
+		color:#0078cd;
+		width: 16px;
+		height: 16px;
+	}
+	
