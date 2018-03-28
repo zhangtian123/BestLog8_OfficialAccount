@@ -607,7 +607,6 @@ p {
 }
 
 .mui-scroll {
-	position: absolute;
 	z-index: 1;
 	width: 100%;
 	-webkit-transform: translateZ(0);
@@ -4093,13 +4092,7 @@ body>.mui-progressbar {
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	width: 120px;
-	height: 35px;
-	padding: 0 40px;
-	vertical-align: top;
 	vertical-align: middle;
-	border: solid 1px #bbb;
-	border-radius: 3px;
 	background-color: #efeff4
 }
 
@@ -4111,7 +4104,6 @@ body>.mui-progressbar {
 	position: absolute;
 	top: 0;
 	overflow: hidden;
-	width: 40px;
 	height: 100%;
 	padding: 0;
 	color: #555;
@@ -4155,10 +4147,6 @@ body>.mui-progressbar {
 	text-align: center;
 	text-overflow: ellipsis;
 	word-break: normal;
-	border: none!important;
-	border-right: solid 1px #ccc!important;
-	border-left: solid 1px #ccc!important;
-	border-radius: 0!important
 }
 
 .mui-input-row .mui-numbox {

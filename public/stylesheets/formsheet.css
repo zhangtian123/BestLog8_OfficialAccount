@@ -38,7 +38,7 @@ body
 	text-align: left;
 }
 .mui-input-row input{
-	
+	border:none;
 }
 .mui-input-row .mui-btn{
 	width: 6rem;

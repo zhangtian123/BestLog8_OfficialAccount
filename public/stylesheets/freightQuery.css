@@ -82,3 +82,11 @@
     width: 100%;
 }
 
+#submit{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 50px;
+}
+
+.mui-scroll {
+    position: absolute;}

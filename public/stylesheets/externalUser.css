@@ -54,6 +54,7 @@
 	}
 	#number-item-title,.mui-numbox{
 		float: left;
+		width: 70%;
 	}
 	.side-number-choose{
 		width: 100%;
@@ -65,15 +66,17 @@
 	/*color of placeholder */
 	input::-webkit-input-placeholder{
 		color:#a8a8a8;
+		font-size: 16px;
 	}
 	input::-moz-placeholder{   /* Mozilla Firefox 19+ */
 		color:#a8a8a8;
+		font-size: 16px;
 	}
 	input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
-		color:#a8a8a8;
+		color:#a8a8a8;font-size: 16px;
 	}
 	input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
-		color:#a8a8a8;
+		color:#a8a8a8;font-size: 16px;
 	}
 
 	#short-row{
@@ -92,6 +95,7 @@
 		background: linear-gradient(to right,#36a2ef,#0078cd);
 		box-shadow: 0px 2px 6px #36a2ef;
 		border-radius: 40px;
-		line-height: 14pt;
+		line-height: 24px;
 		margin-left: 20%
+		
 	}
