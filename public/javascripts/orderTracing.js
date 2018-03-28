@@ -36,12 +36,15 @@ $(document).ready(function(){
 	
 	/*通过侧边栏选择筛选条件*/
 	$("#submit").click(function(){
-		var orderno = $('input[name="orderno"]').val();
-		var customsop = $('input[name="customsop"]').val();
-		var sono = $('input[name="sono"]').val();
-		var hblno = $('input[name="hblno"]').val();
+		var no = $('input[name="orderno"]').val();
+		var select=$('#filter-select').val();
+		var orderno="",customsop="",sono="",hblno="";
 		//选择时间区间时获取时间
 		//alert(orderno+customsop+sono+hblno);
+		if(select=="订单号")orderno=no;
+		else if(select=="客户委托号")customsop=no;
+		else if(select=="SO NO")sono=no;
+		else if(select=="HBL NO")hblno=no;
 		$.ajax({
 			type:"get",
 			url:"getOrderList",
@@ -123,9 +126,9 @@ $(document).ready(function(){
 	
 	/*查看详细条目*/
 	$('body').on("tap",'#Detail',function() {
-		var n = $(this).parents('.content-item').index();
+		var n = $(this).parents('#card').index();
 		//n = n + 1;
-		var text2 = $(".maincontent").find(".content-item:eq("+n+")").find('.getBILLID').eq(0).val();
+		var text2 = $(".maincontent").find("#card:eq("+n+")").find('.getBILLID').eq(0).val();
 		if(!array[text2])
 		{
 			array[text2]=1;
@@ -214,8 +217,8 @@ $(document).ready(function(){
 		}
 	})
 	$('body').on("tap",'#share',function() {
-		var n = $(this).parents('.content-item').index();
-		var text3 = $(".maincontent").find(".content-item:eq("+n+")").find('.getBILLID').eq(0).val();
+		var n = $(this).parents('#card').index();
+		var text3 = $(".maincontent").find("#card:eq("+n+")").find('.getBILLID').eq(0).val();
 		$.ajax({
 			type:"get",
 			url:"/setShareLog",
@@ -236,33 +239,32 @@ $(document).ready(function(){
 
 var Inner = function(id, billid,customscompany,customsop,sonos,hblno,CNTRNUMSTR, oDiv){
 	oDiv.innerHTML=oDiv.innerHTML+
-	    		'<div class="toplabel"></div>'+
-				'<!--页眉，放置标题-->'+
-				'<div class="mui-card-header">订单号：'+id+'<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button></div>'+
-				'<input class="getBILLID" type="hidden" id="'+id+'" value="'+billid+'"/>'+
-				'<!--内容区-->'+
-				'<div class="mui-card-content">'+
+	'<div class="item"><span id="blue-text">'+
+				'订单号'+id+'</span><button id="share" type="button" ></button>'+
+				'<input class="getBILLID" type="hidden" id="'+id+'" value="'+billid+'"/></div>'+
+				'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
 					'<div class="item">'+
-						'<span class="item-title">客户简称：</span>'+
-						'<span>'+(customscompany==null ? '' : customscompany)+'</span>'+
+						'<span class="item-title">客户简称</span>'+
+						'<span style="float:right">'+(customscompany==null ? '' : customscompany)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">客户委托号：</span>'+
-						'<span>'+(customsop==null ? '' : customsop)+'</span>'+
+						'<span class="item-title">客户委托号</span>'+
+						'<span style="float:right">'+(customsop==null ? '' : customsop)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">SO NO：</span>'+
-						'<span>'+(sonos==null ? '' : sonos)+'</span>'+
+						'<span class="item-title">SO NO</span>'+
+						'<span style="float:right">'+(sonos==null ? '' : sonos)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">H/BL NO：</span>'+
-						'<span>'+(hblno==null ? '' : hblno)+'</span>'+
+						'<span class="item-title">H/BL NO</span>'+
+						'<span style="float:right">'+(hblno==null ? '' : hblno)+'</span>'+
 					'</div>'+
 					'<div class="item">'+
-						'<span class="item-title">箱型箱量：</span>'+
-						'<span>'+(CNTRNUMSTR==null ? '' : CNTRNUMSTR)+'</span>'+
+						'<span class="item-title">箱型箱量</span>'+
+						'<span style="float:right">'+(CNTRNUMSTR==null ? '' : CNTRNUMSTR)+'</span>'+
 					'</div>'+
 				'</div>'+
+				'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
 				 '<ul class="mui-table-view"> '+
 			        '<li class="mui-table-view-cell mui-collapse">'+
 			            '<a class="mui-navigate-right" id="Detail" href="#">点击查看订单进度</a>'+

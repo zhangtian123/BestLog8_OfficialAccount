@@ -26,6 +26,7 @@
 	}
 	.mui-input-clear,.searchable-select{
 		width:65%;
+		border: none;
 	}
 	#short-row #input-title{width: 50%;}
 	#short-row .mui-input-clear{width: 50%;}
@@ -97,5 +98,10 @@
 		border-radius: 40px;
 		line-height: 24px;
 		margin-left: 20%
-		
+
 	}
+
+	#blue-text{
+	color: #0078cd;
+	margin-right: 5px;
+}

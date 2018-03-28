@@ -135,9 +135,6 @@ body,label
 	border-bottom: 0.1rem solid rgb(200,200,200);
 }
 .orderfilter input{
-	position: relative;
-	top:0.5rem;
-	left: -2rem;
 }
 /*卡片条目的样式*/
 .mui-collapse-content hr{

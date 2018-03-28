@@ -14,6 +14,8 @@
     <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/stylesheets/base.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/externalUser.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/orderTracing.css" />
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
@@ -23,7 +25,7 @@
 <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
      <!-- 菜单容器 -->
     <aside id="offCanvasSide" class="mui-off-canvas-left sidebg">
-    	<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+    	<div id="offCanvasSideScroll">
 	      	<div class="wrapper">
 		    	<div id="offCanvasHide" class="sidebar-returnicon"></div>
 		    	<!--<h3>订单类型筛选</h3><hr />
@@ -35,26 +37,35 @@
 				    <label>历史记录</label>
 				    <input name="radio" type="radio" id="history">
 				</div>-->
-				<h3>订单精确筛选</h3><hr />
 				<form class="orderfilter">
-					<div class="mui-input-row">
-						<label><img src="/images/我的订单.png" width="25px;"></label>
+					<!-- <div class="mui-input-row">
+						
 						<input type="text" name="orderno" class="mui-input-clear" placeholder="请输入订单号" data-input-clear="5" />
 						<span class="mui-icon mui-icon-clear mui-hidden"></span>
 					</div>
 					<div class="mui-input-row">
-						<label><img src="/images/account.png" width="25px;"></label>
+						
 						<input type="text" name="customsop" class="mui-input-clear" placeholder="请输入客户委托号" data-input-clear="5" />
 						<span class="mui-icon mui-icon-clear mui-hidden"></span>
 					</div>
 					<div class="mui-input-row">
-						<label><img src="/images/轮船.png" width="25px;"></label>
+						
 						<input type="text" name="sono" class="mui-input-clear" placeholder="请输入SO NO" data-input-clear="5" />
 						<span class="mui-icon mui-icon-clear mui-hidden"></span>
 					</div>
 					<div class="mui-input-row">
-						<label><img src="/images/box.png" width="25px;"></label>
+						
 						<input type="text" name="hblno" class="mui-input-clear" placeholder="请输入H/BL NO" data-input-clear="5" />
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div> -->
+					<div class="mui-input-row">
+						<select id="filter-select">
+							<option>订单号</option>
+							<option>客户委托号</option>
+							<option>SO NO</option>
+							<option>H/BL NO</option>
+						</select>
+						<input type="text" name="orderno" class="mui-input-clear" placeholder="请输入订单号" data-input-clear="5" />
 						<span class="mui-icon mui-icon-clear mui-hidden"></span>
 					</div>
 				</form>
@@ -63,7 +74,7 @@
 			    	<button id="beginbtn" data-options='{"type":"date"}' class="btn mui-btn mui-btn-block" style="width: 10rem;"><span id="begin">起始</span></button>
 			    	<button id="endbtn" data-options='{"type":"date"}' class="btn mui-btn mui-btn-block" style="width: 10rem;"><span id="end">终止<span></button>
 			    </div>-->
-				<button type="button" id="submit" class="mui-btn mui-btn-outlined bigbutton">确定</button>
+				<button type="button" id="submit">确定</button>
 	      	</div>
 	      	<!--这个是背景<div class="sidebarbg"></div>-->
   		</div>
@@ -181,7 +192,7 @@
 					if(flag<3)
 					{
 						var oDiv = document.createElement('div');
-						oDiv.className = 'mui-card content-item';
+						oDiv.id = 'card';
 						Inner(value.ORDERNO,value.ORDERID,value.CUSTOMSCOMPANY,value.CUSTOMSOP,value.SONO,value.HBLNO,value.CNTRNUMSTR,oDiv);
 						aDiv.appendChild(oDiv);
 						flag++;
@@ -219,7 +230,7 @@
 					if(flag1>=currentlist && flag<3)
 					{
 						var oDiv = document.createElement('div');
-						oDiv.className = 'mui-card content-item';
+						oDiv.id = 'card';
 						Inner(value.ORDERNO,value.ORDERID,value.CUSTOMSCOMPANY,value.CUSTOMSOP,value.SONO,value.HBLNO,value.CNTRNUMSTR,oDiv);
 						aDiv.appendChild(oDiv);
 						flag++;
