@@ -243,3 +243,7 @@ function trace(data){
 		}
 	}
 }
+
+function trace2(data){
+	
+}

@@ -91,9 +91,9 @@ $(document).ready(function() {
 
 	/*查看详细条目*/
 	$('body').on("tap", '#Detail', function() {
-		var n = $(this).parents('.content-item').index();
+		var n = $(this).parents('.card-class').index();
 		//n = n + 1;
-		var text2 = $(".maincontent").find("#card:eq(" + n + ")").find('.getBILLID').eq(0).val();
+		var text2 = $(".maincontent").find(".card-class:eq(" + n + ")").find('.getBILLID').eq(0).val();
 		if(!array[text2]) {
 			array[text2] = 1;
 			var aDiv = $(this).siblings('.mui-collapse-content');
@@ -116,51 +116,61 @@ $(document).ready(function() {
 							switch(value.NODECODE) {
 								case 'FMS_OD03':
 									time1 = value.FINISHEDDATE;
+									if(time1!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+									aDiv.find(".time:eq(0)").text(time1.replace('T',' ').substring(0,16));}
 									break;
 								case 'FMS_OD04':
 									time2 = value.FINISHEDDATE;
+									if(time2!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+									aDiv.find(".time:eq(1)").text(time2.replace('T',' ').substring(0,16));}
 									break;
 								case 'FMS_OD05':
 									time3 = value.FINISHEDDATE;
+									if(time3!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+									aDiv.find(".time:eq(2)").text(time3.replace('T',' ').substring(0,16));}
 									break;
 								case 'FMS_OD22':
 									time4 = value.FINISHEDDATE;
+									if(time4!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+									aDiv.find(".time:eq(3)").text(time4.replace('T',' ').substring(0,16));}
 									break;
 								case 'FMS_OD26':
 									time5 = value.FINISHEDDATE;
+									if(time5!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+									aDiv.find(".time:eq(4)").text(time5.replace('T',' ').substring(0,16));
 									break;
 								default:
 									break;
 							}
 						})
 					}
-					trace({
-						"id": text2,
-						"row_number": 3, //每行有几个圆
-						"col_number": 2, //每列有几个圆
-						"total_number": 5, //一共有多少个圆
-						"datainit": [{
-								"name": "订单申请",
-								"time": time1
-							},
-							{
-								"name": "订单预审",
-								"time": time2
-							},
-							{
-								"name": "订单审核",
-								"time": time3
-							},
-							{
-								"name": "订单分配",
-								"time": time4
-							},
-							{
-								"name": "订舱接收",
-								"time": time5
-							},
-						]
-					});
+					// trace({
+					// 	"id": text2,
+					// 	"row_number": 3, //每行有几个圆
+					// 	"col_number": 2, //每列有几个圆
+					// 	"total_number": 5, //一共有多少个圆
+					// 	"datainit": [{
+					// 			"name": "订单申请",
+					// 			"time": time1
+					// 		},
+					// 		{
+					// 			"name": "订单预审",
+					// 			"time": time2
+					// 		},
+					// 		{
+					// 			"name": "订单审核",
+					// 			"time": time3
+					// 		},
+					// 		{
+					// 			"name": "订单分配",
+					// 			"time": time4
+					// 		},
+					// 		{
+					// 			"name": "订舱接收",
+					// 			"time": time5
+					// 		},
+					// 	]
+					// });
 				},
 				error: function() {
 					mui.alert("系统处理错误");
@@ -224,7 +234,12 @@ var Inner = function(billno, billid, customerReqNo, cargoName, num, packageType,
 		'<li class="mui-table-view-cell mui-collapse">' +
 		'<a class="mui-navigate-right" id="Detail" href="#">点击查看订单进度</a>' +
 		'<div class="mui-collapse-content">' +
-		'<canvas id="' + billid + '" width="370px" height="300px" style="width:310px;height:300px;"></canvas>' +
+		// '<canvas id="' + billid + '" width="370px" height="300px"></canvas>' +
+		'<div id="node"><div class="circle-unfinished">订单申请</div><div class="time"></div></div><div id="node-line"></div>'+
+		'<div id="node"><div class="circle-unfinished">订单预审</div><div class="time"></div></div><div id="node-line"></div>'+
+		'<div id="node"><div class="circle-unfinished">订单审核</div><div class="time"></div></div><div id="node-line-short"></div><div id="node-line-v"></div><div id="node-line-short" style="float:right"></div>'+
+		'<div id="node" style="float:right"><div class="circle-unfinished">订单分配</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
+		'<div id="node" style="float:right"><div class="circle-unfinished">订舱接收</div><div class="time"></div></div>'+
 		'</div>' +
 		' </li>' +
 		'</ul>';

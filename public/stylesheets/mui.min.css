@@ -2214,8 +2214,6 @@ input[type=submit]:enabled:active {
 	position: relative;
 	display: none;
 	overflow: hidden;
-	margin: 11px -15px -11px;
-	padding: 8px 15px;
 	-webkit-transition: height .35s ease;
 	-o-transition: height .35s ease;
 	transition: height .35s ease;
@@ -6544,8 +6542,6 @@ body>.mui-progressbar {
  	position: relative;
  	display: none;
  	overflow: hidden;
- 	margin: 11px -15px -11px;
- 	padding: 8px 15px;
  	-webkit-transition: height .35s ease;
  	-o-transition: height .35s ease;
  	transition: height .35s ease;

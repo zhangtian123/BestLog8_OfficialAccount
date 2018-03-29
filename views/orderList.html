@@ -108,6 +108,7 @@
 							if(flag < 3) {
 								var oDiv = document.createElement('div');
 								oDiv.id = 'card';
+								oDiv.classname='card-class';
 								Inner(value.BILLNO, value.BILLID, value.REFNO, value.CARGONAME, value.CTNS, value.PACK, value.WEIGHT, value.MEASURE, value.SEA_VESSEL, value.SEA_VOYNO, value.SHIPOWNER, value.SEA_SAILLINE, value.CNTRNUMSTR, oDiv);
 								aDiv.appendChild(oDiv);
 								flag++;
@@ -143,6 +144,7 @@
 							if(flag1 >= currentlist && flag < 3) {
 								var oDiv = document.createElement('div');
 								oDiv.id = 'card';
+								oDiv.className='card-class';
 								Inner(value.BILLNO, value.BILLID, value.REFNO, value.CARGONAME, value.CTNS, value.PACK, value.WEIGHT, value.MEASURE, value.SEA_VESSEL, value.SEA_VOYNO, value.SHIPOWNER, value.SEA_SAILLINE, value.CNTRNUMSTR, oDiv);
 								aDiv.appendChild(oDiv);
 								flag++;
