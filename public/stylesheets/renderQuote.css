@@ -1,0 +1,99 @@
+
+.content{
+	font-size: 1em;
+	
+}
+.card{
+  width: 85%;
+  background-color: #fff;
+  padding:20px 20px;
+  border-radius: 15px;
+  margin: 0 0 15px 0;
+  box-shadow: 0 5px 5px #dddadd;
+}
+img{
+	width:20px;
+	height:20px;
+}
+.input-title{
+  color:#006fbe;
+  width:30%;
+}
+
+.input-title2{
+  color:#006fbe;
+  width:15%;
+}
+.input-normal{
+  width: 60%;
+  border: none;
+  text-align: left;
+  /* margin-left:20px; */
+  color:#006fbe;
+  font-size: 1em;
+}
+.input_time{
+	border: none;
+	font-size: 1em;
+}
+.input-normal2{
+  border: none;
+  /* margin-left:20px; */
+}
+.input-second{
+  position: fixed;
+  left:55%;
+}
+
+.line{
+  width:100%;
+  border-bottom: 1px solid #ededed;
+}
+
+.line2{
+  width:50%;
+  border-bottom: 1px solid #ededed;
+}
+
+/*箱量*/
+
+.search-input-col {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+}
+.search-input-row {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-input {
+  margin-top: 1%;
+  height: 30px;
+  border: 3px solid #dddadd;
+  border-radius: 30px;
+}
+
+.section {
+  margin-left: 20px;
+  line-height: 70px;
+  color: #006fbe;
+}
+
+.section image {
+  width: 48px;
+  height: 48px;
+  margin-top: 10px;
+}
+
+.myBtn{
+width: 75%;
+height: 40px;
+margin: 0 0 0 12.5%;
+color:white;
+border: 1px solid #dddadd;
+background: linear-gradient(to right,#36a2ef,#0078cd);
+box-shadow: 0px 2px 6px #36a2ef;
+border-radius: 40px;
+}

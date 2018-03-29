@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>报价</title>
+    <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/base.css" />
+    <link rel="stylesheet" href="/stylesheets/freightQuery.css" />
+    <link href="/stylesheets/formsheet.css" rel="stylesheet" />
+    <style type="text/css" >
+    	.maincontent{padding-top: 0rem;}
+        .query-items{margin-top: 0rem;}
+    </style>
+</head>
+<body>
+	<!-- 侧滑导航根容器 -->
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+    <div class="mui-card"  style="margin:5px 5px;">
+    	<div class="mui-card-header"><%= tooltips%></div>
+    	<div class="mui-card-content" style="display:<%= display%>">
+    		<img src="/images/barcode.jpg" style="width:64px;height:64px;"/>
+    	</div>
+    </div>
+    <!-- 主页面容器 -->
+  	<div class="mui-inner-wrap">
+    <!-- 主页面内容容器 -->
+	    <div class="mui-content mui-scroll-wrapper">
+	    <div class="mui-scroll maincontent">
+	    	<div class="query-items" style="padding: 5px 5px;">
+			</div>
+		</div>
+	    </div>
+	</div>  
+	<div class="mui-off-canvas-backdrop"></div>
+</div>
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/mui.min.js"></script>
+<script src="/javascripts/shareQuote.js?a=d"></script>
+<script type="text/javascript" charset="utf-8">
+    mui.init();
+	 //侧滑容器父节点
+	mui('.mui-scroll-wrapper').scroll();
+	//单位数据
+	var ids='<%= ids %>';
+</script>
+</body>
+</html>
