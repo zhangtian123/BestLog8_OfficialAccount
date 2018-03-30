@@ -133,7 +133,7 @@ exports.ChangePwd = function(UserCode, Email,NewPwd, callback){
 exports.ChangeNewPwd = function(UserCode, MobileNo, NewPwd, callback){
 	var addstring = '<ContactCompanyBll_SaveNewPassWord xmlns="http://tempuri.org/">' +
 	                       '<UserCode>'+UserCode+'</UserCode>' +
-	                       '<MobileNo>'+MobileNo +'</MobileNo>' +
+	                       '<MobileNo, >'+MobileNo +'</MobileNo, >' +
 	                       '<NewPwd>'+NewPwd+'</NewPwd>' +
 	                     '</ContactCompanyBll_SaveNewPassWord>';
     var messagestring = "http://tempuri.org/IWebAPIService/ContactCompanyBll_SaveNewPassWord";

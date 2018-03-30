@@ -35,9 +35,9 @@ $(document).ready(function(){
 
 	/*查看详细条目*/
 	$('body').on("tap",'#Detail',function() {
-		var n = $(this).parents('.content-item').index();
+		var n = $(this).parents('.card-class').index();
 		//n = n + 1;
-		var text2 = $(".maincontent").find(".content-item:eq("+n+")").find('.getBILLID').eq(0).val();
+		var text2 = $(".maincontent").find(".card-class:eq("+n+")").find('.getBILLID').eq(0).val();
 		if(!array[text2])
 		{
 			array[text2]=1;
@@ -59,46 +59,70 @@ $(document).ready(function(){
 							switch(value.NODECODE)
 							{
 								case 'FMS_SO01':
-									time1=value.FINISHEDDATE;
-									break;
+								time1=value.FINISHEDDATE;
+								if(time1!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(0)").text(time1.replace('T',' ').substring(0,16));}
+								break;
 								case 'FMS_SO04':
-									time2 = value.FINISHEDDATE;
-									break;
+								time2 = value.FINISHEDDATE;
+								if(time2!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(1)").text(time2.replace('T',' ').substring(0,16));}
+								break;
 								case 'FMS_SO47':
-									time3 = value.FINISHEDDATE;
-									break;
+								time3 = value.FINISHEDDATE;
+								if(time3!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(2)").text(time3.replace('T',' ').substring(0,16));}
+								break;
 								case 'FMS_SO48':
-									time4 = value.FINISHEDDATE;
-									break;
+								time4 = value.FINISHEDDATE;
+								if(time4!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(3)").text(time4.replace('T',' ').substring(0,16));}
+								break;
 								case 'FMS_SO52':
-									time5 = value.FINISHEDDATE;
-									break;
+								time5 = value.FINISHEDDATE;
+								if(time5!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(4)").text(time5.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO51':
-									time6 = value.FINISHEDDATE;
-									break;
+								time6 = value.FINISHEDDATE;
+								if(time6!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(5)").text(time6.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO50':
-									time7 = value.FINISHEDDATE;
-									break;
+								time7 = value.FINISHEDDATE;
+								if(time7!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(6)").text(time7.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO49':
-									time8 = value.FINISHEDDATE;
-									break;
+								time8 = value.FINISHEDDATE;
+								if(time8!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(7)").text(time8.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO53':
-									time9 = value.FINISHEDDATE;
-									break;
+								time9 = value.FINISHEDDATE;
+								if(time9!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(8)").text(time9.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO12':
-									time10 = value.FINISHEDDATE;
-									break;
+								time10 = value.FINISHEDDATE;
+								if(time10!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(9)").text(time10.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO09':
-									time11 = value.FINISHEDDATE;
-									break;
+								time11 = value.FINISHEDDATE;
+								if(time11!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(10)").text(time11.replace('T',' ').substring(0,16));
+								break;
 								case 'FMS_SO54':
-									time12 = value.FINISHEDDATE;
-									break;
+								time12 = value.FINISHEDDATE;
+								if(time12!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
+								aDiv.find(".time:eq(11)").text(time12.replace('T',' ').substring(0,16));
+								break;
 								default:break;
 							}
 						})
 					}
-					trace({
+					/*trace({
 						"id":text2,
 						"row_number":3,//每行有几个圆
 						"col_number":4,//每列有几个圆
@@ -117,7 +141,7 @@ $(document).ready(function(){
 							{"name":"开船","time":time11},
 							{"name":"到港","time":time12},
 						]
-					});
+					});*/
 				},
 				error:function(){
 					mui.alert("系统处理错误");
@@ -125,43 +149,73 @@ $(document).ready(function(){
 			});
 		}
 	})
+	$('body').on("tap",'#share',function() {
+		var n = $(this).parents('#card').index();
+		var text3 = $(".maincontent").find("#card:eq("+n+")").find('.getBILLID').eq(0).val();
+		$.ajax({
+			type:"get",
+			url:"/setShareLog",
+			async:true,
+			success:function(data){
+				//alert(data.result);
+				if(data.result!=''){
+					mui.openWindow('/shareStatusBack?type=order&ids='+text3+'&sid='+data.result);
+				}
+			},
+			error:function(){
+				mui.alert("系统处理错误");
+			}
+		})
+	})
+	
 })
 
 var Inner = function(id, billid,customscompany,customsop,sonos,hblno,CNTRNUMSTR, oDiv){
 	oDiv.innerHTML=oDiv.innerHTML+
-	    		'<div class="toplabel"></div>'+
-				'<!--页眉，放置标题-->'+
-				'<div class="mui-card-header">订单号：'+id+'</div>'+
-				'<input class="getBILLID" type="hidden" id="'+id+'" value="'+billid+'"/>'+
-				'<!--内容区-->'+
-				'<div class="mui-card-content">'+
-					'<div class="item">'+
-						'<span class="item-title">客户简称：</span>'+
-						'<span>'+(customscompany==null ? '' : customscompany)+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<span class="item-title">客户委托号：</span>'+
-						'<span>'+(customsop==null ? '' : customsop)+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<span class="item-title">SO NO：</span>'+
-						'<span>'+(sonos==null ? '' : sonos)+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<span class="item-title">H/BL NO：</span>'+
-						'<span>'+(hblno==null ? '' : hblno)+'</span>'+
-					'</div>'+
-					'<div class="item">'+
-						'<span class="item-title">箱型箱量：</span>'+
-						'<span>'+(CNTRNUMSTR==null ? '' : CNTRNUMSTR)+'</span>'+
-					'</div>'+
-				'</div>'+
-				 '<ul class="mui-table-view"> '+
-			        '<li class="mui-table-view-cell mui-collapse">'+
-			            '<a class="mui-navigate-right" id="Detail" href="#">点击查看订单进度</a>'+
-			            '<div class="mui-collapse-content">'+
-					        '<canvas id="'+billid+'" width="370px" height="300px" style="width:310px;height:300px;"></canvas>'+
-						'</div>'+
-			       ' </li>'+
-			    '</ul>';
+	'<div class="item"><span id="blue-text">'+
+	'订单号'+id+'</span><button id="share" type="button" ></button>'+
+	'<input class="getBILLID" type="hidden" id="'+id+'" value="'+billid+'"/></div>'+
+	'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
+	'<div class="item">'+
+	'<span class="item-title">客户简称</span>'+
+	'<span style="float:right">'+(customscompany==null ? '' : customscompany)+'</span>'+
+	'</div>'+
+	'<div class="item">'+
+	'<span class="item-title">客户委托号</span>'+
+	'<span style="float:right">'+(customsop==null ? '' : customsop)+'</span>'+
+	'</div>'+
+	'<div class="item">'+
+	'<span class="item-title">SO NO</span>'+
+	'<span style="float:right">'+(sonos==null ? '' : sonos)+'</span>'+
+	'</div>'+
+	'<div class="item">'+
+	'<span class="item-title">H/BL NO</span>'+
+	'<span style="float:right">'+(hblno==null ? '' : hblno)+'</span>'+
+	'</div>'+
+	'<div class="item">'+
+	'<span class="item-title">箱型箱量</span>'+
+	'<span style="float:right">'+(CNTRNUMSTR==null ? '' : CNTRNUMSTR)+'</span>'+
+	'</div>'+
+	'</div>'+
+	'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
+	'<ul class="mui-table-view"> '+
+	'<li class="mui-table-view-cell mui-collapse">'+
+	'<a class="mui-navigate-right" id="Detail" href="#">点击查看订单进度</a>'+
+	'<div class="mui-collapse-content">'+
+	/*'<canvas id="'+billid+'" width="370px" height="300px" style="width:310px;height:300px;"></canvas>'+*/
+	'<div id="node1"><div class="circle-unfinished">接单</div><div class="time"></div></div><div id="node-line"></div>'+
+	'<div id="node1"><div class="circle-unfinished">订舱</div><div class="time"></div></div><div id="node-line"></div>'+
+	'<div id="node1"><div class="circle-unfinished">提箱</div><div class="time"></div></div><div id="node-line"></div>'+
+	'<div id="node1"><div class="circle-unfinished">进场</div><div class="time"></div></div><div id="node-line-short"></div><div id="node-line-v"></div><div id="node-line-short" style="float:right"></div>'+
+	'<div id="node1" style="float:right"><div class="circle-unfinished">申报</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
+	'<div id="node1" style="float:right"><div class="circle-unfinished">放行</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
+	'<div id="node1" style="float:right"><div class="circle-unfinished">对单</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
+	'<div id="node1" style="float:right"><div class="circle-unfinished">签发</div><div class="time"></div></div><div id="node-line-short" style="float:right"></div><div id="node-line-v" style="float:right"></div><div id="node-line-short"></div>'+
+	'<div id="node1"><div class="circle-unfinished">对账</div><div class="time"></div></div><div id="node-line"></div>'+
+	'<div id="node1"><div class="circle-unfinished">付款</div><div class="time"></div></div><div id="node-line"></div>'+
+	'<div id="node1"><div class="circle-unfinished">开船</div><div class="time"></div></div><div id="node-line"></div>'+
+	'<div id="node1"><div class="circle-unfinished">到港</div><div class="time"></div>'+
+	'</div>'+
+	' </li>'+
+	'</ul>';
 }

@@ -38,11 +38,56 @@
 <script src="/javascripts/mui.min.js"></script>
 <script src="/javascripts/shareFreightQuery.js"></script>
 <script type="text/javascript" charset="utf-8">
-    mui.init();
-	 //侧滑容器父节点
-	mui('.mui-scroll-wrapper').scroll();
-	//单位数据
-	var ids='<%= ids %>';
+     var ids='<%= ids%>'
+    var currentlist = 0;
+    var count = 0;
+    var downflag = 0;
+    var upflag = 0;
+    var Totalcount = 0;
+    var DATA;
+    
+    mui.init({
+        pullRefresh: {
+            container: '#pullrefresh',
+            down: {
+                callback: pulldownRefresh
+            }
+        }
+    });
+    /**
+     * 下拉刷新具体业务实现
+     */
+    function pulldownRefresh() {
+        setTimeout(function() {
+            var flag = 0;
+            var aDiv = document.body.querySelector('.maincontent');
+            aDiv.innerHTML="";
+            array=[];
+            for(var o in DATA)
+            {
+                var result = eval(DATA[o]);
+                if(upflag==0)
+                {
+                    result.shift();
+                    downflag=1;
+                    upflag=1;
+                }
+                $.each(result,function(key,value){
+                    //alert(flag1+" "+currentlist+" "+flag);
+                    if(flag<3)
+                    {
+                        var oDiv = document.createElement('div');
+                        oDiv.id = 'card';
+                        Inner(value.ORDERNO,value.ORDERID,value.CUSTOMSCOMPANY,value.CUSTOMSOP,value.SONO,value.HBLNO,value.CNTRNUMSTR,oDiv);
+                        aDiv.appendChild(oDiv);
+                        flag++;
+                    }
+                }) 
+            }
+            currentlist = 3;
+            mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+        }, 1500);
+    }
 </script>
 </body>
 </html>
