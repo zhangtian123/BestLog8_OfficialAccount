@@ -42,7 +42,9 @@
 					<input type="text" name="ps" class="mui-input-code" placeholder="请输入验证码" />
 					<button type="button" id="getpassbtn" class="vertify mui-btn mui-btn-primary">获取验证码</button>
 				</div>
-				<div id="new_atteninfo2" style="margin-top: 1rem;"><p class="info"></p></div>
+				<!--<div id="new_atteninfo2" style="margin-top: 1rem;">
+					<p class="info"></p>
+				</div>-->
 			</form>
 			<!--下一步按钮-->
 			<button type="button" id='nextStep' class="mui-btn mui-btn-block" style="margin-top: 2.8125rem;">下一步</button>
@@ -60,7 +62,6 @@
 			if(mobileNo != '') {
 				var szReg =  /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
 				if(szReg.test(mobileNo)) {
-					/*document.getElementById("new_atteninfo2").innerHTML = "";*/
 					$.ajax({
 						type: "post",
 						url: "/validateMobileNo",
@@ -73,7 +74,7 @@
 							if(result.result == '0') {
 								document.getElementById("getpassbtn").disabled = false;
 							} else if(result.result == '1') {
-								document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>该手机号已被注册</font>";
+								mui.alert("该手机号已被注册");
 								document.getElementById("getpassbtn").disabled = true;
 							}
 						},
@@ -82,11 +83,10 @@
 						}
 					});
 				} else {
-					document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>手机号格式不正确</font>";
+					mui.alert("手机号格式不正确");
 					document.getElementById("getpassbtn").disabled = true;
 				}
 			} else {
-				document.getElementById("new_atteninfo2").innerHTML = "";
 				document.getElementById("getpassbtn").disabled = true;
 			}
 		}
@@ -108,7 +108,7 @@
 						if(result.result == '0')
 							document.getElementById("nextStep").disabled = false;
 						if(result.result == '1') {
-							document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>用户名已存在</font>";
+							mui.alert("用户名已存在");
 							document.getElementById("nextStep").disabled = true;
 						}
 					},
@@ -117,11 +117,10 @@
 					}
 				});
 			} else {
-				document.getElementById("new_atteninfo2").innerHTML = "";
 				document.getElementById("nextStep").disabled = true;
 			}
 		}
-		
+
 		function varifyPassword() {
 			var password = $("input[name='password']").val();
 			if(password != '') {
@@ -129,12 +128,12 @@
 					type: "post",
 					url: "/saveuserpassword",
 					data: {
-						password:password,
+						password: password,
 					},
 					async: false,
 					success: function(data) {
 						var result = eval(data);
-						if(result.result=='0'){
+						if(result.result == '0') {
 							document.getElementById("nextStep").disabled = false;
 						}
 					},
@@ -163,6 +162,7 @@
 		$(document).ready(function() {
 			document.getElementById("getpassbtn").disabled = true;
 			document.getElementById("nextStep").disabled = true;
+
 			$('.login button').eq(0).click(function() {
 				if(issend) { 
 					var mobileNo = $("input[name='mobileNo']").val();
@@ -198,48 +198,13 @@
 					});
 				}
 			})
-			$('.login button').eq(0).click(function() {
+
+			$('.login button').eq(1).click(function() {
 				var check = true;
 				mui("#inputinfo input").each(function() {
 					if(!this.value || this.value.trim() == "") {
 						var label = this.previousElementSibling;
-						document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>不允许为空</font>";
-						check = false;
-						return false;
-					}
-				}); //校验通过，继续执行业务逻辑 
-				//验证验证码是否输入正确
-				if(check) {
-					var username = $("input[name='username']").val();
-					var mobileNo = $("input[name='mobileNo']").val();
-					var ps = $("input[name='ps']").val();
-					$.ajax({
-						type: "post",
-						url: "/varifyCode",
-						data: {
-							username: username,
-							mobileNo: mobileNo,
-							code: ps,
-						},
-						async: true,
-						success: function(data) {
-							var result = eval(data).result;
-							if(result == '0')
-								document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>验证码错误</font>";
-						},
-						error: function() {
-							alert("系统服务错误");
-						}
-					});
-
-				}
-			})
-			$('.login button').eq(1).click(function() {
-				var check = true;
-				mui("#inputinfo input").each(function() { 
-					if(!this.value || this.value.trim() == "") {
-						var label = this.previousElementSibling;
-						document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>不允许为空</font>";
+						mui.alert(label.id+ "不允许为空");
 						check = false;
 						return false;
 					}
@@ -250,13 +215,17 @@
 						type: "post",
 						url: "/saveuserpassword",
 						data: {
-							password:password,
+							password: password,
 						},
 						async: true,
 						success: function(data) {
 							var result = eval(data).result;
-							if(result == '0')
+							console.log(result);
+							if(result == '1') {
 								location.href = "/registerCominfo";
+							} else {
+								mui.alert("验证码错误");
+							}
 						},
 						error: function() {
 							alert("系统服务错误");
@@ -267,4 +236,5 @@
 			})
 		})
 	</script>
+
 </html>

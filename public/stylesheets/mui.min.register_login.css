@@ -2545,7 +2545,7 @@ select:focus {
 	font-family: 'Helvetica Neue', Helvetica, sans-serif;
 	line-height: 1.1;
 	float: left;
-	width: 35%;
+	width: 38%;
 	padding: 11px 5px;
 }
 
@@ -2553,7 +2553,7 @@ select:focus {
 .mui-input-row label~select,
 .mui-input-row label~textarea {
 	float: right;
-	width: 65%;
+	width: 60%;
 	margin-bottom: 0;
 	padding-bottom: 0.3rem;
 	border: 0;
