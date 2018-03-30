@@ -564,15 +564,6 @@ router.post('/saveusername', function(req, res, next) {
 	var telephone=parameter.telephone;
 	//console.log(username+telephone);
 	Userreg.CheckisExist(username, null, function(result){
-//		console.log(result);
-//		if(result == 0)
-//		{
-//			var user={
-//				USERCODE:username,
-//				EMAIL:telephone,
-//			};
-//			req.session.user = user;
-//		}
 		res.send({result:result});
 	})
 });
@@ -800,11 +791,11 @@ router.get('/userForget', function(req, res, next) {
 router.post('/reSetpassword', function(req, res, next) {
 	var parameter = req.body;
 	var password=parameter.password;
+	var username = parameter.username;
+	var mobileNo = parameter.mobileNo;
 	if(req.session.user)
 	{
-		var userCode = req.session.user.USERCODE;
-		var email = req.session.user.EMAIL;
-		Userwcf.ChangePwd(userCode,email,password,function(result){
+		Userwcf.ChangeNewPwd(username,mobileNo,password,function(result){
 			res.send({result:result});
 		})
 	}
