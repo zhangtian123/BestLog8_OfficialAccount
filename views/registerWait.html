@@ -6,22 +6,26 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="/stylesheets/mui.min.register_login.css" rel="stylesheet" />
-		<link href="/stylesheets/style.css" rel="stylesheet" />
+		<link href="/stylesheets/index.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<div class="mui-content-padded contain">
-			<div class="logobar">
-				<img src="/images/进行中.png" />
-			</div>
-			<div class="login">
-				<h1>注册信息已填写完成，正在等待审核...<h1>
-			</div>
+		<!-- logo -->
+		<div class="logo">
+			<img src="/images/logo.jpg" />
+			<p style="font-family: '微软雅黑'; font-size: 20px; margin-top: 1.5rem;">佰信国际物流协同管理平台</p>
 		</div>
+		<div class="mui-col-xs-9 login">
+			<div style="font-family: '微软雅黑'; color: #df3c01; font-size: 20px; text-align: center;">
+				注册页面已填写完成，正在等待审核
+			</div>
+			<br />
+			<button type="button" id="back" class="mui-btn mui-btn-block" onclick="location='/loginMain'">返回</button>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
 		<script src="/javascripts/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
 	</body>
-
 </html>

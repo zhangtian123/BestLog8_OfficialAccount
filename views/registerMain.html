@@ -54,6 +54,7 @@
 		mui.init();
 		var Identify = "";
 
+		//验证手机号格式，并判断是否被注册过
 		function registervalidate() {
 			var mobileNo = $("input[name='mobileNo']").val();
 			if(mobileNo != '') {
@@ -89,7 +90,7 @@
 				document.getElementById("getpassbtn").disabled = true;
 			}
 		}
-
+		//判断用户名是否已经被用
 		function varifyUserName() {
 			var username = $("input[name='username']").val();
 			var mobileNo = $("input[name='mobileNo']").val();
@@ -106,7 +107,7 @@
 						var result = eval(data);
 						if(result.result == '0')
 							document.getElementById("nextStep").disabled = false;
-						else if(result.result == '1') {
+						if(result.result == '1') {
 							document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>用户名已存在</font>";
 							document.getElementById("nextStep").disabled = true;
 						}
@@ -133,8 +134,9 @@
 					async: false,
 					success: function(data) {
 						var result = eval(data);
-						if(result.result=='0')
+						if(result.result=='0'){
 							document.getElementById("nextStep").disabled = false;
+						}
 					},
 					error: function() {
 						alert("系统服务错误");
@@ -157,7 +159,7 @@
 				get_code.innerHTML  = printnr  + " 秒后重发";      
 			}  
 		}
-
+		//获取验证码
 		$(document).ready(function() {
 			document.getElementById("getpassbtn").disabled = true;
 			document.getElementById("nextStep").disabled = true;
@@ -196,7 +198,7 @@
 					});
 				}
 			})
-			$('.login button').eq(1).click(function() {
+			$('.login button').eq(0).click(function() {
 				var check = true;
 				mui("#inputinfo input").each(function() {
 					if(!this.value || this.value.trim() == "") {
@@ -206,6 +208,7 @@
 						return false;
 					}
 				}); //校验通过，继续执行业务逻辑 
+				//验证验证码是否输入正确
 				if(check) {
 					var username = $("input[name='username']").val();
 					var mobileNo = $("input[name='mobileNo']").val();
@@ -231,7 +234,7 @@
 
 				}
 			})
-			$('.login button').eq(2).click(function() {
+			$('.login button').eq(1).click(function() {
 				var check = true;
 				mui("#inputinfo input").each(function() { 
 					if(!this.value || this.value.trim() == "") {
