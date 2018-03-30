@@ -28,40 +28,48 @@
 			<br />
 			<span><%= showname%> <%= username %></span>
 		</div>
-		
+
 		<ul class="personal-content">
-			<div class="personal-item">
-				<img src="/images/request_fund.png "/><br />
-				<a href="remittance">请款审核</a>
-			</div>
-			<div class="personal-item">
-				<img src="/images/bill.png" /><br />
-				<a href="billaudit">账单审核</a>
-			</div>
-			<div class="personal-item">
-				<img src="/images/register.png" /><br />
-				<a href="registerAudit">注册审核</a>
-			</div>
+			<li class="personal-item">
+				<a href="remittance">
+					<img src="/images/request_fund.png " /><br /> 请款审核
+				</a>
+			</li>
+			<li class="personal-item">
+				<a href="billaudit">
+					<img src="/images/bill.png" /><br />账单审核
+				</a>
+			</li>
+			<li class="personal-item">
+				<a href="registerAudit">
+					<img src="/images/register.png" /><br />注册审核
+				</a>
+			</li>
 		</ul>
 		<ul class="personal-content" style="margin-top:-1rem; border-bottom: solid .1rem #ebebeb;">
-			<div class="personal-item" style="margin-left:-6rem;">
-				<img src="/images/order_trace.png "/><br />
-				<a href="shipmenttracking">订单跟踪</a>
-			</div>
-			<div class="personal-item">
-				<img src="/images/search.png" /><br />
-				<a href="freightQuery">运价查询</a>
-			</div>
+			<li class="personal-item">
+				<a href="shipmenttracking">
+					<img src="/images/order_trace.png " /><br />订单跟踪
+				</a>
+			</li>
+			<li class="personal-item">
+				<a href="freightQuery">
+					<img src="/images/search.png" /><br />运价查询
+				</a>
+			</li>
 		</ul>
-		<ul class="personal-content" style="margin-top: -1rem;">
-			<div class="personal-item" style="margin-left:-6rem;">
-				<img src="/images/bind.png" /><br />
-				<a id="shenfen" style="font-size: 8px;"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
-			</div>
-			<div class="personal-item">
-				<img src="/images/exit.png" /><br />
-				<a href="logout">退出</a>
-			</div>
+		<ul class="personal-content">
+			<li class="personal-item">
+				<a id="shenfen" style="font-size: 8px;">
+					<img src="/images/bind.png" /><br />
+					<%= openid==null || openid=='' ? '绑定' : '解绑' %>
+				</a>
+			</li>
+			<li class="personal-item">
+				<a href="logout">
+					<img src="/images/exit.png" /><br />退出
+				</a>
+			</li>
 		</ul>
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>

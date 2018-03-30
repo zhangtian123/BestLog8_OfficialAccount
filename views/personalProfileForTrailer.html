@@ -6,17 +6,19 @@
 
 <!DOCTYPE html>
 <html>
+
 	<head>
-		 <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	    <title></title>
-	    <script src="/javascripts/mui.min.js"></script>
-	    <link rel="stylesheet" href="/stylesheets/mui.min.register_login.css" />
-	    <link rel="stylesheet" href="/stylesheets/profile.css" />
-	    <script type="text/javascript" charset="utf-8">
-	      	mui.init();
-	    </script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link rel="stylesheet" href="/stylesheets/mui.min.register_login.css" />
+		<link rel="stylesheet" href="/stylesheets/profile.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
 	</head>
+
 	<body>
 		<div class="top-bar">
 			<div class="profilePhoto">
@@ -25,55 +27,60 @@
 			<br />
 			<span><%= showname%> <%= username %></span>
 		</div>
-		
-		<ul class="personal-content" style="border-bottom: solid .1rem #ebebeb;">
-			<div class="personal-item">
-				<img src="/images/feedback.png "/><br />
-				<a href="stateback2">状态反馈</a>
-			</div>
-			<div class="personal-item">
-				<img src="/images/search.png" /><br />
-				<a href="freightQuery">运价查询</a>
-			</div>
+
+		<ul class="personal-content" style="border-bottom: solid .1rem #ebebeb; float: none;">
+			<li class="personal-item">
+				<a href="stateback2">
+					<img src="/images/feedback.png " /><br />状态反馈
+				</a>
+			</li>
+			<li class="personal-item">
+				<a href="freightQuery">
+					<img src="/images/search.png" /><br />运价查询
+				</a>
+			</li>
 		</ul>
-		
-		<ul class="personal-content" style="margin-top: -1rem;">
-			<div class="personal-item">
-				<img src="/images/bind.png" /><br />
-				<a id="shenfen" style="font-size: 8px;"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
-			</div>
-			<div class="personal-item">
-				<img src="/images/exit.png" /><br />
-				<a href="logout">退出</a>
-			</div>
+
+		<ul class="personal-content" style="float: none;">
+			<li class="personal-item">
+				<a id="shenfen" style="font-size: 8px;">
+					<img src="/images/bind.png" /><br />
+					<%= openid==null || openid=='' ? '绑定' : '解绑' %>
+				</a>
+			</li>
+			<li class="personal-item">
+				<a href="logout">
+					<img src="/images/exit.png" /><br />退出
+				</a>
+			</li>
 		</ul>
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
-	    mui.init();
-	      
-	    $(document).ready(function(){
-			$('#shenfen').click(function(){
-							$.ajax({
-							type:"post",
-							url:"/bindingwx",
-							data:{},
-							async:true,
-							success:function(data){
-								var result = eval(data);
-								if(result.result==1)
-								{
-									if($('#shenfen').text()=='绑定')
-									    $('#shenfen').text('解绑');
-									else
-									    $('#shenfen').text('绑定');
-								}
-							},
-							error:function(){
-								mui.alert($('#shenfen').text()+"出现错误");
-							}
-						});
-		})
+		mui.init();
+
+		$(document).ready(function() {
+			$('#shenfen').click(function() {
+				$.ajax({
+					type: "post",
+					url: "/bindingwx",
+					data: {},
+					async: true,
+					success: function(data) {
+						var result = eval(data);
+						if(result.result == 1) {
+							if($('#shenfen').text() == '绑定')
+								$('#shenfen').text('解绑');
+							else
+								$('#shenfen').text('绑定');
+						}
+					},
+					error: function() {
+						mui.alert($('#shenfen').text() + "出现错误");
+					}
+				});
+			})
 		})
 	</script>
+
 </html>

@@ -2555,10 +2555,10 @@ select:focus {
 	float: right;
 	width: 65%;
 	margin-bottom: 0;
-	padding-left: 0;
 	padding-bottom: 0.3rem;
 	border: 0;
 	color: #79797a;
+	padding-left: 5px;
 }
 
 .mui-input-clear::-webkit-input-placeholder,
