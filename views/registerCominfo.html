@@ -1,75 +1,81 @@
 <!--
-	作者：lyj,lcf
-	时间：2017-07-04
-	描述：注册之填写公司基本信息
+	作者：lcf
+	时间：2017-07-06
+	描述：注册申请详情
 -->
-<!doctype html>
+<!--
+	作者：anna
+	时间：2018-03-26
+	描述：UI优化，但数据交互需重新设计
+-->
+<!DOCTYPE html>
 <html>
+
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
 		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
-		<link href="/stylesheets/register.css" rel="stylesheet" />
+		<link href="/stylesheets/index.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-            <h1 class="mui-title">佰信国际物流协同管理平台--BestLOG8</h1>
-        </header>
-		<div class="mui-content-padded"><!-- contain">-->
-			<div class="register">
-				<form>
-					<div class="mui-input-row">
-						<label><img src="/images/企业名称.png" width="25px;"></label>
-						<input type="text" name="ComChiname" class="mui-input-clear" placeholder="请输入企业中文名称" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+		<div class="mui-inner-wrap" style="overflow: scroll;">
+			<div class="mui-col-xs-9 login" style="padding: 0; margin-top: 1rem;">
+				<!--输入框表单-->
+				<form id="inputinfo">
+					<div class="mui-input-row" style="border-bottom: hidden; margin-left: -2.4rem;">
+						<label><img src="/images/company.png"></label>
+						<input type="text" class="mui-input-cominfo" placeholder="企业名称" disabled="disabled" />
 					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/企业.png" width="25px;"></label>
-						<input type="text" name="ComEngname" class="mui-input-clear" placeholder="请输入企业英文名称" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<div class="mui-input-row" style="margin-top: -0.6rem;">
+						<input type="text" class="mui-input-clear" placeholder="中文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
 					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/NO税.png" width="25px;"></label>
-						<input type="text" name="TaxNumber" class="mui-input-clear" placeholder="请输入企业税号" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<div class="mui-input-row" style="margin-top: -0.5rem;">
+						<input type="text" class="mui-input-clear" placeholder="英文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
 					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/地址 (1).png" width="25px;"></label>
-						<input type="text" name="ComChiadd" class="mui-input-clear" placeholder="请输入企业中文地址" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+
+					<div class="mui-input-row" style="border-bottom: hidden; margin-left: -2.4rem;">
+						<label><img src="/images/address.png"></label>
+						<input type="text" class="mui-input-cominfo" placeholder="企业地址" disabled="disabled" />
 					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/地址.png" width="25px;"></label>
-						<input type="text" name="ComEngadd" class="mui-input-clear" placeholder="请输入企业英文地址" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<div class="mui-input-row" style="margin-top: -0.6rem;">
+						<input type="text" class="mui-input-clear" placeholder="中文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
 					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/邮箱.png" width="25px;"></label>
-						<input type="text" name="ComEmail" class="mui-input-clear" placeholder="请输入企业联系邮箱" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<div class="mui-input-row" style="margin-top: -0.5rem;">
+						<input type="text" class="mui-input-clear" placeholder="英文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
 					</div>
-					<!--<div class="mui-input-row">
-						<label><img src="/images/资料.png" width="25px;"></label>
-						<input type="text" name="photo" placeholder="上传企业资质材料" />
-						<button type="button" class="vertify mui-btn mui-btn-primary">点击拍照</button>
-					</div>-->
+
+					<div class="mui-input-row" style="border-bottom: hidden; margin-left: -2.4rem;">
+						<label><img src="/images/info.png"></label>
+						<input type="text" class="mui-input-cominfo" placeholder="其他信息" disabled="disabled" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.6rem;">
+						<input type="text" class="mui-input-clear" placeholder="纳税号" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.5rem;">
+						<input type="text" class="mui-input-clear" placeholder="联系邮箱" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+					<div class="detail-normal second-line" style="margin-top: 2.6rem;">
+						<img src="../images/camera.png" class="other-part-img img-margin" />
+						<p>拍照上传资质材料</p>
+					</div>
 				</form>
-				<button type="button" class="mui-btn mui-btn-block" style="margin-top: 20%;">下一步</button>
-				<!--<span>注册即代表同意协议<span class="red-text">《BestLOG8运输物流协议》《...协议书》</span></span>-->
+				<!--提交按钮-->
+				<button type="button" id='submit' class="mui-btn mui-btn-block" style="margin-top: 2.8125rem;">提交</button>
 			</div>
 		</div>
+		
 		<script src="/javascripts/jquery-1.11.1.min.js"></script>
 		<script src="/javascripts/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 			
 			$(document).ready(function(){
-//				$('.register button').eq(0).click(function(){
-//					mui.openWindow('/takephoto');
-//				})
-			
 				$('.register button').eq(0).click(function(){
 					var check = true;
 					mui("#inputinfo input").each(function() {

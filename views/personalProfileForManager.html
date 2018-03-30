@@ -3,94 +3,93 @@
 	时间：2017-07-13
 	描述：主管个人中心
 -->
+<!--
+	作者：anna
+	时间：2018-03-26
+	描述：UI优化
+-->
 <!DOCTYPE html>
 <html>
+
 	<head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	    <title></title>
-	    <script src="/javascripts/mui.min.js"></script>
-	    <link rel="stylesheet" href="/stylesheets/mui.min.css" />
-	    <link rel="stylesheet" href="/stylesheets/profile.css" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link rel="stylesheet" href="/stylesheets/mui.min.css" />
+		<link rel="stylesheet" href="/stylesheets/profile.css" />
 	</head>
+
 	<body>
 		<div class="top-bar">
-			<div class="profilePhoto"><img src="/images/account (1).png" /></div><br />
-			<span><%= username %>(<%= showname%>)</span>
-			<span class="leftshadow"></span>
-			<span class="rightshadow"></span>
-			<div class="triangle-up"></div>
+			<div class="profilePhoto">
+				<img src="/images/inUser.png" />
+			</div>
+			<br />
+			<span><%= showname%> <%= username %></span>
 		</div>
-		<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 2rem;;">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/我的订单 (1).png "/>
-				<a href="remittance" class="mui-navigate-right">请款审核</a>
-			</li>
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/我的订单 (1).png "/>
-				<a href="billaudit" class="mui-navigate-right">账单审核</a>
-			</li>
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png "/>
-				<a href="registerAudit" class="mui-navigate-right">注册审核</a>
-			</li>
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/browse.png" />
-				<a href="shipmenttracking" class="mui-navigate-right">订单跟踪</a>
-			</li>
-			
+		
+		<ul class="personal-content">
+			<div class="personal-item">
+				<img src="/images/request_fund.png "/><br />
+				<a href="remittance">请款审核</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/bill.png" /><br />
+				<a href="billaudit">账单审核</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/register.png" /><br />
+				<a href="registerAudit">注册审核</a>
+			</div>
 		</ul>
-		<!--<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/请假.png" />
-				<a href="leaveAudit" class="mui-navigate-right">请假审核</a>
-			</li>
-		</ul>-->
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/trade.png" />
-				<a href="freightQuery" class="mui-navigate-right">运价查询</a>
-			</li>
+		<ul class="personal-content" style="margin-top:-1rem; border-bottom: solid .1rem #ebebeb;">
+			<div class="personal-item" style="margin-left:-6rem;">
+				<img src="/images/order_trace.png "/><br />
+				<a href="shipmenttracking">订单跟踪</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/search.png" /><br />
+				<a href="freightQuery">运价查询</a>
+			</div>
 		</ul>
-		<ul class="mui-table-view mui-table-view-chevron" style="display:<%= openid!=null && openid.length==18 ? 'none' : 'block' %>;">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png" />
-				<a id="shenfen" class="mui-navigate-right"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
-			</li>
-		</ul>
-		<ul class="mui-table-view mui-table-view-chevron" style="display:<%= openid!=null && openid.length==18 ? 'none' : 'block' %>;">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png" />
-				<a href="logout" class="mui-navigate-right">退出</a>
-			</li>
+		<ul class="personal-content" style="margin-top: -1rem;">
+			<div class="personal-item" style="margin-left:-6rem;">
+				<img src="/images/bind.png" /><br />
+				<a id="shenfen" style="font-size: 8px;"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/exit.png" /><br />
+				<a href="logout">退出</a>
+			</div>
 		</ul>
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
-	    mui.init();
-	      
-	    $(document).ready(function(){
-			$('#shenfen').click(function(){
-							$.ajax({
-							type:"post",
-							url:"/bindingwx",
-							data:{},
-							async:true,
-							success:function(data){
-								var result = eval(data);
-								if(result.result==1)
-								{
-									if($('#shenfen').text()=='绑定')
-									    $('#shenfen').text('解绑');
-									else
-									    $('#shenfen').text('绑定');
-								}
-							},
-							error:function(){
-								mui.alert($('#shenfen').text()+"出现错误");
-							}
-						});
-		})
+		mui.init();
+
+		$(document).ready(function() {
+			$('#shenfen').click(function() {
+				$.ajax({
+					type: "post",
+					url: "/bindingwx",
+					data: {},
+					async: true,
+					success: function(data) {
+						var result = eval(data);
+						if(result.result == 1) {
+							if($('#shenfen').text() == '绑定')
+								$('#shenfen').text('解绑');
+							else
+								$('#shenfen').text('绑定');
+						}
+					},
+					error: function() {
+						mui.alert($('#shenfen').text() + "出现错误");
+					}
+				});
+			})
 		})
 	</script>
+
 </html>

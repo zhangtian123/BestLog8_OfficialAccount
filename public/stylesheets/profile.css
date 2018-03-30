@@ -1,34 +1,43 @@
-body{
-	font-family: "microsoft yahei";
+body {
+	background-color: #fff;
+	background-size: 100%;
+	font-family: "微软雅黑";
+	text-align: center;
+	-webkit-overflow-scrolling: touch;
 }
+
 .top-bar{
 	position: relative;
-	width: 100%;
+	width: 120%;
+	left:-10%;
 	height: 12rem;
-	background-color: rgb(255,128,80);
-/*	box-shadow:0 0.5rem 2rem #aaaaaa;*/
+	margin-top: -2%;
+	background-color: #0078cd;
 	text-align: center;
-}
+	box-shadow: 0rem 0.2rem 0.2rem 1px #a3c5eadb;
+	border-radius: 0 0 65% 65%;
+	}
 .profilePhoto{
 	position: relative;
 	display: inline-block;
-	width: 6rem;
-	height: 6rem;
-	margin-top: 2rem;
+	width: 4.525rem;
+	height: 4.525rem;
+	margin-top: 1.98rem;
 	border-radius: 50%;
-	border:0.15rem solid #FFFFFF;
 }
 .profilePhoto img{
 	position: absolute;
-	width: 3rem;
-	left: 1.4rem;
-	top: 1.2rem;
+	width: 4.525rem;
+	height:4.525rem;
+	border-radius: 50%;
+	margin-left: -50%;
+	border:0.1rem solid #FFFFFF;
 }
 .top-bar span{
 	display: inline-block;
-	padding-top: 0.5rem;
-	font-size: 1.5rem;
+	margin-top: 1.15rem;
 	font-weight: 300;
+	font-family: "微软雅黑";
 	color: #FFFFFF;
 }
 .function-item{
@@ -56,25 +65,39 @@ body{
     border-left: 13px solid transparent;
     border-right: 13px solid transparent;
     border-bottom: 26px solid rgb(239,239,244);
-/*    box-shadow:0.5rem 0rem 1rem #aaaaaa inset;
-    -moz-box-shadow:0.5rem 0rem 0rem #aaaaaa inset;
-    -webkit-box-shadow:0.5rem 0rem 0rem #aaaaaa inset;*/
 }
-.leftshadow{
-	position: absolute;
-	bottom: 0rem;
-	left: 0;
-	width:45%;
-	height: 1px;
-	background-color: transparent;
-	box-shadow:0px 0.5rem 1rem #aaaaaa;
+ul{
+	white-space:nowrap;
+    text-align: center;
+    width: 100%;
+    list-style: none;
+	display: inline-block;
 }
-.rightshadow{
-	position: absolute;
-	bottom: 0rem;
-	right: 0;
-	width:45%;
-	height: 0.1rem;
-	background-color: transparent;
-	box-shadow:0 0.5rem 1rem #aaaaaa;
+
+.personal-content{
+	position: relative;
+	padding: 0;
+}
+
+.personal-item{
+	margin:1.4rem;
+	display: inline-block;
+	width: 4.583rem;
+	height: 4.583rem;
+	border-radius: 15px;
+	box-shadow: 0 1.67px 5px rgba(0, 120, 205, 0.40);
+	color: #a8a8a8;
+}
+
+.personal-item img{
+	width:2.0625rem;
+	height: 2.1rem;
+	margin-top: 0.6rem;
+}
+
+.personal-item a:link,.personal-item a:visited,.personal-item a:hover,.personal-item a:active{
+	font-family: "微软雅黑";
+	font-size: 8px;
+	text-decoration: none;
+	color: #a8a8a8;
 }

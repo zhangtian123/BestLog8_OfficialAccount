@@ -3,6 +3,11 @@
 	时间：2017-07-13
 	描述：客户个人中心
 -->
+<!--
+	作者：anna
+	时间：2018-03-26
+	描述：UI优化
+-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,47 +23,46 @@
 	</head>
 	<body>
 		<div class="top-bar">
-			<div class="profilePhoto"><img src="/images/account (1).png" /></div><br />
-			<span><%= username%>(<%= showname%>)</span>
-			<span class="leftshadow"></span>
-			<span class="rightshadow"></span>
-			<div class="triangle-up"></div>
+			<div class="profilePhoto">
+				<img src="/images/exUser.png" />
+			</div>
+			<br />
+			<span><%= showname%> <%= username %></span>
 		</div>
-		<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 2rem;;">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/我的订单 (1).png "/>
-				<a href="placeShippingOrder" class="mui-navigate-right">在线下单</a>
-			</li>
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/browse.png" />
-				<a href="shippingOrder" class="mui-navigate-right">订单列表</a>
-			</li>
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/browse.png" />
-				<a href="shipmenttracking" class="mui-navigate-right">订单跟踪</a>
-			</li>
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/我的订单 (1).png "/>
-				<a href="billconfirm" class="mui-navigate-right">账单确认</a>
-			</li>
+		
+		<ul class="personal-content">
+			<div class="personal-item">
+				<img src="/images/online.png "/><br />
+				<a href="placeShippingOrder">在线下单</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/list.png" /><br />
+				<a href="shippingOrder">订单列表</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/order_trace.png" /><br />
+				<a href="shipmenttracking">订单跟踪</a>
+			</div>
 		</ul>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/trade.png" />
-				<a href="freightQuery" class="mui-navigate-right">运价查询</a>
-			</li>
+		<ul class="personal-content" style="margin-top:-1rem; border-bottom: solid .1rem #ebebeb;">
+			<div class="personal-item" style="margin-left:-6rem;">
+				<img src="/images/bill.png "/><br />
+				<a href="billconfirm">账单确认</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/search.png" /><br />
+				<a href="freightQuery">运价查询</a>
+			</div>
 		</ul>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png" />
-				<a id="shenfen" class="mui-navigate-right"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
-			</li>
-		</ul>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png" />
-				<a href="logout" class="mui-navigate-right">退出</a>
-			</li>
+		<ul class="personal-content" style="margin-top: -1rem;">
+			<div class="personal-item" style="margin-left:-6rem;">
+				<img src="/images/bind.png" /><br />
+				<a id="shenfen" style="font-size: 8px;"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/exit.png" /><br />
+				<a href="logout">退出</a>
+			</div>
 		</ul>
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>

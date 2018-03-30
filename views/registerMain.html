@@ -3,6 +3,11 @@
 	时间：2017-07-04
 	描述：注册主页面
 -->
+<!--
+	作者：anna
+	时间：2018-03-20
+	描述：UI优化，新增加设置密码选项，数据交互等待测试
+-->
 <!doctype html>
 <html>
 
@@ -15,42 +20,33 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-            <h1 class="mui-title">佰信国际物流协同管理平台--BestLOG8</h1>
-        </header>
-		<!--主页面容器-->
-		<div class="mui-content-padded"><!--  contain-->
-			<!--<div class="logobar">
-				<img src="images/logo.png" />
-			</div>-->
-			<!--主页面内容容器-->
-			<div class="mui-col-xs-9 login">
-				<!--输入框表单-->
-				<form id="inputinfo">
-					<div class="mui-input-row">
-						<label id='用户名'><img src="/images/account.png"></label>
-						<input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名" onfocusout="varifyUserName()" />
-						<!--<span class="mui-icon mui-icon-clear mui-hidden"></span>-->
-					</div>
-					<div class="mui-input-row">
-						<label id='手机号'><img src="/images/phone.png"></label>
-						<input type="text" name="email" class="mui-input-clear" placeholder="请输入手机号" onfocusout="registervalidate()" />
-						<!--<span class="mui-icon mui-icon-clear mui-hidden"></span>-->
-					</div>
-					<div class="mui-input-row">
-						<label id='验证码'><img src="/images/验证码验证.png" style="width: 45px;"></label>
-						<input type="text" name="ps" placeholder="请输入验证码" />
-						<button type="button" id="getpassbtn" class="vertify mui-btn mui-btn-primary">获取验证码</button>
-					</div>
-					<!--<div id="new_atteninfo1">
-						<p class="info"></p>
-					</div>-->
-				</form>
-				<!--下一步按钮-->
-				<button type="button" id='nextStep' class="mui-btn mui-btn-block" style="margin-top: 25%;">下一步</button>
-			</div>
+		<!--主页面内容容器-->
+		<div class="mui-col-xs-9 login" style="padding: 0; 	margin-top: 2.8125rem;">
+			<!--输入框表单-->
+			<form id="inputinfo">
+				<div class="mui-input-row">
+					<label id='用户名'><img src="/images/user.png"></label>
+					<input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名" onfocusout="varifyUserName()" />
+				</div>
+				<div class="mui-input-row">
+					<label id='密码'><img src="/images/password.png"></label>
+					<input type="password" name="password" class="mui-input-password" placeholder="请输入密码" onfocusout="varifyPassword()" />
+				</div>
+				<br />
+				<div class="mui-input-row">
+					<label id='手机号'><img src="/images/phone.png"></label>
+					<input type="text" name="mobileNo" class="mui-input-clear" placeholder="请输入手机号" onfocusout="registervalidate()" />
+				</div>
+				<div class="mui-input-row">
+					<label id='验证码'><img src="/images/code.png" style="width:20px; height: 20px; margin-bottom: 5px; margin-top: 5px;"></label>
+					<input type="text" name="ps" class="mui-input-code" placeholder="请输入验证码" />
+					<button type="button" id="getpassbtn" class="vertify mui-btn mui-btn-primary">获取验证码</button>
+				</div>
+				<div id="new_atteninfo2" style="margin-top: 1rem;"><p class="info"></p></div>
+			</form>
+			<!--下一步按钮-->
+			<button type="button" id='nextStep' class="mui-btn mui-btn-block" style="margin-top: 2.8125rem;">下一步</button>
 		</div>
-
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>
 	<script src="/javascripts/mui.min.js"></script>
@@ -59,16 +55,16 @@
 		var Identify = "";
 
 		function registervalidate() {
-			var emailaddress = $("input[name='email']").val();
-			if(emailaddress != '') {
-				//	        var szReg=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+			var mobileNo = $("input[name='mobileNo']").val();
+			if(mobileNo != '') {
 				var szReg =  /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
-				if(szReg.test(emailaddress)) {
+				if(szReg.test(mobileNo)) {
+					/*document.getElementById("new_atteninfo2").innerHTML = "";*/
 					$.ajax({
 						type: "post",
 						url: "/validateMobileNo",
 						data: {
-							mobileNo: emailaddress,
+							mobileNo: mobileNo,
 						},
 						async: false,
 						success: function(data) {
@@ -76,7 +72,7 @@
 							if(result.result == '0') {
 								document.getElementById("getpassbtn").disabled = false;
 							} else if(result.result == '1') {
-								mui.alert("该手机号已被注册");
+								document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>该手机号已被注册</font>";
 								document.getElementById("getpassbtn").disabled = true;
 							}
 						},
@@ -84,27 +80,26 @@
 							alert("系统服务错误");
 						}
 					});
-					//					document.getElementById("new_atteninfo1").innerHTML = "";
 				} else {
-					mui.alert('手机号格式不正确');
+					document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>手机号格式不正确</font>";
 					document.getElementById("getpassbtn").disabled = true;
-					//					document.getElementById("new_atteninfo1").innerHTML = "<font color='#FF8C69'>手机号码格式错误</font>";
 				}
 			} else {
+				document.getElementById("new_atteninfo2").innerHTML = "";
 				document.getElementById("getpassbtn").disabled = true;
 			}
 		}
 
 		function varifyUserName() {
 			var username = $("input[name='username']").val();
-			var email = $("input[name='email']").val();
+			var mobileNo = $("input[name='mobileNo']").val();
 			if(username != '') {
 				$.ajax({
 					type: "post",
 					url: "/saveusername",
 					data: {
 						username: username,
-						telephone: email,
+						telephone: mobileNo,
 					},
 					async: false,
 					success: function(data) {
@@ -112,9 +107,34 @@
 						if(result.result == '0')
 							document.getElementById("nextStep").disabled = false;
 						else if(result.result == '1') {
-							mui.alert("用户名已存在");
+							document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>用户名已存在</font>";
 							document.getElementById("nextStep").disabled = true;
 						}
+					},
+					error: function() {
+						alert("系统服务错误");
+					}
+				});
+			} else {
+				document.getElementById("new_atteninfo2").innerHTML = "";
+				document.getElementById("nextStep").disabled = true;
+			}
+		}
+		
+		function varifyPassword() {
+			var password = $("input[name='password']").val();
+			if(password != '') {
+				$.ajax({
+					type: "post",
+					url: "/saveuserpassword",
+					data: {
+						password:password,
+					},
+					async: false,
+					success: function(data) {
+						var result = eval(data);
+						if(result.result=='0')
+							document.getElementById("nextStep").disabled = false;
 					},
 					error: function() {
 						alert("系统服务错误");
@@ -141,29 +161,9 @@
 		$(document).ready(function() {
 			document.getElementById("getpassbtn").disabled = true;
 			document.getElementById("nextStep").disabled = true;
-			//			$('.login button').eq(0).click(function(){
-			//				var emailaddress = $("input[name='email']").val();
-			//				$.ajax({
-			//					type:"post",
-			//					url:"/identifyCode",
-			//					data:{
-			//						emailaddress:emailaddress,
-			//					},
-			//					async:true,
-			//					success:function(data){
-			//						var result = eval(data).result;
-			//						alert(result);
-			//						Identify = result;
-			////						if(result.result=='1'){}
-			//					},
-			//					error:function(){
-			//						mui.alert("系统服务错误");
-			//					}
-			//				});
-			//			})
 			$('.login button').eq(0).click(function() {
 				if(issend) { 
-					var mobileNo = $("input[name='email']").val();
+					var mobileNo = $("input[name='mobileNo']").val();
 					var t = 60;
 					issend = false; 
 					$.ajax({
@@ -196,62 +196,19 @@
 					});
 				}
 			})
-
-			//			$('.login button').eq(1).click(function() {
-			//				var check = true;
-			//				mui("#inputinfo input").each(function() {
-			//					//若当前input为空，则alert提醒 
-			//					if(!this.value || this.value.trim() == "") {
-			//						var label = this.previousElementSibling;
-			//						mui.alert("不允许为空");
-			//						check = false;
-			//						return false;
-			//					}
-			//				}); //校验通过，继续执行业务逻辑 
-			//				if(check) {
-			//					var username = $("input[name='username']").val();
-			//					var email = $("input[name='email']").val();
-			//					var ps = $("input[name='ps']").val();
-			//					if(ps == Identify) {
-			//						$.ajax({
-			//							type: "post",
-			//							url: "/saveusername",
-			//							data: {
-			//								username: username,
-			//								telephone: email,
-			//							},
-			//							async: true,
-			//							success: function(data) {
-			//								var result = eval(data);
-			//								if(result.result == '0')
-			//									location.href = "/registerSetPw";
-			//								else if(result.result == '1')
-			//									mui.alert("用户名已存在");
-			//							},
-			//							error: function() {
-			//								alert("系统服务错误");
-			//							}
-			//						});
-			//					} else {
-			//						mui.alert("验证码错误");
-			//					}
-			//				}
-			//			})
-
 			$('.login button').eq(1).click(function() {
 				var check = true;
 				mui("#inputinfo input").each(function() {
-					//若当前input为空，则alert提醒 
 					if(!this.value || this.value.trim() == "") {
 						var label = this.previousElementSibling;
-						mui.alert(label.id + "不允许为空");
+						document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>不允许为空</font>";
 						check = false;
 						return false;
 					}
 				}); //校验通过，继续执行业务逻辑 
 				if(check) {
 					var username = $("input[name='username']").val();
-					var mobileNo = $("input[name='email']").val();
+					var mobileNo = $("input[name='mobileNo']").val();
 					var ps = $("input[name='ps']").val();
 					$.ajax({
 						type: "post",
@@ -264,10 +221,39 @@
 						async: true,
 						success: function(data) {
 							var result = eval(data).result;
-							if(result == '1')
-								location.href = "/registerSetPw";
-							else if(result == '0')
-								mui.alert("验证码错误");
+							if(result == '0')
+								document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>验证码错误</font>";
+						},
+						error: function() {
+							alert("系统服务错误");
+						}
+					});
+
+				}
+			})
+			$('.login button').eq(2).click(function() {
+				var check = true;
+				mui("#inputinfo input").each(function() { 
+					if(!this.value || this.value.trim() == "") {
+						var label = this.previousElementSibling;
+						document.getElementById("new_atteninfo2").innerHTML = "<font color='#df3c01'>不允许为空</font>";
+						check = false;
+						return false;
+					}
+				}); //校验通过，继续执行业务逻辑 
+				if(check) {
+					var password = $("input[name='password']").val();
+					$.ajax({
+						type: "post",
+						url: "/saveuserpassword",
+						data: {
+							password:password,
+						},
+						async: true,
+						success: function(data) {
+							var result = eval(data).result;
+							if(result == '0')
+								location.href = "/registerCominfo";
 						},
 						error: function() {
 							alert("系统服务错误");
@@ -278,5 +264,4 @@
 			})
 		})
 	</script>
-
 </html>

@@ -1,3 +1,8 @@
+<!--
+	作者：anna
+	时间：2018-03-26
+	描述：报关行个人中心UI优化
+-->
 <!DOCTYPE html>
 <html>
 
@@ -15,35 +20,33 @@
 
 	<body>
 		<div class="top-bar">
-			<div class="profilePhoto"><img src="/images/account (1).png" /></div><br />
-			<span><%= username%>(<%= showname%>)</span>
-			<span class="leftshadow"></span>
-			<span class="rightshadow"></span>
-			<div class="triangle-up"></div>
+			<div class="profilePhoto">
+				<img src="/images/declare.png" />
+			</div>
+			<br />
+			<span><%= showname%> <%= username %></span>
 		</div>
-		<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 2rem;;">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/我的订单 (1).png "/>
-				<a href="stateback1" class="mui-navigate-right">状态反馈</a>
-			</li>
+		
+		<ul class="personal-content" style="border-bottom: solid .1rem #ebebeb;">
+			<div class="personal-item">
+				<img src="/images/feedback.png "/><br />
+				<a href="stateback1">状态反馈</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/search.png" /><br />
+				<a href="freightQuery">运价查询</a>
+			</div>
 		</ul>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/trade.png" />
-				<a href="freightQuery" class="mui-navigate-right">运价查询</a>
-			</li>
-		</ul>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png" />
-				<a id="shenfen" class="mui-navigate-right"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
-			</li>
-		</ul>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell function-item">
-				<img src="/images/注册.png" />
-				<a href="logout" class="mui-navigate-right">退出</a>
-			</li>
+		
+		<ul class="personal-content" style="margin-top: -1rem;">
+			<div class="personal-item">
+				<img src="/images/bind.png" /><br />
+				<a id="shenfen" style="font-size: 8px;"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/exit.png" /><br />
+				<a href="logout">退出</a>
+			</div>
 		</ul>
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>
