@@ -40,7 +40,7 @@
 				</div>
 				<div class="mui-input-row" style="margin-top: 1.1rem;">
 					<label><img src="/images/password.png"></label>
-					<input type="password" name="newpassword" class="mui-input-password" placeholder="请输入新密码" onfocusout="varifyNewPassword()" />
+					<input type="password" name="newpassword" class="mui-input-password" placeholder="请输入新密码" />
 				</div>
 				<div id="new_atteninfo1" style="margin-top: 1rem;">
 					<p class="info"></p>
@@ -54,7 +54,8 @@
 		<script type="text/javascript">
 			mui.init()
 			var Identify = "";
-			
+
+			//判断手机号是否被注册过
 			function registervalidate() {
 				var status = 0;
 				var mobileNo = $("input[name='mobileNo']").val();
@@ -92,7 +93,7 @@
 					document.getElementById("getpassbtn").disabled = true;
 				}
 			}
-
+			//判断用户名是否被注册过
 			function varifyUserName() {
 				var username = $("input[name='username']").val();
 				var mobileNo = $("input[name='mobileNo']").val();
@@ -124,34 +125,8 @@
 				}
 			}
 
-			function varifyNewPassword() {
-				var password = $("input[name='newpassword']").val();
-				if(password != '') {
-					$.ajax({
-						type: "post",
-						url: "/saveuserpassword",
-						data: {
-							password: password,
-						},
-						async: false,
-						success: function(data) {
-							var result = eval(data);
-							console.log(result);
-							console.log(password);
-							if(result.result == '1'){
-								document.getElementById("submit").disabled = false;
-							}
-						},
-						error: function() {
-							alert("系统服务错误");
-						}
-					});
-				} else {
-					document.getElementById("submit").disabled = true;
-				}
-			}
-			
 			var  issend = true; 
+			//发送验证码倒计时60秒后方能重新发送
 			function  update_a(num, t)  {      
 				var  get_code = document.getElementById('getpassbtn');     
 				if(num  ==  t)  {          
@@ -167,6 +142,7 @@
 			$(document).ready(function() {
 				document.getElementById("getpassbtn").disabled = true;
 
+				//button 0 获取验证码
 				$('.login button').eq(0).click(function() {
 					if(issend) { 
 						var mobileNo = $("input[name='mobileNo']").val();
@@ -204,7 +180,7 @@
 				})
 				$('.login button').eq(1).click(function() {
 					var check = true;
-					mui("#inputinfo input").each(function() { 
+					mui("#inputinfo input").each(function() {
 						if(!this.value || this.value.trim() == "") {
 							var label = this.previousElementSibling;
 							document.getElementById("new_atteninfo1").innerHTML = "<font color='#df3c01'>不允许为空</font>";
@@ -216,13 +192,15 @@
 						var mobileNo = $("input[name='mobileNo']").val();
 						var username = $("input[name='username']").val();
 						var ps = $("input[name='ps']").val();
-						
+						console.log(ps)
+						console.log(mobileNo)
+						console.log(username)
 						$.ajax({
 							type: "post",
 							url: "/varifyCode",
 							data: {
 								mobileNo: mobileNo,
-								username:username,
+								username: username,
 								Code: ps,
 							},
 							async: false,
@@ -237,54 +215,62 @@
 							}
 						});
 						console.log(Identify);
-						if(Identify != 0) {
+						if(Identify != 1) {
 							document.getElementById("new_atteninfo1").innerHTML = "<font color='#df3c01'>验证码错误</font>";
 						} else {
-							$.ajax({
-								type: "get",
-								url: "/userForget",
-								data: {
-									telephone: mobileNo,
-									username: username,
-								},
-								async: true,
-								success: function(data) {
-									var result = eval(data);
-									if(result.result == '1')
-										document.getElementById("new_atteninfo1").innerHTML = "<font color='#df3c01'>用户名与手机号不匹配</font>";
-								},
-								error: function() {
-									alert("系统服务错误");
-								}
-							});
+							//							$.ajax({
+							//								type: "get",
+							//								url: "/userForget",
+							//								data: {
+							//									telephone: mobileNo,
+							//									username: username,
+							//								},
+							//								async: true,
+							//								success: function(data) {
+							//									var result = eval(data);
+							//									if(result.result == '1')
+							//										document.getElementById("new_atteninfo1").innerHTML = "<font color='#df3c01'>用户名与手机号不匹配</font>";
+							//								},
+							//								error: function() {
+							//									alert("系统服务错误");
+							//								}
+							//							});
 						}
 					}
-				})
-				$('.login button').eq(2).click(function() {
 					var check = true;
 					mui("#inputinfo input").each(function() {
 						if(!this.value || this.value.trim() == "") {
 							var label = this.previousElementSibling;
-								document.getElementById("new_atteninfo1").innerHTML = "<font color='#df3c01'>不允许为空</font>";
+							document.getElementById("new_atteninfo1").innerHTML = "<font color='#df3c01'>不允许为空</font>";
 							check = false;
 							return false;
 						}
 					}); //校验通过，继续执行业务逻辑 
 					if(check) {
 						var password = $("input[name='newpassword']").val();
+						var mobileNo= $("input[name='mobileNo']").val();
+						var username = $("input[name='username']").val();
+						console.log(password)
+						console.log(mobileNo)
+						console.log(username)
 						$.ajax({
 							type: "post",
 							url: "/reSetpassword",
 							data: {
+								username: username,
+								mobileNo: mobileNo,
 								password: password,
 							},
 							async: true,
 							success: function(data) {
 								var result = eval(data);
+								console.log('reSet')
 								console.log(result);
 								if(result.result == '1') {
 									mui.toast("修改成功");
 									mui.openWindow('/loginMain');
+								} else {
+									mui.toast('密码修改失败')
 								}
 							},
 							error: function() {

@@ -592,7 +592,7 @@ router.post('/varifyCode', function(req, res, next) {
 	var parameter = req.body;
 	var username = parameter.username;
 	var mobileNo = parameter.mobileNo;
-	var code = parameter.code;
+	var code = parameter.Code;
 	Userreg.IsValidCode(mobileNo, code, function(result) {
 		if(result == 1) {
 			var user = {
