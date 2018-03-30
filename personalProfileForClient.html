@@ -1,0 +1,96 @@
+<!--
+	作者：lyj
+	时间：2017-07-13
+	描述：客户个人中心
+-->
+<!--
+	作者：anna
+	时间：2018-03-26
+	描述：UI优化
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title></title>
+	    <script src="/javascripts/mui.min.js"></script>
+	    <link rel="stylesheet" href="/stylesheets/mui.min.css" />
+	    <link rel="stylesheet" href="/stylesheets/profile.css" />
+	    <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	    </script>
+	</head>
+	<body>
+		<div class="top-bar">
+			<div class="profilePhoto">
+				<img src="/images/exUser.png" />
+			</div>
+			<br />
+			<span><%= showname%> <%= username %></span>
+		</div>
+		
+		<ul class="personal-content">
+			<div class="personal-item">
+				<img src="/images/online.png "/><br />
+				<a href="placeShippingOrder">在线下单</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/list.png" /><br />
+				<a href="shippingOrder">订单列表</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/order_trace.png" /><br />
+				<a href="shipmenttracking">订单跟踪</a>
+			</div>
+		</ul>
+		<ul class="personal-content" style="margin-top:-1rem; border-bottom: solid .1rem #ebebeb;">
+			<div class="personal-item" style="margin-left:-6rem;">
+				<img src="/images/bill.png "/><br />
+				<a href="billconfirm">账单确认</a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/search.png" /><br />
+				<a href="freightQuery">运价查询</a>
+			</div>
+		</ul>
+		<ul class="personal-content" style="margin-top: -1rem;">
+			<div class="personal-item" style="margin-left:-6rem;">
+				<img src="/images/bind.png" /><br />
+				<a id="shenfen" style="font-size: 8px;"><%= openid==null || openid=='' ? '绑定' : '解绑' %></a>
+			</div>
+			<div class="personal-item">
+				<img src="/images/exit.png" /><br />
+				<a href="logout">退出</a>
+			</div>
+		</ul>
+	</body>
+	<script src="/javascripts/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	    mui.init();
+	      
+	    $(document).ready(function(){
+			$('#shenfen').click(function(){
+							$.ajax({
+							type:"post",
+							url:"/bindingwx",
+							data:{},
+							async:true,
+							success:function(data){
+								var result = eval(data);
+								if(result.result==1)
+								{
+									if($('#shenfen').text()=='绑定')
+									    $('#shenfen').text('解绑');
+									else
+									    $('#shenfen').text('绑定');
+								}
+							},
+							error:function(){
+								mui.alert($('#shenfen').text()+"出现错误");
+							}
+						});
+		})
+		})
+	</script>
+</html>

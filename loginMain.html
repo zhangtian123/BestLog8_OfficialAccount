@@ -1,0 +1,122 @@
+<!--
+	作者：lyj,lcf
+	时间：2017-07-04
+	描述：登录主页面
+-->
+<!--
+	作者：anna
+	时间：2018-03-19
+	描述：UI优化
+-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link href="/stylesheets/index.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!-- logo -->
+		<div class="logo">
+			<img src="/images/logo.jpg" />
+		</div>
+		<!--主页面内容容器-->
+		<div class="mui-col-xs-9 login">
+			<!--输入框表单-->
+			<form>
+				<div class="mui-input-row">
+					<label><img src="/images/user.png"></label>
+					<input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名" />
+				</div>
+				<div class="mui-input-row">
+					<label><img src="/images/password.png"></label>
+					<input type="password" name="password" class="mui-input-password" placeholder="请输入密码" />
+				</div>
+			</form>
+			<!--下一步按钮-->
+			<button type="button" id="loginbtn" class="mui-btn mui-btn-block">登录</button>
+			<a href="/registerMain" style="float: left;">立即注册</a>
+			<a href="/loginForgetPw" style="float: right;">忘记密码?</a>
+		</div>
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			$(document).ready(function() {
+				$('.login button').eq(0).click(function() {
+					//	$('.login').on('tap','#loginbtn',function(){
+					var check = true;
+					mui("form input").each(function() {
+						//若当前input为空，则alert提醒 
+						if(!this.value || this.value.trim() == "") {
+							var label = this.previousElementSibling;
+							mui.alert("不允许为空");
+							check = false;
+							return false;
+						}
+					}); //校验通过，继续执行业务逻辑 
+					if(check) {
+						var username = $("input[name='username']").val();
+						var password = $("input[name='password']").val();
+						$.ajax({
+							type: "post",
+							url: "/userlogin",
+							data: {
+								username: username,
+								password: password,
+							},
+							async: true,
+							success: function(data) {
+								var result = eval(data);
+								if(result.result == '-1')
+									mui.alert("用户名不正确");
+								else if(result.result == '1')
+									mui.alert("禁止登陆");
+								else if(result.result == '2')
+									mui.alert("密码错误");
+								else if(result.result == '3')
+									mui.alert("未审核");
+								else {
+									if(result.result.USERFLAG == "USER") {
+										mui.openWindow({
+											url: 'manager',
+											id: 'manager'
+										});
+									} else if(result.result.USERFLAG == "SUPPLIER") {
+										mui.openWindow({
+											url: 'third',
+											id: 'third'
+										});
+									} else if(result.result.USERFLAG == "DECLARATION") {
+										mui.openWindow({
+											url: 'declaration',
+											id: 'declaration'
+										});
+									} else if(result.result.USERFLAG == "TRAILER") {
+										mui.openWindow({
+											url: 'trailer',
+											id: 'trailer'
+										});
+									} else {
+										mui.openWindow({
+											url: 'client',
+											id: 'client'
+										});
+									}
+								}
+							},
+							error: function() {
+								alert("系统服务错误");
+							}
+						});
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

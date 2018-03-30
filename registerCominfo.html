@@ -1,0 +1,126 @@
+<!--
+	作者：lcf
+	时间：2017-07-06
+	描述：注册申请详情
+-->
+<!--
+	作者：anna
+	时间：2018-03-26
+	描述：UI优化，但数据交互需重新设计
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link href="/stylesheets/mui.min.css" rel="stylesheet" />
+		<link href="/stylesheets/index.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-inner-wrap" style="overflow: scroll;">
+			<div class="mui-col-xs-9 login" style="padding: 0; margin-top: 1rem;">
+				<!--输入框表单-->
+				<form id="inputinfo">
+					<div class="mui-input-row" style="border-bottom: hidden; margin-left: -2.4rem;">
+						<label><img src="/images/company.png"></label>
+						<input type="text" class="mui-input-cominfo" placeholder="企业名称" disabled="disabled" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.6rem;">
+						<input type="text" class="mui-input-clear" placeholder="中文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.5rem;">
+						<input type="text" class="mui-input-clear" placeholder="英文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+
+					<div class="mui-input-row" style="border-bottom: hidden; margin-left: -2.4rem;">
+						<label><img src="/images/address.png"></label>
+						<input type="text" class="mui-input-cominfo" placeholder="企业地址" disabled="disabled" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.6rem;">
+						<input type="text" class="mui-input-clear" placeholder="中文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.5rem;">
+						<input type="text" class="mui-input-clear" placeholder="英文" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+
+					<div class="mui-input-row" style="border-bottom: hidden; margin-left: -2.4rem;">
+						<label><img src="/images/info.png"></label>
+						<input type="text" class="mui-input-cominfo" placeholder="其他信息" disabled="disabled" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.6rem;">
+						<input type="text" class="mui-input-clear" placeholder="纳税号" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+					<div class="mui-input-row" style="margin-top: -0.5rem;">
+						<input type="text" class="mui-input-clear" placeholder="联系邮箱" style="left: -0.7rem; margin-bottom: 0.5rem; border: 0; font-size: 14px;" />
+					</div>
+					<div class="detail-normal second-line" style="margin-top: 2.6rem;">
+						<img src="../images/camera.png" class="other-part-img img-margin" />
+						<p>拍照上传资质材料</p>
+					</div>
+				</form>
+				<!--提交按钮-->
+				<button type="button" id='submit' class="mui-btn mui-btn-block" style="margin-top: 2.8125rem;">提交</button>
+			</div>
+		</div>
+		
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		<script src="/javascripts/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			$(document).ready(function(){
+				$('.register button').eq(0).click(function(){
+					var check = true;
+					mui("#inputinfo input").each(function() {
+					//若当前input为空，则alert提醒 
+					if(!this.value || this.value.trim() == "") {
+						var label = this.previousElementSibling;
+						mui.alert("不允许为空");
+						check = false;
+						return false;
+					}
+					}); //校验通过，继续执行业务逻辑 
+					if(check){
+						var ComChiname = $("input[name='ComChiname']").val();
+						var ComEngname = $("input[name='ComEngname']").val();
+						var TaxNumber = $("input[name='TaxNumber']").val();
+						var ComChiadd = $("input[name='ComChiadd']").val();
+						var ComEngadd = $("input[name='ComEngadd']").val();
+						var ComEmail = $("input[name='ComEmail']").val();
+						$.ajax({
+							type:"post",
+							url:"/saveuserCom",
+							data:{
+								COMNAMECN: ComChiname,
+								COMNAME: ComEngname,
+								TAXNUMBER: TaxNumber,
+								COMADDRESS: ComChiadd,
+								COMADDRESSEN: ComEngadd,
+								COMEMAIL: ComEmail,
+							},
+							async:true,
+							success:function(data){
+								var result = eval(data);
+								if(result.result=='1')
+								{
+									mui.openWindow('/takephoto');
+								}
+							},
+							error:function(){
+								alert("系统服务错误");
+							}
+						});
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>
