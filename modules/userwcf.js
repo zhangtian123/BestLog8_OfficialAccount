@@ -130,3 +130,26 @@ exports.ChangePwd = function(UserCode, Email,NewPwd, callback){
 		});
     })
 }
+exports.ChangeNewPwd = function(UserCode, MobileNo, ,NewPwd, callback){
+	var addstring = '<ContactCompanyBll_SaveNewPassWord xmlns="http://tempuri.org/">' +
+	                       '<UserCode>'+UserCode+'</UserCode>' +
+	                       '<MobileNo, >'+MobileNo, +'</MobileNo, >' +
+	                       '<NewPwd>'+NewPwd+'</NewPwd>' +
+	                     '</ContactCompanyBll_SaveNewPassWord>';
+    var messagestring = "http://tempuri.org/IWebAPIService/ContactCompanyBll_SaveNewPassWord";
+    Basic.BasicConnect(addstring, messagestring,function(response){
+    	xmlParser.parseString(response, function (err, result) {
+			var str1=result["s:Envelope"]["s:Body"];
+			var status = str1.ContactCompanyBll_SaveNewPassWordResponse.ContactCompanyBll_SaveNewPassWordResult;
+			if(status=='true')
+			{
+				response = 1;
+			}
+			else
+			{
+				response=0;
+			}
+			callback(response);
+		});
+    })
+}

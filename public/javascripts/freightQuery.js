@@ -98,7 +98,7 @@ $(document).ready(function(){
 				async:true,
 				success:function(data){
 					
-					alert($('#port-info').text);
+//					alert($('#port-info').text);
 					var index=0;
 					var aDiv = document.body.querySelector('.query-items');
 					//var oDiv = document.getElementsByClassName('maincontent')[0];
@@ -154,7 +154,7 @@ $(document).ready(function(){
 	});
 	$('body').on("tap",'#renderQuote',function() {
 		var n = $(this).parents('#card').index();
-		alert(n);
+//		alert(n);
 		var text3 = $(".maincontent").find("#card:eq("+n+")").find('.getBILLID').eq(0).val();
 		mui.openWindow('/renderQuote?id='+text3);
 	})
