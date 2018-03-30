@@ -271,31 +271,31 @@ var Inner = function(id, billid, currency, money, deal, submittime, latesttime, 
 		'<!--内容区-->' +
 		'<div class="info-content">' +
 		'<div class="item">' +
-		'<span class="item-title">请款金额：</span>' +
+		'<span class="item-title">请款金额</span>' +
 		'<span id="totalprice" class="info-r">' + currency + ' ' + money + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">往来单位：</span>' +
+		'<span class="item-title">往来单位</span>' +
 		'<span  class="info-r">' + deal + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">提交日期：</span>' +
+		'<span class="item-title">提交日期</span>' +
 		'<span  class="info-r">' + submittime.replace('T', ' ').substr(0, submittime.length - 3) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">最迟付款日：</span>' +
+		'<span class="item-title">最迟付款日</span>' +
 		'<span  class="info-r">' + latesttime.replace('T', ' ').substr(0, latesttime.length - 3) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">结算方式：</span>' +
+		'<span class="item-title">结算方式</span>' +
 		'<span  class="info-r">' + way + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">开户行：</span>' +
+		'<span class="item-title">开户行</span>' +
 		'<span  class="info-r">' + (branch == null ? '' : branch) + '</span>' +
 		'</div>' +
 		'<div class="item">' +
-		'<span class="item-title">银行账号：</span>' +
+		'<span class="item-title">银行账号</span>' +
 		'<span  class="info-r">' + (account == null ? '' : account) + '</span>' +
 		'</div>' +
 		'</div>' +

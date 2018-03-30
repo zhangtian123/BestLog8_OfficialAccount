@@ -267,9 +267,10 @@ label {
 /*虚线*/
 
 .dashLine {
-	width: 95%;
+	width: 94%;
 	border: 1px dashed #ebebeb;
-	padding: 0 1px;
+	margin-left:1%;
+	margin-right: 1%;
 }
 
 .pointer {
