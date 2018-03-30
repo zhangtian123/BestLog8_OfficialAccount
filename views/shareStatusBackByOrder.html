@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>订单跟踪状态返馈</title>
+    <title>订单跟踪状态反馈</title>
     <script src="/javascripts/mui.min.js"></script>
     <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/stylesheets/base.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/externalUser.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/orderTracing.css" />
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
@@ -18,16 +20,14 @@
 </head>
 <body>
 	<!-- 侧滑导航根容器 -->
-<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-    <!-- 主页面容器 -->
-    <div class="mui-card">
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in" >
+    <div class="mui-card" style="margin: 13px 8px 0 8px">
     	<div class="mui-card-header"><%= tooltips%></div>
     	<div class="mui-card-content" style="display:<%= display%>">
     		<img src="/images/barcode.jpg" style="width:64px;height:64px;"/>
     	</div>
     </div>
   	<div class="mui-inner-wrap">
-    <!-- 主页面内容容器 -->
 	    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 	      <div class="mui-scroll">
 	      	<div class="maincontent">
@@ -87,7 +87,7 @@
 					if(flag<3)
 					{
 						var oDiv = document.createElement('div');
-						oDiv.className = 'mui-card content-item';
+						oDiv.id = 'card';
 						Inner(value.ORDERNO,value.ORDERID,value.CUSTOMSCOMPANY,value.CUSTOMSOP,value.SONO,value.HBLNO,value.CNTRNUMSTR,oDiv);
 						aDiv.appendChild(oDiv);
 						flag++;
