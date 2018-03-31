@@ -19,6 +19,7 @@ var request = require('request');
 var auth = require('../modules/auth');
 var sign = require('../util/sign');
 var env = require('../modules/env');
+var formidable = require('formidable');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -707,6 +708,7 @@ router.post('/saveusername', function(req, res, next) {
 	var telephone = parameter.telephone;
 	//console.log(username+telephone);
 	Userreg.CheckisExist(username, null, function(result) {
+		
 		res.send({
 			result: result
 		});
@@ -759,7 +761,7 @@ router.post('/saveuserpassword', function(req, res, next) {
 		req.session.user.PASSWORD = password;
 	}
 	res.send({
-		result: 0
+		result: 1
 	});
 });
 
