@@ -69,13 +69,13 @@
 						</div>
 						<div class="choosebtn-border">
 							<div class="choosebtn-bg">
-								<input type="file" id="choose" class="choosebtn" onchange="showimage();" />
+								<input type="file" id="choose" class="choosebtn" onchange="showimage()" />
 							</div>
 						</div>
 						<img class="newImg" />
 					</div>
-						<p>拍照或选择图片上传资质材料</p>
-					
+					<p>拍照或选择图片上传资质材料</p>
+
 				</form>
 				<!--提交按钮-->
 				<button type="button" id='submit' class="mui-btn mui-btn-block" style="margin-top: 2.8125rem;">提交</button>
@@ -100,7 +100,7 @@
 				}
 			}
 
-			function handle() {
+			/*function handle() {
 				let file = document.getElementById("choose").files[0];
 				let formData = new FormData();
 				formData.append("avatar", file);
@@ -119,34 +119,40 @@
 						} else {
 							mui.alert("系统服务错误");
 						}
-						//window.history.back(-1); 
-						/*成功之后可以跳转上一页啦*/
 					},
 					error: function() {
 						mui.alert("系统服务错误");
 					}
 				})
-			}
+			}*/
 
 			$(document).ready(function() {
-				$('.register button').eq(0).click(function() {
+				$('button').eq(0).click(function() {
 					var check = true;
-					mui("#inputinfo input").each(function() {
-						//若当前input为空，则alert提醒 
-						if(!this.value || this.value.trim() == "") {
-							var label = this.previousElementSibling;
-							mui.alert(label.id + "不允许为空");
-							check = false;
-							return false;
-						}
-					}); //校验通过，继续执行业务逻辑 
+					var ComChiname = $("input[name='ComChiname']").val();
+					var ComEngname = $("input[name='ComEngname']").val();
+					var TaxNumber = $("input[name='TaxNumber']").val();
+					var ComChiadd = $("input[name='ComChiadd']").val();
+					var ComEngadd = $("input[name='ComEngadd']").val();
+					var ComEmail = $("input[name='ComEmail']").val();
+					if(ComChiname.trim() == "" && ComEngname.trim() == "") {
+						mui.alert("企业名称不允许为空");
+						check = false;
+						return false;
+					} else if(ComChiadd.trim() == "" && ComEngadd.trim() == "") {
+						mui.alert("企业地址不允许为空");
+						check = false;
+						return false;
+					} else if(TaxNumber.trim() == "") {
+						mui.alert("纳税号不允许为空");
+						check = false;
+						return false;
+					} else if(ComEmail.trim() == "") {
+						mui.alert("联系邮箱不允许为空");
+						check = false;
+						return false;
+					}
 					if(check) {
-						var ComChiname = $("input[name='ComChiname']").val();
-						var ComEngname = $("input[name='ComEngname']").val();
-						var TaxNumber = $("input[name='TaxNumber']").val();
-						var ComChiadd = $("input[name='ComChiadd']").val();
-						var ComEngadd = $("input[name='ComEngadd']").val();
-						var ComEmail = $("input[name='ComEmail']").val();
 						$.ajax({
 							type: "post",
 							url: "/saveuserCom",
@@ -158,11 +164,34 @@
 								COMADDRESSEN: ComEngadd,
 								COMEMAIL: ComEmail,
 							},
-							async: true,
+							async: false,
 							success: function(data) {
+								console.log("进来了");
 								var result = eval(data);
 								if(result.result == '1') {
-									mui.openWindow('/takephoto');
+									let file = document.getElementById("choose").files[0];
+									let formData = new FormData();
+									formData.append("avatar", file);
+									$.ajax({
+										type: 'POST',
+										url: '/profile',
+										data: formData,
+										async: false,
+										cache: false,
+										contentType: false,
+										processData: false,
+										success: function(data) {
+											var result = eval(data);
+											if(result.result == 0) {
+												mui.openWindow('/registerWait');
+											} else {
+												mui.alert("系统服务错误");
+											}
+										},
+										error: function() {
+											mui.alert("系统服务错误");
+										}
+									})
 								}
 							},
 							error: function() {
