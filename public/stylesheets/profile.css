@@ -16,6 +16,9 @@ body {
 	text-align: center;
 	box-shadow: 0rem 0.2rem 0.2rem 1px #a3c5eadb;
 	border-radius: 0 0 65% 65%;
+	background: url(../images/bg.png);
+    background-position: 0;
+    background-size: 100%;
 	}
 .profilePhoto{
 	position: relative;
