@@ -204,33 +204,60 @@
 				mui("#inputinfo input").each(function() {
 					if(!this.value || this.value.trim() == "") {
 						var label = this.previousElementSibling;
-						mui.alert(label.id+ "不允许为空");
+						mui.alert(label.id + "不允许为空");
 						check = false;
 						return false;
 					}
 				}); //校验通过，继续执行业务逻辑 
 				if(check) {
-					var password = $("input[name='password']").val();
+					var username = $("input[name='username']").val();
+					var mobileNo = $("input[name='mobileNo']").val();
+					var ps = $("input[name='ps']").val();
 					$.ajax({
 						type: "post",
-						url: "/saveuserpassword",
+						url: "/varifyCode",
 						data: {
-							password: password,
+							mobileNo: mobileNo,
+							username: username,
+							Code: ps,
 						},
-						async: true,
+						async: false,
 						success: function(data) {
 							var result = eval(data).result;
-							console.log(result);
-							if(result == '1') {
-								location.href = "/registerCominfo";
-							} else {
-								mui.alert("验证码错误");
-							}
+							alert(result);
+							Identify = result;
+							console.log(Identify);
 						},
 						error: function() {
-							alert("系统服务错误");
+							mui.alert("系统服务错误");
 						}
 					});
+					if(Identify != 1) {
+						mui.alert("验证码错误");
+					} else {
+						var password = $("input[name='password']").val();
+						$.ajax({
+							type: "post",
+							url: "/saveuserpassword",
+							data: {
+								password: password,
+							},
+							async: true,
+							success: function(data) {
+								var result = eval(data).result;
+								console.log(result);
+								if(result == '1') {
+									location.href = "/registerCominfo";
+								} else {
+									mui.alert("验证码错误");
+								}
+							},
+							error: function() {
+								alert("系统服务错误");
+							}
+						});
+
+					}
 
 				}
 			})
