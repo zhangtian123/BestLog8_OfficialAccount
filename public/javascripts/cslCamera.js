@@ -4,7 +4,7 @@ $.Pgater=(function(){
 	if(iswx){
 		var File=$("<input type='file' id='csl_gater_file' accept='image/*' capture='camera' multiple='multiple'>");
 	}else{
-		var File=$("<input type='file' id='csl_gater_file' accept='image/*' multiple='multiple'>");
+		var File=$("<input type='file' id='csl_gater_file' accept='image/*' capture='camera' multiple='multiple'>");
 	};
 	File.css('display','none');
 	return function(target,callBack){
