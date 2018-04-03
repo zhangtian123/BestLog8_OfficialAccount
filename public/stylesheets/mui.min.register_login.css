@@ -1477,14 +1477,14 @@ input[type=submit]:enabled:active {
 
 .mui-bar .mui-input-row .mui-input-clear~.mui-icon-clear,
 .mui-bar .mui-input-row .mui-input-speech~.mui-icon-speech {
-	top: 0;
-	right: 12px;
+	/*top: 1.5rem;
+	right: 12px;*/
 }
 
 .mui-bar.mui-bar-header-secondary .mui-input-row .mui-input-clear~.mui-icon-clear,
 .mui-bar.mui-bar-header-secondary .mui-input-row .mui-input-speech~.mui-icon-speech {
-	top: 0;
-	right: 0;
+	/*top: 0;
+	right: 0;*/
 }
 
 .mui-bar .mui-segmented-control {
@@ -2543,22 +2543,24 @@ select:focus {
 
 .mui-input-row label {
 	font-family: 'Helvetica Neue', Helvetica, sans-serif;
-	line-height: 1.1;
+	/*line-height: 1.1;*/
 	float: left;
-	width: 38%;
-	padding: 11px 5px;
+	width: 30px;
+	/*padding: 11px 5px;*/
 }
 
 .mui-input-row label~input,
 .mui-input-row label~select,
 .mui-input-row label~textarea {
-	float: right;
+	float: left;
 	width: 60%;
-	margin-bottom: 0;
-	padding-bottom: 0.3rem;
+	padding: 0;
 	border: 0;
 	color: #79797a;
-	padding-left: 5px;
+	font-size: 16px;
+	font-family:"微软雅黑";
+	margin-left: 4.4rem;
+	/*margin-bottom: 0.6rem;*/
 }
 
 .mui-input-clear::-webkit-input-placeholder,
@@ -2655,8 +2657,9 @@ select:focus {
 	font-size: 20px;
 	position: absolute;
 	right: 0;
-	width: 30px;
-	height: 30px;
+	float: right;
+	width: 25px;
+	height: 25px;
 	text-align: center;
 	color: #a8a8a8;
 }
@@ -2664,11 +2667,7 @@ select:focus {
 .mui-input-row .mui-input-clear~.mui-icon-clear.mui-active,
 .mui-input-row .mui-input-password~.mui-icon-eye.mui-active,
 .mui-input-row .mui-input-speech~.mui-icon-speech.mui-active {
-	/*color: #007aff;*/
-	content: url(../images/eye-open.png);
-	width: 20px;
-	height: 20px;
-	right: 5px;
+	content: url(/images/eye-open.png);
 }
 
 .mui-input-row .mui-input-speech~.mui-icon-speech {
@@ -4554,7 +4553,7 @@ body>.mui-progressbar {
 }
 
 .mui-icon-eye:before {
-	content: url(../images/eye-close.png);
+	content: url(/images/eye-close.png);
 }
 
 .mui-icon-arrowup:before {

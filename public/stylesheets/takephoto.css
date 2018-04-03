@@ -17,6 +17,7 @@
     opacity:0;
     cursor: pointer;
     height: 3rem;
+    width: 3rem;
 }
 .choosebtn-border{
     position: relative;
@@ -39,6 +40,7 @@
     opacity:0;
     cursor: pointer;
     height: 3rem;
+    width: 3rem;
 }
 .photobtn-border{
     position: relative;
@@ -55,6 +57,8 @@
 }
 .newImg{
     position: relative;
+    float: left;
+    margin-left: 1rem;
 }
 .newImgstyle{
     width: 3rem;

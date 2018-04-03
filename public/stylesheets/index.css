@@ -30,7 +30,7 @@ body {
 
 .login {
 	margin: 0 auto;
-	width: 70%;
+	/*width: 70%;*/
 	text-align: center;
 }
 
@@ -63,14 +63,15 @@ body {
 
 .mui-input-row {
 	border-bottom: solid .1rem #ebebeb;
-	width: 120%;
+	/*width: 120%;*/
 	margin: auto -10%;
+	margin-top: 0.5rem;
 }
 
 .mui-input-row img {
 	position: relative;
-	top: 0.7rem;
-	left: -2.0rem;
+	top: 1.2rem;
+	/*left: -2.0rem;*/
 	width: 30px;
 }
 
@@ -83,7 +84,7 @@ body {
 }
 
 .mui-input-row span {
-	top: 2rem !important;
+	top: 1.7rem !important;
 }
 
 .mui-input-row .mui-btn {
