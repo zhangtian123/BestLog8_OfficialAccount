@@ -180,7 +180,7 @@
 					mui("#inputinfo input").each(function() {
 						if(!this.value || this.value.trim() == "") {
 							var label = this.previousElementSibling;
-							mui.alert(label.id + "不允许为空");
+							/*mui.alert(label.id + "不允许为空");*/
 							check = false;
 							return false;
 						}
@@ -203,9 +203,9 @@
 							async: false,
 							success: function(data) {
 								var result = eval(data).result;
-								alert(result);
+								/*alert(result);*/
 								Identify = result;
-								console.log(Identify);
+								/*console.log(Identify);*/
 							},
 							error: function() {
 								mui.alert("系统服务错误");

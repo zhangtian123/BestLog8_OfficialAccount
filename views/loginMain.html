@@ -30,11 +30,11 @@
 			<!--输入框表单-->
 			<form>
 				<div class="mui-input-row">
-					<label><img src="/images/user.png"></label>
+					<label id="用户名"><img src="/images/user.png"></label>
 					<input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名" />
 				</div>
 				<div class="mui-input-row">
-					<label><img src="/images/password.png"></label>
+					<label id="密码"><img src="/images/password.png"></label>
 					<input type="password" name="password" class="mui-input-password" placeholder="请输入密码" />
 				</div>
 			</form>
@@ -55,7 +55,7 @@
 						//若当前input为空，则alert提醒 
 						if(!this.value || this.value.trim() == "") {
 							var label = this.previousElementSibling;
-							mui.alert("不允许为空");
+							mui.alert(label.id + "不允许为空");
 							check = false;
 							return false;
 						}

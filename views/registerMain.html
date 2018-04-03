@@ -42,9 +42,6 @@
 					<input type="text" name="ps" class="mui-input-code" placeholder="请输入验证码" />
 					<button type="button" id="getpassbtn" class="vertify mui-btn mui-btn-primary">获取验证码</button>
 				</div>
-				<!--<div id="new_atteninfo2" style="margin-top: 1rem;">
-					<p class="info"></p>
-				</div>-->
 			</form>
 			<!--下一步按钮-->
 			<button type="button" id='nextStep' class="mui-btn mui-btn-block" style="margin-top: 2.8125rem;">下一步</button>
@@ -224,9 +221,9 @@
 						async: false,
 						success: function(data) {
 							var result = eval(data).result;
-							alert(result);
+							/*alert(result);*/
 							Identify = result;
-							console.log(Identify);
+							/*console.log(Identify);*/
 						},
 						error: function() {
 							mui.alert("系统服务错误");
