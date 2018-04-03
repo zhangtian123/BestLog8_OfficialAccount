@@ -188,7 +188,7 @@
 .centerBackPickup {
 	background-color: white;
 	width: 90%;
-	height: 450px;
+	height: 400px;
 	margin: -80px 0 0 5%;
 	border-radius: 5px;
 	z-index: 99;
@@ -240,13 +240,13 @@
 	min-height: 50px;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	margin: 35% 0 0 5%;
+	margin: 35% 0 0 4%;
 	position: absolute;
 }
 
 .album>div {
-	width: 30%;
-	height: 30%;
+	width: 25%;
+	height: 25%;
 	position: relative;
 }
 
@@ -269,4 +269,34 @@
 	font-size: 1rem;
 	color: #79797a;
 	padding: 10px 0 0 14%;
+}
+
+.addBtn{
+    position: relative;
+    opacity:0;
+    cursor: pointer;
+    height: 3rem;
+}
+
+.AddBtnBackBorder {
+	position: relative;
+	width: 3rem;
+	border-radius: 1rem;
+	float: left;
+	margin:1rem 0 0 7.2rem;
+}
+.AddBtnBackBorderPickup {
+	position: relative;
+	width: 3rem;
+	border-radius: 1rem;
+	float: left;
+	margin:0rem 0 0 1rem;
+}
+.AddBtnBack {
+	position: relative;
+	width: 3rem;
+	height: 3rem;
+	background: url('/images/camera.png');
+	background-size: contain;
+	margin: 5px 0;
 }

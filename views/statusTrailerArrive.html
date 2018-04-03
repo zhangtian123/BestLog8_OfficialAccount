@@ -15,19 +15,20 @@
 		<link href="/stylesheets/feedback.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
 		<!--status.css 是二次修改界面添加的-->
-		<link href="/stylesheets/status.css" rel="stylesheet" /> 
+		<link href="/stylesheets/status.css" rel="stylesheet" />
 	</head>
 	<!--还差图片自适应问题-->
+
 	<body class="mainBack">
 		<div class="topBack">
 			<div class="statusText">状态：到厂</div>
 		</div>
-		<form>
+		<form enctype='multipart/form-data' method='post' action='javascript:;'>
 			<div class="centerBack">
 				<!--导航栏-->
 				<div class="guideBar">
 					<div id="left" class="GuideTextHover">
-						<a id="inputInformation" class="GuideWordHover" >填写信息</a>
+						<a id="inputInformation" class="GuideWordHover">填写信息</a>
 					</div>
 					<div id="right" class="GuideText">
 						<a id="upload" class="GuideWord">拍照上传</a>
@@ -48,8 +49,13 @@
 				<!--拍照上传-->
 				<div id="images" class="imageBox">
 					<div class="feedback" style="text-align:center; ">
-						<!--<label class="albumLabel" >点击图标：</label>-->
-						<img id="btn" class="image-item" src="/images/camera.png"><img>
+						<!--						<label class="albumLabel" >点击图标：</label>-->
+						<!--<img id="btn" class="image-item" src="/images/camera.png"><img>-->
+						<div class="AddBtnBackBorder" id="chooseBtn">
+							<div class="AddBtnBack">
+								<input type="file" id="choose" class="addBtn" onchange="showimage()" multiple='multiple' />
+							</div>
+						</div>
 						<div class="album"></div>
 					</div>
 				</div>
@@ -205,8 +211,7 @@
 						var result = eval(data);
 						if(result.result == 0) {
 							mui.toast("状态反馈成功");
-							mui.openWindow('/stateback2')
-//							setTimeout(mui.openWindow('/stateback2'), 1500);
+							setTimeout(mui.openWindow('/stateback2'), 1500);
 						} else {
 							mui.toast("状态反馈失败");
 						}
@@ -219,14 +224,72 @@
 			})
 		</script>
 		<script type="text/javascript">
+			var number = 0;
+			var idx = 0;
+
+			function showimage() {
+				let files = document.getElementById("choose").files;
+				for(var i = 0; i < files.length; i++) {
+					if(window.FileReader) {
+						var reader = new FileReader();
+						file = files[i];
+						reader.readAsDataURL(file);
+						//监听文件读取结束后事件    
+						reader.onloadend = function(e) {
+							//							$(".newImg").attr("src", e.target.result);
+							//							$(".newImg").addClass("newImgstyle");
+							if(number >= 3) {
+								mui.alert("最多上传三张！");
+								return;
+							}
+							number++;
+							idx++;
+							var div = $("<div></div>");
+							div.attr('id', 'div' + idx)
+							console.log("id " + idx)
+							var img = $("<img/>");
+							img.attr("src", e.target.result);
+							img.attr("data-action", "zoom")
+
+							div.append(img);
+							var img_delete = $("<img/>");
+							img_delete.attr('id', '' + idx)
+							img_delete.attr('src', "/images/delete.png");
+							img_delete.click(function() {
+								var albums = document.getElementsByClassName('album')[0];
+								var divs = albums.getElementsByTagName('div');
+								albums.removeChild(albums.querySelector('#div' + this.id))
+								console.log("delete_id " + this.id)
+								document.getElementById('chooseBtn').style.zIndex = ""
+								number--;
+							})
+							div.append(img_delete);
+							$(".album").append(div);
+							$(".album").show();
+							console.log(number)
+							if(number >= 3) {
+								document.getElementById('chooseBtn').style.zIndex = "-99999"
+							} else {
+								document.getElementById('chooseBtn').style.zIndex = ""
+							}
+						};
+					}
+
+				}
+			}
+		</script>
+		<script type="text/javascript">
 			var img = $(".img");
 			var number = 0;
 			var callBack = function(album) {
 				console.log(album);
 				album.forEach(function(val, idx) {
-					number ++;
+					number++;
+					if(number > 3) {
+						return
+					}
 					var div = $("<div></div>");
-					div.attr('id','div'+idx)
+					div.attr('id', 'div' + idx)
 					var img = $("<img/>");
 					img.attr("src", val.data);
 					img.attr("data-action", "zoom")
@@ -238,7 +301,7 @@
 					img_delete.click(function() {
 						var albums = document.getElementsByClassName('album')[0];
 						var divs = albums.getElementsByTagName('div');
-						albums.removeChild(albums.querySelector('#div'+this.id))
+						albums.removeChild(albums.querySelector('#div' + this.id))
 						document.getElementById('btn').style.zIndex = ""
 						number--;
 					})

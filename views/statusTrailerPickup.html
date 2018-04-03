@@ -5,6 +5,7 @@
 -->
 <!doctype html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>状态反馈</title>
@@ -14,37 +15,28 @@
 		<link href="/stylesheets/feedback.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
 		<!--status.css 是二次修改界面添加的-->
-		<link href="/stylesheets/status.css" rel="stylesheet" /> 
+		<link href="/stylesheets/status.css" rel="stylesheet" />
 	</head>
 
 	<body class="mainBack">
 		<div class="topBack">
 			<div class="statusText">状态：提箱</div>
 		</div>
-		<form>
+		<form enctype='multipart/form-data' method='post' action='javascript:;'>
 			<div class="centerBackPickup">
-				<!--导航栏-->
-				<div class="guideBar">
-					<div id="left" class="GuideTextPickup">
-						<a id="inputInformation" class="GuideWord">反馈信息</a>
-					</div>
-					<!--<div id="right" class="GuideText">
-						<a id="upload" style="font: 15px;color: #79797a;">拍照上传</a>
-					</div>-->
-				</div>
 				<!--填写信息-->
 				<div id="information" style="position: absolute;">
 					<div class="row">
 						<label class="rowTextPickup">时　间</label>
-						<input id="result" data-options='{}' class="btnPickup" placeholder="请选择完成时间"/>
+						<input id="result" data-options='{}' class="btnPickup" placeholder="请选择完成时间" />
 					</div>
 					<div class="row">
 						<label class="rowTextPickup">箱　号</label>
-						<input id="numresult" data-options='{}' class="btnPickup" placeholder="请输入箱号"/>
+						<input id="numresult" data-options='{}' class="btnPickup" placeholder="请输入箱号" />
 					</div>
 					<div class="row">
 						<label class="rowTextPickup">铅封号</label>
-						<input id="passresult" data-options='{}' class="btnPickup" placeholder="请输入铅封号"/>
+						<input id="passresult" data-options='{}' class="btnPickup" placeholder="请输入铅封号" />
 					</div>
 					<div class="row">
 						<label class="rowTextPickup">描　述</label>
@@ -53,64 +45,21 @@
 					<div class="row">
 						<label class="rowTextPickup">照　片</label>
 						<div class="album" style="width: 90%;margin:25% 0 0 10%;"></div>
-						<img id="btn" class="image-item" src="/images/camera.png" style="margin: 0px 0 0 20px;"><img>
+						<!--<img id="btn" class="image-item" src="/images/camera.png" style="margin: 0px 0 0 20px;"><img>-->
+						<div class="AddBtnBackBorderPickup" id="chooseBtn">
+							<div class="AddBtnBack">
+								<input type="file" id="btn" class="addBtn" multiple='multiple' />
+							</div>
+						</div>
 					</div>
 				</div>
-
-				<!--拍照上传-->
-				<!--<div id="images" style="position: absolute;width:300px;height:150px;margin-left: 20px;">
-					<div class="feedback" style="text-align:center; ">
-						<div class="album"></div>
-						<img id="btn" class="image-item" src="/images/camera.png"><img>
-					</div>
-				</div>-->
-
 			</div>
-			<!--提交按钮-->
+
 			<div>
 				<button id="submit" class="submitInfo">提交</button>
 			</div>
 		</form>
-		<!--<div class="mui-content-padded contain">
-			<div class="register">
-				<form>
-					<div class="mui-input-row status-row" style="border: none;">
-						<label><img src="/images/lights.png" width="25px;"></label>
-						<span>提箱中</span>
-					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/clock.png" width="25px;"></label>
-						<input id='result' type="text" class="mui-input-clear shortline" placeholder="请选择实际提箱时间" data-input-clear="5" />
-						<button id='demo1' type="button" data-options='{}' class="vertify btn mui-btn mui-btn-primary">选择</button>
-					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/box.png" width="25px;"></label>
-						<input id="numresult" type="text" class="mui-input-clear" placeholder="请输入箱号" data-input-clear="5" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
-					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/密码.png" width="25px;"></label>
-						<input id="passresult" type="text" class="mui-input-clear" placeholder="请输入铅封号" data-input-clear="5" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
-					</div>
-					<div class="mui-input-row">
-						<label><img src="/images/edit.png" width="25px;"></label>
-						<input id="description" type="text" class="mui-input-clear" placeholder="请编辑相关描述" data-input-clear="5" />
-						<span class="mui-icon mui-icon-clear mui-hidden"></span>
-					</div>
-					<div class="mui-input-row" style="border: none;">
-						<label><img src="/images/拍照.png" width="25px;"></label>
-						<input readonly="readonly" type="text" class="mui-input-clear shortline" placeholder="请拍照或者相册选择图片上传" />
-					</div>
-					<div class="feedback" style="text-align:left">  
-			            <div id="btn" class="image-item"></div>
-		                <div class="album" style="display:none"></div>
-			       </div>  
-					<button id="submit" type="button" class="mui-btn mui-btn-block submit" style="margin-top: 20%;">提交</button>
-				</form>
-				
-			</div>
-		</div>-->
+
 		<script src="/javascripts/jquery-1.11.1.min.js"></script>
 		<script src="/javascripts/mui.min.js"></script>
 		<script src="/javascripts/mui.picker.min.js"></script>
@@ -119,6 +68,61 @@
 		<script src="/javascripts/cslCamera.js"></script>
 		<!--二次开发新增的-->
 		<script src="/javascripts/zooming.js"></script>
+		<script type="text/javascript">
+			var number = 0;
+			var idx = 0;
+
+			function showimage() {
+				let files = document.getElementById("btn").files;
+				for(var i = 0; i < files.length; i++) {
+					if(window.FileReader) {
+						var reader = new FileReader();
+						file = files[i];
+						reader.readAsDataURL(file);
+						//监听文件读取结束后事件    
+						reader.onloadend = function(e) {
+							//							$(".newImg").attr("src", e.target.result);
+							//							$(".newImg").addClass("newImgstyle");
+							if(number >= 3) {
+								mui.alert("最多上传三张！");
+								return;
+							}
+							number++;
+							idx++;
+							var div = $("<div></div>");
+							div.attr('id', 'div' + idx)
+							console.log("id " + idx)
+							var img = $("<img/>");
+							img.attr("src", e.target.result);
+							img.attr("data-action", "zoom")
+
+							div.append(img);
+							var img_delete = $("<img/>");
+							img_delete.attr('id', '' + idx)
+							img_delete.attr('src', "/images/delete.png");
+							img_delete.click(function() {
+								var albums = document.getElementsByClassName('album')[0];
+								var divs = albums.getElementsByTagName('div');
+								albums.removeChild(albums.querySelector('#div' + this.id))
+								console.log("delete_id " + this.id)
+								document.getElementById('chooseBtn').style.zIndex = ""
+								number--;
+							})
+							div.append(img_delete);
+							$(".album").append(div);
+							$(".album").show();
+							console.log(number)
+							if(number >= 3) {
+								document.getElementById('chooseBtn').style.zIndex = "-99999"
+							} else {
+								document.getElementById('chooseBtn').style.zIndex = ""
+							}
+						};
+					}
+
+				}
+			}
+		</script>
 		<script type="text/javascript">
 			(function($) {
 				$.init();
@@ -145,7 +149,7 @@
 							 * rs.h 时，用法同年
 							 * rs.i 分（minutes 的第二个字母），用法同年
 							 */
-							document.getElementById("result").value=rs.text;
+							document.getElementById("result").value = rs.text;
 							/*result.innerText = '选择结果: ' + rs.text;*/
 							/* 
 							 * 返回 false 可以阻止选择框的关闭
@@ -162,127 +166,131 @@
 					}, false);
 				});
 			})(mui);
-			
-			var id='';
-			var billcode='';
-			var billNo='';
-			$(document).ready(function(){
-				var urlperson=decodeURI(location.search);
-			    var theRequest = new Object();
-			    if (urlperson.indexOf("?") != -1) {
-			        var str = urlperson.substr(1);  
-			        strs = str.split("&");   
-			        for(var i = 0; i < strs.length; i ++) {   
-			        theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
-			        }
-			        id = theRequest['orderid'];
-			        billcode = theRequest['billcode'];
-			        billNo = theRequest['billNo'];
-			        //$('.leftnav li:nth-child('+nowpageid+')').siblings().removeClass("act");
-			        //$('.leftnav li:nth-child('+nowpageid+')').addClass("act");
-			    }
-			    $("#csl_gater_file").change(function () {
-	               run(this, function (data,base64,result) {
-	               	    $('#numresult').val(result.charactersList[0].characters);
-	               });
-	           });
+
+			var id = '';
+			var billcode = '';
+			var billNo = '';
+			$(document).ready(function() {
+				var urlperson = decodeURI(location.search);
+				var theRequest = new Object();
+				if(urlperson.indexOf("?") != -1) {
+					var str = urlperson.substr(1);
+					strs = str.split("&");
+					for(var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+					id = theRequest['orderid'];
+					billcode = theRequest['billcode'];
+					billNo = theRequest['billNo'];
+					//$('.leftnav li:nth-child('+nowpageid+')').siblings().removeClass("act");
+					//$('.leftnav li:nth-child('+nowpageid+')').addClass("act");
+				}
+
+				$("#btn").change(function() {
+					showimage();
+					run(this, function(data, base64, result) {
+						$('#numresult').val(result.charactersList[0].characters);
+					});
+				});
 			})
-			function run(input_file,get_data){
-	            /*input_file：文件按钮对象*/
-	            /*get_data: 转换成功后执行的方法*/
-	            if ( typeof(FileReader) === 'undefined' ){
-	                alert("抱歉，你的浏览器不支持 FileReader，不能将图片转换为Base64，请使用现代浏览器操作！");
-	            } else {
-	                try{
-	                    /*图片转Base64 核心代码*/
-	                    var file = input_file.files[0];
-	                    //这里我们判断下类型如果不是图片就返回 去掉就可以上传任意文件
-	                    if(!/image\/\w+/.test(file.type)){
-	                        alert("请确保文件为图像类型");
-	                        return false;
-	                    }
-	                    var reader = new FileReader();
-	                    reader.onload = function(){                        
-	                        //window.alert(this.result); 
-	                        var raw = this.result;
-	                        var i = this.result.indexOf('base64,');
-	                        var base64str = this.result.substring(i+7);
-	                        var callResult;
-	                         $.ajax({
-	                         url:"http://120.27.199.17:8089/services/base64/bysin/pic1234?token=3IVdtr309KM=&sizeType=true&containerType=true",
-	                         type:"POST",
-	                         data:base64str,
-	                         dataType:"JSON",
-	                         success: function(result){ 
-	                            //callResult = JSON.stringify(result);
-	                            //alert(callResult);
-	                            get_data(raw,base64str,result);
-	                            }                         
-	                         });  
-	                        
-	                         
-	                    }
-	                    reader.readAsDataURL(file);
-	                }catch (e){
-	                    alert('图片转Base64出错啦！'+ e.toString())
-	                }
-	            }
-	        }
+
+			function run(input_file, get_data) {
+				/*input_file：文件按钮对象*/
+				/*get_data: 转换成功后执行的方法*/
+				if(typeof(FileReader) === 'undefined') {
+					alert("抱歉，你的浏览器不支持 FileReader，不能将图片转换为Base64，请使用现代浏览器操作！");
+				} else {
+					try {
+						/*图片转Base64 核心代码*/
+						var file = input_file.files[0];
+						//这里我们判断下类型如果不是图片就返回 去掉就可以上传任意文件
+						if(!/image\/\w+/.test(file.type)) {
+							alert("请确保文件为图像类型");
+							return false;
+						}
+						var reader = new FileReader();
+						reader.onload = function() {
+							//window.alert(this.result); 
+							var raw = this.result;
+							var i = this.result.indexOf('base64,');
+							var base64str = this.result.substring(i + 7);
+							var callResult;
+							$.ajax({
+								url: "http://120.27.199.17:8089/services/base64/bysin/pic1234?token=3IVdtr309KM=&sizeType=true&containerType=true",
+								type: "POST",
+								data: base64str,
+								dataType: "JSON",
+								async: false,
+								success: function(result) {
+									//callResult = JSON.stringify(result);
+									//alert(callResult);
+									get_data(raw, base64str, result);
+								}
+							});
+
+						}
+						reader.readAsDataURL(file);
+					} catch(e) {
+						alert('图片转Base64出错啦！' + e.toString())
+					}
+				}
+			}
 			var oMyForm = new FormData();
 			//oMyForm.enctype="multipart/form-data";
-			var selectCount=0;
-			$('#submit').click(function(){
-				var result = $('#result').val(); 
+			var selectCount = 0;
+			$('#submit').click(function() {
+				var result = $('#result').val();
 				//箱号
 				var numresult = $('#numresult').val();
 				//铅封号
 				var passresult = $('#passresult').val();
 				var description = $('#description').val();
-				oMyForm.append("BILLID",id);
-				oMyForm.append("BILLCODE",billcode);
-				oMyForm.append("BILLNO",billNo);
-				oMyForm.append("FINISHEDDATE",result);
-				oMyForm.append("REMARK",description);
-				oMyForm.append("state","FMS_TCMX07");
+				oMyForm.append("BILLID", id);
+				oMyForm.append("BILLCODE", billcode);
+				oMyForm.append("BILLNO", billNo);
+				oMyForm.append("FINISHEDDATE", result);
+				oMyForm.append("REMARK", description);
+				oMyForm.append("state", "FMS_TCMX07");
 				$.ajax({
-					type:"post",
-					url:"/statusTrailer",
-					data:oMyForm,
-					async:false,
-					cache:false,
-					contentType:false,
-                    processData:false,
-					success:function(data){
+					type: "post",
+					url: "/statusTrailer",
+					data: oMyForm,
+					async: false,
+					cache: false,
+					contentType: false,
+					processData: false,
+					success: function(data) {
 						var result = eval(data);
-						if(result.result == 0)
-						{
+						if(result.result == 0) {
 							mui.toast("状态反馈成功");
-							setTimeout(mui.openWindow('/stateback2'),1500);
-						}
-						else
-						{
+							setTimeout(mui.openWindow('/stateback2'), 1500);
+						} else {
 							mui.toast("状态反馈失败");
 						}
 						//alert(result.result);
 					},
-					error:function(){
+					error: function() {
 						mui.alert("系统处理错误");
-						setTimeout(mui.openWindow('/stateback2'),1500);
+						setTimeout(mui.openWindow('/stateback2'), 1500);
 					}
 				});
 			})
 		</script>
+
 		<script type="text/javascript">
 			var img = $(".img");
 			var number = 0;
 			var callBack = function(album) {
 				console.log(album);
 				album.forEach(function(val, idx) {
-					number ++;
+					number++;
+					if(number > 3) {
+						return
+					}
 					var div = $("<div></div>");
-					div.attr('id','div'+idx)
-//					div.attr('style',"background: url("+val.data+") no-repeat center center;background-size: 100% auto;")
-//					div.attr("data-action", "zoom")
+					div.attr('id', 'div' + idx)
+					//					div.attr('style',"background: url("+val.data+") no-repeat center center;background-size: 100% auto;")
+					//					div.attr("data-action", "zoom")
 					var img = $("<img/>");
 					img.attr("src", val.data);
 					img.attr("data-action", "zoom")
@@ -294,7 +302,7 @@
 					img_delete.click(function() {
 						var albums = document.getElementsByClassName('album')[0];
 						var divs = albums.getElementsByTagName('div');
-						albums.removeChild(albums.querySelector('#div'+this.id))
+						albums.removeChild(albums.querySelector('#div' + this.id))
 						document.getElementById('btn').style.zIndex = ""
 						number--;
 					})
@@ -310,7 +318,7 @@
 				});
 			}
 
-			var carera = new $.Pgater($("#btn"), callBack);
+//			var carera = new $.Pgater($("#btn"), callBack);
 		</script>
 	</body>
 
