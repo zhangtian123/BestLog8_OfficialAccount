@@ -39,12 +39,12 @@
 	}
 	.mui-btn-numbox-minus{
 
-		background: url(../images/minus.png)no-repeat left top;
+		background: url(../images/desc.png)no-repeat left top;
 
 	}
 	.mui-btn-numbox-plus{
 
-		background: url("../images/plus.png")no-repeat left top;
+		background: url("../images/addition.png")no-repeat left top;
 	}
 	.mui-btn-numbox-minus,.mui-input-numbox,.mui-btn-numbox-plus{
 		float: left;
