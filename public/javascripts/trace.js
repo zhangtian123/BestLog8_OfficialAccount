@@ -475,7 +475,7 @@ function trace(data){
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
         		context.fillStyle = " #79797a";
-        		context.font = "7px 微软雅黑"  //context.font = "0.2rem 微软雅黑"
+        		context.font = "9px 微软雅黑"  //context.font = "0.2rem 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -518,7 +518,7 @@ function trace(data){
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
         		context.fillStyle = " #79797a";
-        		context.font = "7px 微软雅黑"
+        		context.font = "9px 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -552,7 +552,7 @@ function trace(data){
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
         		context.fillStyle = " #79797a";
-        		context.font = "7px 微软雅黑"
+        		context.font = "9px 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
@@ -584,7 +584,7 @@ function trace(data){
         		context.font = "0.8rem 微软雅黑"
         		context.fillText(name, x+width/2, y+0.7*height);
         		context.fillStyle = " #79797a";
-        		context.font = "7px 微软雅黑"
+        		context.font = "9px 微软雅黑"
         		var tempIndex = 10;
 	      		context.fillText(time.substring(0,tempIndex), x+width/2, y+1.5*height);
 	      		context.fillText(time.substring(tempIndex,time.length), x+width/2, y+2*height)
