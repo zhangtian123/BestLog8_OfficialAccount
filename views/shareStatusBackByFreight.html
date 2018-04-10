@@ -7,16 +7,19 @@
     <link href="/stylesheets/mui.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/stylesheets/base.css" />
     <link rel="stylesheet" href="/stylesheets/freightQuery.css" />
+    <link rel="stylesheet" href="/stylesheets/externalUser.css" />
     <link href="/stylesheets/formsheet.css" rel="stylesheet" />
     <style type="text/css" >
-    	.maincontent{padding-top: 0rem;}
-        .query-items{margin-top: 0rem;}
+    	#card:first-child{
+            margin: 0px;
+            margin-top: 0px;
+        }
     </style>
 </head>
 <body>
 	<!-- 侧滑导航根容器 -->
 <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-    <div class="mui-card">
+    <div class="mui-card" style="margin: 13px 8px 0 8px">
     	<div class="mui-card-header"><%= tooltips%></div>
     	<div class="mui-card-content" style="display:<%= display%>">
     		<img src="/images/barcode.jpg" style="width:64px;height:64px;"/>
@@ -26,10 +29,10 @@
   	<div class="mui-inner-wrap">
     <!-- 主页面内容容器 -->
 	    <div class="mui-content mui-scroll-wrapper">
-	    <div class="mui-scroll maincontent">
+	   
 	    	<div class="query-items">
 			</div>
-		</div>
+	
 	    </div>
 	</div>  
 	<div class="mui-off-canvas-backdrop"></div>
