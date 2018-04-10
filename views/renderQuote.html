@@ -24,12 +24,6 @@
 	<body style="background-color: #ebebeb;width:100%;height:100%;">
 		<div class="content" >
 			<form>
-				<div class="card" style="display: flex;flex-direction: row;">
-					<div id="total" class="input-title">客户名称：</div>
-					<div class="search-input-row line" style="width: 80%;">
-						<input id="requester" class="input-normal" style="width: 100%;" />
-					</div>
-				</div>
 				<div class="card">
 					<div style='color:#006fbe;'>
 						<label id="portInfo"><label>
@@ -98,14 +92,19 @@
 						<label id="totalFee" style='font-size:0.75em;width:60%;height:5%;' ></label>
 					</div>
 				</div>
-				
-				<div class="card" style="display: flex;flex-direction: row;">
-					<div id="total" class="input-title">备注：</div>
-					<div class="search-input-row line" style="width: 90%;">
-						<input id="remark" class="input-normal" style="width: 100%;"/>
+				<div class="card">
+					<div class="input-title">备注</div>
+					<div class="search-input-col">
+						<div class="search-input-row line">
+							<div>客户名称：</div>
+							<input id="requester" class="input-normal" />
+						</div>
+						<div class="search-input-row line">
+							<div>备注：</div>
+							<input id="remark" class="input-normal" />
+						</div>
 					</div>
 				</div>
-				
 				<div style='margin-bottom:30px;'>
 					<button id="submit" class='myBtn'>保存并分享</button>
 				</div>
