@@ -163,7 +163,7 @@ body,label
 	right: 0rem;
 	width: 2rem;
 	height: 2rem;
-	background-image: url("/images/attachment.png");
+	/*background-image: url("/images/attachment.png");*/
 	background-size:contain;
 	z-index: 10;
 }
