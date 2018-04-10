@@ -51,7 +51,7 @@
   border-bottom-right-radius: 4px;
   padding: 4px;
   border-top: none;
-  top: 28px;
+  top: 22px;
   left: 0;
   right: 0;
   z-index: 10;
@@ -60,6 +60,7 @@
 .searchable-select-input {
   position: relative;
   top:-25px;
+  margin-bottom: 12px;
   border: none !important;
   outline: none;
   padding: 4px;
