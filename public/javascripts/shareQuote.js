@@ -99,7 +99,7 @@ function computeFee(price20GP, price40GP, price40HQ, conTeu1, conTeu2, conTeu3) 
 	if(totalFee != '') {
 		totalFee += ('=' + totalFeeValue);
 	} else {
-		totalFee = '0';
+		totalFee = '';
 	}
 	return {
 		totalFee:totalFee,
