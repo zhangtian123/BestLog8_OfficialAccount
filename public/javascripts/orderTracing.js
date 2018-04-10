@@ -241,8 +241,8 @@ $(document).ready(function(){
 		}
 	})
 	$('body').on("tap",'#share',function() {
-		var n = $(this).parents('#card').index();
-		var text3 = $(".maincontent").find("#card:eq("+n+")").find('.getBILLID').eq(0).val();
+		var n = $(this).parents('.card-class').index();
+		var text3 = $(".maincontent").find(".card-class:eq("+n+")").find('.getBILLID').eq(0).val();
 		$.ajax({
 			type:"get",
 			url:"/setShareLog",

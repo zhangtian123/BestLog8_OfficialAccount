@@ -173,7 +173,8 @@ $(document).ready(function(){
 var Inner = function(id, billid,customscompany,customsop,sonos,hblno,CNTRNUMSTR, oDiv){
 	oDiv.innerHTML=oDiv.innerHTML+
 	'<div class="item"><span id="blue-text">'+
-	'订单号'+id+'</span><button id="share" type="button" ></button>'+
+	'订单号'+id+'</span>'+
+//	'订单号'+id+'</span><button id="share" type="button" ></button>'+
 	'<input class="getBILLID" type="hidden" id="'+id+'" value="'+billid+'"/></div>'+
 	'<div id="circle-left"></div><div id="circle-right"></div><hr style="border:1px dashed #ebebeb;">'+
 	'<div class="item">'+
