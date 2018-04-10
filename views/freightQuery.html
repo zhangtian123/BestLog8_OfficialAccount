@@ -135,13 +135,12 @@
 							<div class="sidebaricon"></div>
 						</div>
 						<div id="port-info"></div>
-						<div class="query-items">
-						</div>
+						<div class="query-items"></div>
 					</div>
 
 				</div>
 			</div>
-			<div class="mui-off-canvas-backdrop"></div>
+			<div class="mui-off-canvas-backdrop" id="offCanvasHide"></div>
 		</div>
 		</div>
 		</div>
@@ -184,10 +183,10 @@
 			document.getElementById('offCanvasShow').addEventListener('tap', function() {
 				offCanvasWrapper.offCanvas('show');
 			});
-			//菜单界面，‘关闭侧滑菜单’按钮的点击事件
-//			document.getElementById('offCanvasHide').addEventListener('tap', function() {
-//				offCanvasWrapper.offCanvas('close');
-//			});
+//			菜单界面，‘关闭侧滑菜单’按钮的点击事件
+			document.getElementById('offCanvasHide').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('close');
+			});
 
 			(function($) {
 				$.init();
