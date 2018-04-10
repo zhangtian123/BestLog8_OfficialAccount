@@ -121,6 +121,7 @@ $(document).ready(function(){
 							$('#port-info').text(loadingportresult+'-'+transtype+'-'+desportresult); //将港口信息返回主界面
 							var oDiv = document.createElement('div');
 							oDiv.id = 'card';
+							oDiv.className='card-class'
 							Inner(index,value.BILLID,value.PORTLOADING,transtype,value.PORTDISCHARGE,value.BASEPORT,value.CUSTOMER,value.SAILINGDATE,value.DAYNUM,value.STARTDATE,value.ENDDATE,value.PRICE20GP,value.PRICE40GP,value.PRICE40HQ,oDiv,value.TotalPrice);
 							aDiv.appendChild(oDiv);
 							index++;
@@ -135,8 +136,8 @@ $(document).ready(function(){
 		
 	})
 	$('body').on("tap",'#share',function() {
-		var n = $(this).parents('.content-item').index();
-		var text3 = $(".maincontent").find(".content-item:eq("+n+")").find('.getBILLID').eq(0).val();
+		var n = $(this).parents('.card-class').index();
+		var text3 = $(".query-items").find(".card-class:eq("+n+")").find('.getBILLID').eq(0).val();
 		$.ajax({
 			type:"get",
 			url:"/setShareLog",
