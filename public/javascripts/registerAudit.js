@@ -166,14 +166,14 @@ var Inner = function(usercode, company,companycn, date, regaddress, regaddressen
 				'<input type="hidden" id="'+taxnumber+'"/>'+
 				'<input type="hidden" id="'+email+'"/>'+
 			'</div>'+
-			'<!--内容区-->'+
+			'<!--内容区-->'+'<div class="dashLine1""></div>'+
 			'<div class="mui-card-content" style="text-align: center;">'+
-				'<div class="item dashLine"></div>'+
-				'<div class="item">'+
+//				'<div class="item dashLine"></div>'+
+				'<div class="item register-content-font">'+
 					'<span class="item-title">所在单位</span>'+
-					'<span class="a-little-left">'+company+'</span>'+
+					'<span class="a-little-left">'+(company==null?'':company)+'</span>'+
 				'</div>'+
-				'<div class="item">'+
+				'<div class="item register-content-font">'+
 					'<span class="item-title">申请时间</span>'+
 					'<span class="a-little-left">'+(date==null ? "" : date.replace('T',' ').substr(0,date.length-3))+'</span>'+
 				'</div>'+
