@@ -71,7 +71,7 @@ var Inner = function(index,begin,line,end,port,company,time,sail,expirydatebegin
 						'<span style="margin-left:8px;color:#0078cd;">20GP/40GP/40HQ数量：</span>'+
 						'<span>'+(GPquantity20==null ? '' : GPquantity20)+'/'+(GPquantity40==null ? '' : GPquantity40)+'/'+(HCquantity40==null ? '' : HCquantity40)+'</span>'+
 					'</div>'+
-					'<div class="item">'+
+					'<div class="item" >'+
 						'<span style="margin-left:8px;color:#0078cd;">运费：</span>'+
 						'<span style="margin-left:8px;">'+computeFee(GPprice20,GPprice40,HCprice40,GPquantity20,GPquantity40,HCquantity40)+'</span>'+
 					'</div>'+
@@ -99,6 +99,8 @@ function computeFee(price20GP,price40GP,price40HQ,conTeu1,conTeu2,conTeu3){
             	}
             	if(totalFee!=''){
 	            	totalFee+=('='+totalFeeValue);
+            	}else{
+            		totalFee = '0';
             	}
             	return totalFee;
             }
