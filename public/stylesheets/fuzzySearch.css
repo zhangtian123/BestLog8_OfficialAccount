@@ -122,13 +122,13 @@
 }
 
 .searchable-select-item.hover {
-  background: #495A80;
+  background: #0078cd;
   color: white;
   border-radius: 0.5rem;
 }
 
 .searchable-select-item.selected {
-  background:#495A80;
+  background:#0078cd;
   color: white;
   border-radius: 0.5rem;
 }
