@@ -56,8 +56,8 @@ $(document).ready(function() {
 					oDiv.className = 'item-row';
 					InnerDetail1(oDiv);
 					aDiv.append(oDiv);
-					var oDiv = document.createElement('hr');
-					aDiv.append(oDiv);
+//					var oDiv = document.createElement('hr');
+//					aDiv.append(oDiv);
 					var m = 1;
 					for(var o in data) {
 						var result = eval(data[o]);
@@ -74,8 +74,8 @@ $(document).ready(function() {
 					oDiv.className = 'item-row';
 					InnerDetail3(m, totalprice[0], totalprice[1], oDiv);
 					aDiv.append(oDiv);
-					var oDiv = document.createElement('hr');
-					aDiv.append(oDiv);
+//					var oDiv = document.createElement('hr');
+//					aDiv.append(oDiv);
 					var oDiv = document.createElement('div');
 					oDiv.className = 'buttonbar';
 					InnerDetail4(oDiv);
