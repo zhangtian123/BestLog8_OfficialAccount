@@ -95,11 +95,11 @@ ul{
 .personal-item img{
 	width: 3rem;
     height: 3rem;
-    margin: 0.3rem 0 0 0.3rem
+    margin: 0.5rem 0 -0.3rem 0.3rem;
 }
 .personal-item a:link,.personal-item a:visited,.personal-item a:hover,.personal-item a:active{
 	font-family: "微软雅黑";
-	font-size: 8px;
+	font-size: 13px;
 	text-decoration: none;
 	color: #a8a8a8;
 }
