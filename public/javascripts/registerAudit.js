@@ -56,13 +56,7 @@ $('body').on("tap",'#registerDetail',function(){
 		async:true,
 		success:function(data){
 			var result = eval(data);
-			if(result.result == 1)
-			{
-				mui.openWindow('/registerDetail');
-			}
-			else{
-				mui.alert("系统处理错误");
-			}
+			mui.openWindow('/registerDetail');
 		},
 		error:function(){
 			mui.alert("系统处理错误");
