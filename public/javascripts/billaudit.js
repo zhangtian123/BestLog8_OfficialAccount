@@ -268,6 +268,7 @@ $(document).ready(function(){
 	$('body').on("tap",'#share',function() {
 		var n = $(this).parents('.content-item').index();
 		var text3 = $(".maincontent").find(".content-item:eq("+n+")").find('.getBILLID').eq(0).val();
+		alert(text3)
 		$.ajax({
 			type:"get",
 			url:"/setShareLog",
