@@ -178,11 +178,8 @@ label {
 	display: none;
 	position: absolute;
 	top: 20%;
-	/*left: -10%;*/
-	width: 20px;
-	height: 20px;
+	width: 100%;
 	z-index: 1001;
-	text-align: center;
 }
 
 .audit-bg {
