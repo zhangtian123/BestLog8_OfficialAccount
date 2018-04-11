@@ -42,13 +42,17 @@
 						<div class="detail-normal">
 							<div>中文</div>
 							<div class="a-little-left">
+								<%if(COMPANYCN!="null"){%>
 								<%= COMPANYCN%>
+								<%}%>
 							</div>
 						</div>
 						<div class="detail-normal second-line">
 							<div>英文</div>
 							<div class="a-little-left">
+								<%if(COMPANY!="null"){%>
 								<%= COMPANY%>
+								<%}%>
 							</div>
 						</div>
 					</div>
@@ -60,13 +64,17 @@
 						<div class="detail-normal">
 							<div>中文</div>
 							<div class="a-little-left">
+								<%if(REGADDRESS!="null"){%>
 								<%= REGADDRESS%>
+								<%}%>
 							</div>
 						</div>
 						<div class="detail-normal second-line">
 							<div>英文</div>
 							<div class="a-little-left">
+								<%if(REGADDRESSEN!="null"){%>
 								<%= REGADDRESSEN%>
+								<%}%>
 							</div>
 						</div>
 					</div>
@@ -78,7 +86,9 @@
 						<div class="detail-normal">
 							<div>企业税号</div>
 							<div class="a-little-left">
+								<%if(taxnumber!="null"){%>
 								<%= taxnumber%>
+								<%}%>
 							</div>
 							<div hidden="hidden" id="billid">
 								<%= BILLID%>
@@ -87,14 +97,19 @@
 						<div class="detail-normal second-line">
 							<div>企业邮箱</div>
 							<div class="a-little-left">
+								<%if(EMAIL!="null"){%>
 								<%= EMAIL%>
+								<%}%>
 							</div>
 						</div>
 						<div class="detail-normal second-line">
 							<div>资质信息</div>
 						</div>
 						<div class="detail-normal second-line">
-							<img src="../<%- STORAGEPATH%>" class="other-part-img" />
+							<%if(STORAGEPATH!="null"&& STORAGEPATH!="" && STORAGEPATH!=undefined){%>
+							<img src="../<%= STORAGEPATH%>" class="other-part-img" />
+							<%}%>
+							
 							<!--<img src="../images/address.png" class="other-part-img img-margin" />
 							<img src="../images/address.png" class="other-part-img img-margin" />-->
 						</div>
@@ -114,7 +129,8 @@
 		<!--<script src="/javascripts/registerDetail.js"></script>-->
 		<script type="text/javascript">
 			mui('.mui-scroll-wrapper').scroll();
-
+			var STORAGEPATH = <%= STORAGEPATH%>
+			console.log(STORAGEPATH)
 			/*通过注册申请*/
 			$('body').on("tap", '#agree', function() {
 				var btnArray = ['是', '否'];
