@@ -217,7 +217,7 @@ th {
 
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	-webkit-user-select: none;
+	-webkit-user-select: auto;
 	outline: 0;
 	-webkit-tap-highlight-color: transparent;
 
@@ -4583,7 +4583,7 @@ body>.mui-progressbar {
  * {
  	-webkit-box-sizing: border-box;
  	box-sizing: border-box;
- 	-webkit-user-select: none;
+ 	-webkit-user-select: auto;
  	outline: 0;
  	-webkit-tap-highlight-color: transparent;
  	-webkit-tap-highlight-color: transparent
@@ -8821,7 +8821,7 @@ body>.mui-progressbar {
  .mui-android.mui-android-4-2 textarea,
  .mui-android.mui-android-4-3 input,
  .mui-android.mui-android-4-3 textarea {
- 	-webkit-user-select: text
+ 	-webkit-user-select: auto
  }
 
  .mui-ios .mui-table-view-cell {
