@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="/javascripts/mui.min.js"></script>
-    <link href="/stylesheets/audit_all.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/stylesheets/audit_base.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
-    <script type="text/javascript" charset="utf-8">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>账单审核</title>
+		<script src="/javascripts/mui.min.js"></script>
+		<link href="/stylesheets/audit_all.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/stylesheets/audit_base.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/mui.picker.min.css" />
+		<script type="text/javascript" charset="utf-8">
 			mui.init();
 
 			//radio的点击事件，控制条件显示的部分
@@ -32,19 +33,22 @@
 				var year = date.getFullYear();
 				var month = date.getMonth() + 1;
 				var strDate = date.getDate();
+				var strHour = date.getHours();
+				var strMinute = date.getMinutes();
 				if(month >= 1 && month <= 9) {
 					month = "0" + month;
 				}
 				if(strDate >= 0 && strDate <= 9) {
 					strDate = "0" + strDate;
 				}
-				var currentdate = year + seperator1 + month + seperator1 + strDate;
+				var currentdate = year + seperator1 + month + seperator1 + strDate +" "+strHour +":" +strMinute;
 				document.getElementById("begin").innerHTML = currentdate;
 				document.getElementById("end").innerHTML = currentdate;
 			}
 		</script>
-</head>
-<body onload="nowdate()">
+	</head>
+
+	<body onload="nowdate()">
 		<!-- 侧滑导航根容器 -->
 		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
 			<!-- 菜单容器 -->
@@ -63,31 +67,31 @@
 						</div>
 						<div id="datelist" style="display: none;" class="second-radio">
 							<div style="display: flex;flex-direction: row;">
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去一周</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lastweek">
-							</div>
-							<div class="mui-input-row mui-radio mui-left" style="margin-left: 13px;">
-								<label>过去一个月</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lastmonth">
-							</div>
+								<div class="mui-input-row mui-radio mui-left">
+									<label>过去一周</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lastweek">
+								</div>
+								<div class="mui-input-row mui-radio mui-left" style="margin-left: 13px;">
+									<label>过去一个月</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lastmonth">
+								</div>
 							</div>
 							<div style="display: flex;flex-direction: row;">
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去三个月</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lastthreeweek">
-							</div>
-							<div class="mui-input-row mui-radio mui-left">
-								<label>过去半年</label>
-								<input onclick="radioclick()" name="radio" type="radio" value="lasthalfyear">
-							</div>
+								<div class="mui-input-row mui-radio mui-left">
+									<label>过去三个月</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lastthreeweek">
+								</div>
+								<div class="mui-input-row mui-radio mui-left">
+									<label>过去半年</label>
+									<input onclick="radioclick()" name="radio" type="radio" value="lasthalfyear">
+								</div>
 							</div>
 							<div class="mui-input-row mui-radio mui-left">
 								<label>自定义日期区间</label>
 								<input onclick="radioclick()" id="slefdefineddate" name="radio" type="radio" value="choose">
 								<div id="daterange" style="display: none;" class="datepicker">
-									<div id="beginbtn" data-options='{"type":"date"}' class="btn daterangebtn" style="width: 10rem;color:#a8a8a8;">从：<span id="begin"></span></div>
-									<div id="endbtn" data-options='{"type":"date"}' class="btn daterangebtn" style="width: 10rem;color:#a8a8a8;">到：<span id="end"><span></div>
+									<div id="beginbtn"  data-options='{"type":"date"}' class="btn daterangebtn" style="width: 10rem;color:#a8a8a8;">从：<span id="begin" name='datetimePicker' tag="begin"></span></div>
+									<div id="endbtn"  data-options='{"type":"date"}' class="btn daterangebtn" style="width: 10rem;color:#a8a8a8;">到：<span id="end" name='datetimePicker' tag="end"><span></div>
 					    </div>
 				    </div>
 				</div>
@@ -269,93 +273,31 @@
 		offCanvasWrapper.offCanvas('show');
 	});
 	 //菜单界面，‘关闭侧滑菜单’按钮的点击事件
-	document.getElementById('offCanvasHide').addEventListener('tap', function() {
-		offCanvasWrapper.offCanvas('close');
-	});
+//	document.getElementById('offCanvasHide').addEventListener('tap', function() {
+//		offCanvasWrapper.offCanvas('close');
+//	});
 			
-			
-	(function($) {
-				var beginresult = $('#begin');
-				var beginbtn = $('#beginbtn');
-				var endresult = $('#end');
-				var endbtn = $('#endbtn');
-				
-				beginbtn.each(function(i, btn) {
+		(function($) {
+				$.init();
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006
+				});
+				var btns = document.getElementsByName('datetimePicker'); //$('#datetimePicker');
+				btns.forEach(function(btn, i) {
 					btn.addEventListener('tap', function() {
 						var optionsJson = this.getAttribute('data-options') || '{}';
 						var options = JSON.parse(optionsJson);
-						var id = this.getAttribute('id');
-						/*
-						 * 首次显示时实例化组件
-						 * 示例为了简洁，将 options 放在了按钮的 dom 上
-						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-						 */
+						var id = this.getAttribute('tag');
 						var picker = new $.DtPicker(options);
 						picker.show(function(rs) {
-							/*
-							 * rs.value 拼合后的 value
-							 * rs.text 拼合后的 text
-							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
-							 * rs.m 月，用法同年
-							 * rs.d 日，用法同年
-							 * rs.h 时，用法同年
-							 * rs.i 分（minutes 的第二个字母），用法同年
-							 */
-							document.getElementById("begin").innerHTML = rs.text;
-							/* 
-							 * 返回 false 可以阻止选择框的关闭
-							 * return false;
-							 */
-							/*
-							 * 释放组件资源，释放后将将不能再操作组件
-							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
-							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
-							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
-							 */
+							document.getElementById(id).innerText = rs.text;
 							picker.dispose();
-							
 						});
 					}, false);
 				});
-				endbtn.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var optionsJson = this.getAttribute('data-options') || '{}';
-						var options = JSON.parse(optionsJson);
-						var id = this.getAttribute('id');
-						/*
-						 * 首次显示时实例化组件
-						 * 示例为了简洁，将 options 放在了按钮的 dom 上
-						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-						 */
-						var picker = new $.DtPicker(options);
-						picker.show(function(rs) {
-							/*
-							 * rs.value 拼合后的 value
-							 * rs.text 拼合后的 text
-							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
-							 * rs.m 月，用法同年
-							 * rs.d 日，用法同年
-							 * rs.h 时，用法同年
-							 * rs.i 分（minutes 的第二个字母），用法同年
-							 */
-							document.getElementById("end").innerHTML = rs.text;
-							/* 
-							 * 返回 false 可以阻止选择框的关闭
-							 * return false;
-							 */
-							/*
-							 * 释放组件资源，释放后将将不能再操作组件
-							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
-							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
-							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
-							 */
-							picker.dispose();
-							
-						});
-					}, false);
-				});
-				
-			})(mui);
+			})(mui);	
 
 	
 </script>
