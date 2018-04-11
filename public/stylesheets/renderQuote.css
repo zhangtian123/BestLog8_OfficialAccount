@@ -1,5 +1,7 @@
 .content {
 	font-size: 1em;
+	overflow:auto;
+	overflow-x: hidden;
 }
 
 .card {

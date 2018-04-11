@@ -4,6 +4,8 @@ body {
 	font-family: "微软雅黑";
 	text-align: center;
 	-webkit-overflow-scrolling: touch;
+	overflow:auto;
+	overflow-x: hidden;
 }
 
 .top-bar{

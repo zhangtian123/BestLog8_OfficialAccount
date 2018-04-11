@@ -1,8 +1,8 @@
 .mainBack {
 	background-color: #ebebeb;
-	width: window.innerWidth;
-	height: window.innerHeight;
 	margin: 0px;
+	overflow:auto;
+	overflow-x: hidden;
 }
 
 .topBack {
