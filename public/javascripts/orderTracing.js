@@ -152,62 +152,62 @@ $(document).ready(function(){
 								case 'FMS_SO01':
 								time1=value.FINISHEDDATE;
 								if(time1!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(0)").text(time1.replace('T',' ').substring(0,16));}
+								aDiv.find(".time:eq(0)").text(time1.replace('T',' ').substring(2,16));}
 								break;
 								case 'FMS_SO04':
 								time2 = value.FINISHEDDATE;
 								if(time2!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(1)").text(time2.replace('T',' ').substring(0,16));}
+								aDiv.find(".time:eq(1)").text(time2.replace('T',' ').substring(2,16));}
 								break;
 								case 'FMS_SO47':
 								time3 = value.FINISHEDDATE;
 								if(time3!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(2)").text(time3.replace('T',' ').substring(0,16));}
+								aDiv.find(".time:eq(2)").text(time3.replace('T',' ').substring(2,16));}
 								break;
 								case 'FMS_SO48':
 								time4 = value.FINISHEDDATE;
 								if(time4!=null){aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(3)").text(time4.replace('T',' ').substring(0,16));}
+								aDiv.find(".time:eq(3)").text(time4.replace('T',' ').substring(2,16));}
 								break;
 								case 'FMS_SO52':
 								time5 = value.FINISHEDDATE;
 								if(time5!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(4)").text(time5.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(4)").text(time5.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO51':
 								time6 = value.FINISHEDDATE;
 								if(time6!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(5)").text(time6.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(5)").text(time6.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO50':
 								time7 = value.FINISHEDDATE;
 								if(time7!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(6)").text(time7.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(6)").text(time7.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO49':
 								time8 = value.FINISHEDDATE;
 								if(time8!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(7)").text(time8.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(7)").text(time8.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO53':
 								time9 = value.FINISHEDDATE;
 								if(time9!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(8)").text(time9.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(8)").text(time9.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO12':
 								time10 = value.FINISHEDDATE;
 								if(time10!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(9)").text(time10.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(9)").text(time10.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO09':
 								time11 = value.FINISHEDDATE;
 								if(time11!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(10)").text(time11.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(10)").text(time11.replace('T',' ').substring(2,16));
 								break;
 								case 'FMS_SO54':
 								time12 = value.FINISHEDDATE;
 								if(time12!= null)aDiv.find(".circle-unfinished:eq(0)").attr("class","circle");
-								aDiv.find(".time:eq(11)").text(time12.replace('T',' ').substring(0,16));
+								aDiv.find(".time:eq(11)").text(time12.replace('T',' ').substring(2,16));
 								break;
 								default:break;
 							}
