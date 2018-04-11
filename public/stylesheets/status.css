@@ -1,6 +1,7 @@
 .mainBack {
 	background-color: #ebebeb;
 	margin: 0px;
+	background-size: 100%;
 	overflow:auto;
 	overflow-x: hidden;
 }
@@ -112,7 +113,12 @@
 
 
 /*statusTrailerSent，Pack css*/
-
+.rowTextSent {
+	font-size: 1rem;
+	color: #79797a;
+	padding: 6% 0 0 6%;
+	width: 28%;
+}
 .rowTextMulti {
 	font-size: 1rem;
 	color: #79797a;
