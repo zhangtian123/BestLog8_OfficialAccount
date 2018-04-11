@@ -63,10 +63,10 @@ function trace(data){
         context.arc(x,y,10,0,Math.PI*2,true);
         context.closePath();
         context.fill();
-        context.font = "15px 微软雅黑";
+        context.font = "0.8rem 微软雅黑";
         context.textBaseline = 'top';
 		context.fillText(name, x-10, y+10);
-		context.font = "12px 微软雅黑";
+		context.font = "0.7rem 微软雅黑";
         context.textBaseline = 'top';
 		context.fillText(time, x-10, y+30);
 		for(var index=2;index<=data.total_number;++index){
@@ -89,10 +89,10 @@ function trace(data){
             context.arc(x,y,10,0,Math.PI*2,true);
             context.closePath();
             context.fill();
-            context.font = "15px 微软雅黑";
+            context.font = "0.8rem 微软雅黑";
             context.textBaseline = 'top';
     		context.fillText(name, x-10, y+10);
-			context.font = "12px 微软雅黑";
+			context.font = "0.7rem 微软雅黑";
 	        context.textBaseline = 'top';
 			context.fillText(time, x-10, y+30);
 		}
@@ -131,10 +131,10 @@ function trace(data){
 	            context.arc(x,y,10,0,Math.PI*2,true);
 	            context.closePath();
 	            context.fill();
-	            context.font = "15px 微软雅黑";
+	            context.font = "0.8rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(name, x+15, y-10);
-        		context.font = "12px 微软雅黑";
+        		context.font = "0.7rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(time, x+15, y+10);
         	}
@@ -156,10 +156,10 @@ function trace(data){
 	            context.arc(x,y,10,0,Math.PI*2,true);
 	            context.closePath();
 	            context.fill();
-	            context.font = "15px 微软雅黑";
+	            context.font = "0.8rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(name, x+15, y-10);
-        		context.font = "12px 微软雅黑";
+        		context.font = "0.7rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(time, x+15, y+10);
         	}
@@ -183,10 +183,10 @@ function trace(data){
 	            context.arc(x,y,10,0,Math.PI*2,true);
 	            context.closePath();
 	            context.fill();
-	            context.font = "15px 微软雅黑";
+	            context.font = "0.8rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(name, x+15, y-10);
-        		context.font = "12px 微软雅黑";
+        		context.font = "0.7rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(time, x+15, y+10);
 			}
@@ -206,10 +206,10 @@ function trace(data){
 	            context.arc(x,y,10,0,Math.PI*2,true);
 	            context.closePath();
 	            context.fill();
-	            context.font = "15px 微软雅黑";
+	            context.font = "0.8rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(name, x+15, y-10);
-        		context.font = "12px 微软雅黑";
+        		context.font = "0.7rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(time, x+15, y+10);
 			}
@@ -233,13 +233,12 @@ function trace(data){
 	            context.arc(x,y,10,0,Math.PI*2,true);
 	            context.closePath();
 	            context.fill();
-	            context.font = "15px 微软雅黑";
+	            context.font = "0.8rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(name, x+15, y-10);
-        		context.font = "12px 微软雅黑";
+        		context.font = "0.7rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(time, x+15, y+10);
-			}
 		}
 	}
 }
