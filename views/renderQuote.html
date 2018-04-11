@@ -94,15 +94,14 @@
 				</div>
 				<div class="card">
 					<div id="total" class="input-title">总价：</div>
-					<div class="search-input-row line" style="width: 80%;">
+					<div class="search-input-row" style="width: 100%;margin-top:5px;">
 						<label id="totalFee" style='font-size:0.75em;width:60%;height:5%;' ></label>
 					</div>
 				</div>
-				
 				<div class="card" style="display: flex;flex-direction: row;">
 					<div  class="input-title">备注：</div>
 					<div class="search-input-row line" style="width: 90%;">
-						<input id="remark" class="input-normal" style="width: 100%; margin-left: -10%;"/>
+						<input id="remark" class="input-normal" style="width: 100%; margin-left: -10%;color:#000; "/>
 					</div>
 				</div>
 				<button id="submit" class='myBtn' style="margin-bottom: 2rem;">保存并分享</button>
@@ -360,7 +359,7 @@
 				if(totalFee != '') {
 					totalFee += ('=' + totalFeeValue);
 					document.getElementById('totalFee').innerText = totalFee;
-					document.getElementById('total').innerText = '总价：' + totalFeeValue
+					document.getElementById('total').innerText = '总价：'+totalFeeValue;
 //					$('#totalFee').text('运费：' + totalFee);
 				} else {
 					document.getElementById('totalFee').innerText = '';
