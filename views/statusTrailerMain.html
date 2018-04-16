@@ -12,6 +12,7 @@
 		<title>状态反馈</title>
 		<script src="/javascripts/mui.min.js"></script>
 		<link href="/stylesheets/mui.min_status.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/status.css" />
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 		</script>
@@ -118,7 +119,7 @@
 										case 'FMS_TCMX08':
 											time = "portarrive";
 											time6 = detail.FINISHEDDATE;
-											break;
+											break; 
 										case 'FMS_TCMX11':
 											time = "finish";
 											time7 = detail.FINISHEDDATE;
@@ -127,47 +128,53 @@
 											break;
 									}
 								}
+								if(time1 == "") time2="";
+								if(time2 == "") time3 = "";
+								if(time3 == "") time4= "";
+								if(time4 == "") time5= "";
+								if(time5 == "") time6= "";
+								if(time6 == "") time7= "";
 								var oDiv = document.createElement('div');
 								oDiv.className = 'mui-card content-item';
-								Inner(value.BILLNO, value.BILLID, value.BILLCODE, value.CONTAINERNO, value.SIZE, value.TYPE, value.TRUCKNO, value.DRIVER, value.TELEPHONE, time, oDiv);
+								Inner(value.BILLNO, value.BILLID, value.BILLCODE, value.CONTAINERNO, value.SIZE, value.TYPE, value.TRUCKNO, value.DRIVER, value.TELEPHONE, time,time1,time2,time3,time4,time5,time6,time7, oDiv);
 								aDiv.appendChild(oDiv);
 								//alert(time1+time2+time3+time4);
 								//alert(value.id);
-								trace({
-									"id": value.BILLID + value.BILLNO,
-									"row_number": 4, //每行有几个圆
-									"col_number": 2, //每列有几个圆
-									"total_number": 7, //一共有多少个圆
-									"datainit": [{
-											"name": "接单",
-											"time": time1
-										},
-										{
-											"name": "派车",
-											"time": time2
-										},
-										{
-											"name": "提箱",
-											"time": time3
-										},
-										{
-											"name": "到厂",
-											"time": time4
-										},
-										{
-											"name": "装箱",
-											"time": time5
-										},
-										{
-											"name": "装完",
-											"time": time6
-										},
-										{
-											"name": "进港",
-											"time": time7
-										}
-									]
-								});
+//								trace({
+//									"id": value.BILLID + value.BILLNO,
+//									"row_number": 4, //每行有几个圆
+//									"col_number": 2, //每列有几个圆
+//									"total_number": 7, //一共有多少个圆
+//									"datainit": [{
+//											"name": "接单",
+//											"time": time1
+//										},
+//										{
+//											"name": "派车",
+//											"time": time2
+//										},
+//										{
+//											"name": "提箱",
+//											"time": time3
+//										},
+//										{
+//											"name": "到厂",
+//											"time": time4
+//										},
+//										{
+//											"name": "装箱",
+//											"time": time5
+//										},
+//										{
+//											"name": "装完",
+//											"time": time6
+//										},
+//										{
+//											"name": "进港",
+//											"time": time7
+//										}
+//									]
+//								});
 								flag++;
 								currentlist++;
 							}
@@ -237,7 +244,7 @@
 										case 'FMS_TCMX08':
 											time = "portarrive";
 											time6 = detail.FINISHEDDATE;
-											break;
+											break; 
 										case 'FMS_TCMX11':
 											time = "finish";
 											time7 = detail.FINISHEDDATE;
@@ -246,47 +253,53 @@
 											break;
 									}
 								}
+								if(time1 == "") time2="";
+								if(time2 == "") time3 = "";
+								if(time3 == "") time4= "";
+								if(time4 == "") time5= "";
+								if(time5 == "") time6= "";
+								if(time6 == "") time7= "";
 								var oDiv = document.createElement('div');
 								oDiv.className = 'mui-card content-item';
-								Inner(value.BILLNO, value.BILLID, value.BILLCODE, value.CONTAINERNO, value.SIZE, value.TYPE, value.TRUCKNO, value.DRIVER, value.TELEPHONE, time, oDiv);
+								Inner(value.BILLNO, value.BILLID, value.BILLCODE, value.CONTAINERNO, value.SIZE, value.TYPE, value.TRUCKNO, value.DRIVER, value.TELEPHONE, time,time1,time2,time3,time4,time5,time6,time7, oDiv);
 								aDiv.appendChild(oDiv);
 								//alert(time1+time2+time3+time4);
 								//alert(value.id);
-								trace({
-									"id": value.BILLID + value.BILLNO,
-									"row_number": 4, //每行有几个圆
-									"col_number": 2, //每列有几个圆
-									"total_number": 7, //一共有多少个圆
-									"datainit": [{
-											"name": "接单",
-											"time": time1
-										},
-										{
-											"name": "派车",
-											"time": time2
-										},
-										{
-											"name": "提箱",
-											"time": time3
-										},
-										{
-											"name": "到厂",
-											"time": time4
-										},
-										{
-											"name": "装箱",
-											"time": time5
-										},
-										{
-											"name": "装完",
-											"time": time6
-										},
-										{
-											"name": "进港",
-											"time": time7
-										}
-									]
-								});
+//								trace({
+//									"id": value.BILLID + value.BILLNO,
+//									"row_number": 4, //每行有几个圆
+//									"col_number": 2, //每列有几个圆
+//									"total_number": 7, //一共有多少个圆
+//									"datainit": [{
+//											"name": "接单",
+//											"time": time1
+//										},
+//										{
+//											"name": "派车",
+//											"time": time2
+//										},
+//										{
+//											"name": "提箱",
+//											"time": time3
+//										},
+//										{
+//											"name": "到厂",
+//											"time": time4
+//										},
+//										{
+//											"name": "装箱",
+//											"time": time5
+//										},
+//										{
+//											"name": "装完",
+//											"time": time6
+//										},
+//										{
+//											"name": "进港",
+//											"time": time7
+//										}
+//									]
+//								});
 								flag++;
 								currentlist++;
 								flag1++;
@@ -298,7 +311,7 @@
 					}
 				}, 1500);
 			}
-			var Inner = function(id, orderid, billcode, containerno, size, type, truckNo, driver, telephone, time, oDiv) {
+			var Inner = function(id, orderid, billcode, containerno, size, type, truckNo, driver, telephone, time,time1,time2,time3,time4,time5,time6,time7, oDiv) {
 				oDiv.innerHTML = oDiv.innerHTML +
 					'<div class="toplabel"></div>' +
 					'<!--页眉，放置标题-->' +
@@ -308,31 +321,73 @@
 					'<!--内容区-->' +
 					'<div class="dashLine"></div>' +
 					'<div class="mui-card-content" style="text-align: center;">' +
-					'<div class="item">' +
-					'<span class="item-title">集装箱号/箱型尺寸：</span>' +
-					'<span>' + (containerno == null ? '' : containerno) + '/' + (size == null ? '' : size) + (type == null ? '' : type) + '</span>' +
-					'</div>' +
-					'<div class="item">' +
-					'<span class="item-title">司机/车号：</span>' +
-					'<span>' + (driver == null ? '' : driver) + '/' + (truckNo == null ? '' : truckNo) + '</span>' +
-					'</div>' +
-					'<div class="item">' +
-					'<span class="item-title">司机电话：</span>' +
-					'<span>' + (telephone == null ? '' : telephone) + '</span>' +
-					'</div>' +
-					'<div class="item" style="text-align: left;">' +
-					'<span class="item-title">派车单状态</span>' +
-					'</div>' +
-					'<div style = "width:90%;margin:3% 0 0 3%;">' +
-					'<canvas  id="' + orderid + id + '"  style="width:100%;height:60%;margin:0 0 0 2%;"></canvas>' +
-					'</div>' +
-					'</div>' +
+						'<div class="item">' +
+							'<span class="item-title">集装箱号/箱型尺寸：</span>' +
+							'<span>' + (containerno == null ? '' : containerno) + '/' + (size == null ? '' : size) + (type == null ? '' : type) + '</span>' +
+						'</div>' +
+						'<div class="item">' +
+							'<span class="item-title">司机/车号：</span>' +
+							'<span>' + (driver == null ? '' : driver) + '/' + (truckNo == null ? '' : truckNo) + '</span>' +
+						'</div>' +
+						'<div class="item">' +
+							'<span class="item-title">司机电话：</span>' +
+							'<span>' + (telephone == null ? '' : telephone) + '</span>' +
+						'</div>' +
+						'<div class="item" style="text-align: left;">' +
+							'<span class="item-title">派车单状态</span>' +
+						'</div>' +
 					
-					'<div class="mui-card-footer" style="margin-top:-8%;border-top:1px dashed #c8c7cc;">' +
-					'<div class="buttonbar">' +
-					'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>' +
-					//'<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button>'+
+					//					'<div style = "width:90%;margin:3% 0 0 3%;">' +
+					//					'<canvas  id="' + orderid + id + '"  style="width:100%;height:60%;margin:0 0 0 2%;"></canvas>' +
+					//					'</div>' +
+						'<div class="mui-collapse-contentT">' +
+					// '<canvas id="' + billid + '" width="370px" height="300px"></canvas>' +
+							'<div id="nodeT">'+
+								(time1==""  ? '<div class="circle-unfinished">接单</div>' : '<div class="circle">接单</div>')+
+								'<div class="time">'+time1.replace('T',' ').substring(0,16)+'</div>'+
+							'</div>'+
+							'<div id="node-line"></div>' +
+							'<div id="nodeT">'+
+								(time2==""? '<div class="circle-unfinished">派车</div>' : '<div class="circle">派车</div>')+
+								'<div class="time">'+time2.replace('T',' ').substring(0,16)+'</div>'+
+							'</div>'+
+							'<div id="node-line"></div>' +
+							'<div id="nodeT">'+
+								(time3=="" ?  '<div class="circle-unfinished">提箱</div>' : '<div class="circle">提箱</div>')+
+								'<div class="time">'+time3.replace('T',' ').substring(0,16)+'</div>'+
+							'</div>'+
+							'<div id="node-line"></div>' +
+							'<div id="nodeT">'+
+								(time4==""? '<div class="circle-unfinished">到厂</div>' : '<div class="circle">到厂</div>')+
+								'<div class="time">'+time4.replace('T',' ').substring(0,16)+'</div>'+
+							'</div>'+
+							'<div id="node-line-short"></div>' +
+							'<div id="node-line-v"></div>' +
+							'<div style="margin-right:0px;">' +
+								'<div id="node-line-short" style="float:right;"></div>' +
+								
+								'<div id="nodeT" style="float:right">'+
+									(time5==""? '<div class="circle-unfinished">装箱</div>' : '<div class="circle">装箱</div>')+
+									'<div class="time">'+time5.replace('T',' ').substring(0,16)+'</div>'+
+								'</div>'+
+								'<div id="node-line" style="float:right"></div>' +
+								'<div id="nodeT" style="float:right">'+
+									(time6==""? '<div class="circle-unfinished">装完</div>' : '<div class="circle">装完</div>')+
+									'<div class="time">'+time6.replace('T',' ').substring(0,16)+'</div>'+
+								'</div>'+
+								'<div id="node-line" style="float:right"></div>' +
+								'<div id="nodeT" style="float:right">'+
+									(time7=="" ?  '<div class="circle-unfinished">进港</div>' : '<div class="circle">进港</div>')+
+									'<div class="time">'+time7.replace('T',' ').substring(0,16)+'</div>'+
+								'</div>' +
+							'</div>' +
+						'</div>' +
 					'</div>' +
+					'<div class="mui-card-footer" style="margin-top:-3%;border-top:1px dashed #c8c7cc;z-index:999;">' +
+						'<div class="buttonbar">' +
+						'<button id="submit" type="button" class="mui-btn mui-btn-primary">状态反馈</button>' +
+					//'<button id="share" type="button" class="mui-btn mui-btn-primary">分享</button>'+
+						'</div>' +
 					'</div>';
 			};
 

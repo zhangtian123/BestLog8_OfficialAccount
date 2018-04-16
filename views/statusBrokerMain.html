@@ -11,6 +11,7 @@
 	    <title>状态反馈</title>
 	    <script src="/javascripts/mui.min.js"></script>
 	    <link href="/stylesheets/mui.min_status.css" rel="stylesheet"/>
+	    <link rel="stylesheet" type="text/css" href="/stylesheets/status.css" />
 	    <script type="text/javascript" charset="utf-8">
 	      	mui.init();
 	    </script>
@@ -128,23 +129,25 @@
 //									}
 //								})
 							}
+							if(time1 == "") time2="";
+							if(time2 == "") time3 = "";
 							var oDiv = document.createElement('div');
 							oDiv.className = 'mui-card content-item';
-							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,oDiv);
+							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,time1,time2,time3,oDiv);
 							aDiv.appendChild(oDiv);
 							//alert(time1+time2+time3+time4);
 							//alert(value.id);
-							trace({
-								"id":value.BILLNO,
-								"row_number":3,//每行有几个圆
-								"col_number":1,//每列有几个圆
-								"total_number":3,//一共有多少个圆
-								"datainit":[
-									{"name":"接单","time":time1},
-									{"name":"申报","time":time2},
-									{"name":"放行","time":time3}
-								]
-							});
+//							trace({
+//								"id":value.BILLNO,
+//								"row_number":3,//每行有几个圆
+//								"col_number":1,//每列有几个圆
+//								"total_number":3,//一共有多少个圆
+//								"datainit":[
+//									{"name":"接单","time":time1},
+//									{"name":"申报","time":time2},
+//									{"name":"放行","time":time3}
+//								]
+//							});
 							flag++;
 							currentlist++;
 						}
@@ -222,27 +225,29 @@
 //									}
 //								})
 							}
+							if(time1 == "") time2="";
+							if(time2 == "") time3 = "";
 							var oDiv = document.createElement('div');
 							oDiv.className = 'mui-card content-item';
 							//alert(time);
-							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,oDiv);
+							Inner(value.BILLNO,value.BILLID,value.BILLCODE,time,time1,time2,time3,oDiv);
 							aDiv.appendChild(oDiv);
 //							if(time == "finish")
 //							{
 //								document.body.querySelector("#submit").disabled = true;
 //								$("#submit").value = "已完成";
 //							}
-							trace({
-								"id":value.BILLNO,
-								"row_number":3,//每行有几个圆
-								"col_number":1,//每列有几个圆
-								"total_number":3,//一共有多少个圆
-								"datainit":[
-									{"name":"接单","time":time1},
-									{"name":"申报","time":time2},
-									{"name":"放行","time":time3}
-								]
-							});
+//							trace({
+//								"id":value.BILLNO,
+//								"row_number":3,//每行有几个圆
+//								"col_number":1,//每列有几个圆
+//								"total_number":3,//一共有多少个圆
+//								"datainit":[
+//									{"name":"接单","time":time1},
+//									{"name":"申报","time":time2},
+//									{"name":"放行","time":time3}
+//								]
+//							});
 							flag++;
 							currentlist++;
 							flag1++;
@@ -269,7 +274,7 @@
 //			});
 //		}
 		
-		var Inner = function(id,orderid,billcode,time,oDiv){
+		var Inner = function(id,orderid,billcode,time,time1,time2,time3,oDiv){
 			oDiv.innerHTML = oDiv.innerHTML+
 						'<div class="toplabel"></div>'+
 						'<!--页眉，放置标题-->'+
@@ -281,8 +286,25 @@
 							'<div class="item" style="text-align: left;">'+
 								'<span class="item-title">报关单状态</span>'+
 							'</div>'+
-							'<canvas id="'+id+'" style="width:100%;height:20%;margin:5% 0 0 8%;">'+
-							'</canvas>'+
+//							'<canvas id="'+id+'" style="width:100%;height:20%;margin:5% 0 0 8%;">'+
+//							'</canvas>'+
+							'<div class="mui-collapse-contentB">' +
+					// '<canvas id="' + billid + '" width="370px" height="300px"></canvas>' +
+							'	<div id="nodeB">'+
+									(time1==""  ? '<div class="circle-unfinished">接单</div>' : '<div class="circle">接单</div>')+
+									'<div class="timeB">'+time1.replace('T',' ').substring(0,16)+'</div>'+
+								'</div>'+
+								'<div id="node-line"></div>' +
+								'<div id="nodeB">'+
+									(time2==""? '<div class="circle-unfinished">申报</div>' : '<div class="circle">申报</div>')+
+									'<div class="timeB">'+time2.replace('T',' ').substring(0,16)+'</div>'+
+								'</div>'+
+								'<div id="node-line"></div>' +
+								'<div id="nodeB">'+
+									(time3=="" ?  '<div class="circle-unfinished">放行</div>' : '<div class="circle">放行</div>')+
+									'<div class="timeB">'+time3.replace('T',' ').substring(0,16)+'</div>'+
+								'</div>'+
+							'</div>' +
 							
 						'</div>'+
 						'<div class="mui-card-footer" style="margin-top:-30%;"> <div class="buttonbar">'+
