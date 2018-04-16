@@ -237,9 +237,14 @@ var Inner = function(billno, billid, customerReqNo, cargoName, num, packageType,
 		// '<canvas id="' + billid + '" width="370px" height="300px"></canvas>' +
 		'<div id="node"><div class="circle-unfinished">订单申请</div><div class="time"></div></div><div id="node-line"></div>'+
 		'<div id="node"><div class="circle-unfinished">订单预审</div><div class="time"></div></div><div id="node-line"></div>'+
-		'<div id="node"><div class="circle-unfinished">订单审核</div><div class="time"></div></div><div id="node-line-short"></div><div id="node-line-v"></div><div id="node-line-short" style="float:right"></div>'+
+		'<div id="node"><div class="circle-unfinished">订单审核</div><div class="time"></div></div>'+
+		'<div id="node-line-short"></div>'+
+		'<div id="node-line-v"></div>'+
+		'<div style="margin-right:4px;">'+
+		'<div id="node-line-short" style="float:right;"></div>'+
 		'<div id="node" style="float:right"><div class="circle-unfinished">订单分配</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
 		'<div id="node" style="float:right"><div class="circle-unfinished">订舱接收</div><div class="time"></div></div>'+
+		'</div>'+
 		'</div>' +
 		' </li>' +
 		'</ul>';

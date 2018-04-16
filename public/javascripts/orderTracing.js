@@ -297,11 +297,17 @@ var Inner = function(id, billid,customscompany,customsop,sonos,hblno,CNTRNUMSTR,
 	'<div id="node1"><div class="circle-unfinished">接单</div><div class="time"></div></div><div id="node-line"></div>'+
 	'<div id="node1"><div class="circle-unfinished">订舱</div><div class="time"></div></div><div id="node-line"></div>'+
 	'<div id="node1"><div class="circle-unfinished">提箱</div><div class="time"></div></div><div id="node-line"></div>'+
-	'<div id="node1"><div class="circle-unfinished">进场</div><div class="time"></div></div><div id="node-line-short"></div><div id="node-line-v"></div><div id="node-line-short" style="float:right"></div>'+
+	'<div id="node1"><div class="circle-unfinished">进场</div><div class="time"></div></div>'+
+	'<div id="node-line-short"></div>'+
+	'<div id="node-line-v-2" style="float:left;"></div>'+
+	'<div id="node-line-short" style="float:right"></div>'+
 	'<div id="node1" style="float:right"><div class="circle-unfinished">申报</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
 	'<div id="node1" style="float:right"><div class="circle-unfinished">放行</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
 	'<div id="node1" style="float:right"><div class="circle-unfinished">对单</div><div class="time"></div></div><div id="node-line" style="float:right"></div>'+
-	'<div id="node1" style="float:right"><div class="circle-unfinished">签发</div><div class="time"></div></div><div id="node-line-short" style="float:right"></div><div id="node-line-v" style="float:right"></div><div id="node-line-short"></div>'+
+	'<div id="node1" style="float:right"><div class="circle-unfinished">签发</div><div class="time"></div></div>'+
+	'<div id="node-line-short" style="float:right"></div>'+
+	'<div id="node-line-v-3" style="float:right"></div>'+
+	'<div id="node-line-short"></div>'+
 	'<div id="node1"><div class="circle-unfinished">对账</div><div class="time"></div></div><div id="node-line"></div>'+
 	'<div id="node1"><div class="circle-unfinished">付款</div><div class="time"></div></div><div id="node-line"></div>'+
 	'<div id="node1"><div class="circle-unfinished">开船</div><div class="time"></div></div><div id="node-line"></div>'+

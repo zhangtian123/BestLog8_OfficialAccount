@@ -83,9 +83,27 @@
     width:2px;
     height: 60px;
     border-right: 2px solid #ebebeb;
-    z-index: 2;
+    margin-bottom: -14px;
+    z-index: 9;
 }
-
+#node-line-v-2{
+    width:2px;
+    height: 60px;
+    border-right: 2px solid #ebebeb;
+    margin-right:-5px;
+    margin-top:12px;
+    margin-bottom: -13px;
+    z-index: 9;
+}
+#node-line-v-3{
+    width:2px;
+    height: 60px;
+    border-right: 2px solid #ebebeb;
+    margin-left: -5px;
+	margin-top:12px;
+    margin-bottom: -13px;
+    z-index: 9;
+}
 #node1{
     width: 17.2%; 
     float: left;

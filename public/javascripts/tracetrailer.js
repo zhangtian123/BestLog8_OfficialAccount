@@ -239,10 +239,7 @@ function trace(data){
         		context.font = "0.7rem 微软雅黑";
 	            context.textBaseline = 'top';
         		context.fillText(time, x+15, y+10);
+        	}
 		}
 	}
-}
-
-function trace2(data){
-	
 }

@@ -113,6 +113,9 @@
 		<!--二次开发 添加-->
 		<script src="/javascripts/cslCamera.js"></script>
 		<script type="text/javascript">
+			document.addEventListener('touchstart', function(event) {
+    			event.preventDefault();
+			},  {passive: false});
 			(function($) {
 				$.init();
 				var result = $('#result')[0];
