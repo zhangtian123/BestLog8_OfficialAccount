@@ -179,7 +179,7 @@ var Inner = function(index,id,begin,line,end,port,company,time,sail,expirydatebe
 
 	'<div class="item">'+
 	'<span>有效期：</span>'+
-	'<span>'+(expirydatebegin==null ? '' : expirydatebegin.replace('T',' ').substr(0,expirydatebegin.length-9))+'-'+(expirydateend==null ? '' : expirydateend.replace('T',' ').substr(0,expirydateend.length-9))+'</span>'+
+	'<span>'+(expirydatebegin==null ? '' : expirydatebegin.replace('T',' ').substr(0,expirydatebegin.length-9))+'至'+(expirydateend==null ? '' : expirydateend.replace('T',' ').substr(0,expirydateend.length-9))+'</span>'+
 	'</div>'+
 	'<div class="item">'+
 	'<span>20GP/40GP/40HC：</span>'+
