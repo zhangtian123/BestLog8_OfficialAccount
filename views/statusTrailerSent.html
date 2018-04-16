@@ -38,7 +38,7 @@
 				<div id="information" style="width:90%;position: absolute;">
 					<div class="row">
 						<label class="rowTextSent">时　　间</label>
-						<input id="result" type="text"  readonly="readonly" data-options='{}' class="btnMulti" placeholder="请选择完成时间" />
+						<input id="result" type="text" readonly="readonly" data-options='{}' class="btnMulti" placeholder="请选择完成时间" />
 					</div>
 					<div class="row">
 						<label class="rowTextSent">派车司机</label>
@@ -71,7 +71,7 @@
 			</div>
 			<!--提交按钮-->
 
-				<button id="submit" class="submitInfo">提交</button>
+			<button id="submit" class="submitInfo">提交</button>
 
 		</form>
 		<!--<div class="mui-content-padded contain">
@@ -114,11 +114,25 @@
 		<script src="/javascripts/cslCamera.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			
-//			document.addEventListener('touchstart', function(event) {
-//  			event.preventDefault();
-//			},  {passive: false});
-			
+			let that = this;
+			document.addEventListener('touchstart', function(e){
+				that.initX = e.targetTouches[0].pageX;
+				that.initY = e.targetTouches[0].pageY;
+			});
+			document.addEventListener('touchmove',function(e) {
+				e.preventDefault()
+				// window.console.log(that.initY)
+				let change = that.initX - e.targetTouches[0].pageX;
+				let changeY = that.initY - e.targetTouches[0].pageY;
+				if(change !== 0) {
+					document.body.scrollTop += changeY;
+					document.body.scrollLeft +=0;
+				}
+			}, { passive: false });
+			//			document.addEventListener('touchstart', function(event) {
+			//  			event.preventDefault();
+			//			},  {passive: false});
+
 			(function($) {
 				$.init();
 				var result = $('#result')[0];

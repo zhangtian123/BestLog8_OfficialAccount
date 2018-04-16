@@ -74,6 +74,21 @@
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
+			let that = this;
+			document.addEventListener('touchstart', function(e){
+				that.initX = e.targetTouches[0].pageX;
+				that.initY = e.targetTouches[0].pageY;
+			});
+			document.addEventListener('touchmove',function(e) {
+				e.preventDefault()
+				// window.console.log(that.initY)
+				let change = that.initX - e.targetTouches[0].pageX;
+				let changeY = that.initY - e.targetTouches[0].pageY;
+				if(change !== 0) {
+					document.body.scrollTop += changeY;
+					document.body.scrollLeft +=0;
+				}
+			}, { passive: false });
 //		document.addEventListener('touchstart', function(event) {
 //  			event.preventDefault();
 //			},  {passive: false});
