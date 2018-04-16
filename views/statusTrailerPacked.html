@@ -134,9 +134,9 @@
 		<script src="/javascripts/zooming.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			document.addEventListener('touchstart', function(event) {
-    			event.preventDefault();
-			},  {passive: false});
+//			document.addEventListener('touchstart', function(event) {
+//  			event.preventDefault();
+//			},  {passive: false});
 			(function($) {
 				$.init();
 				var result = $('#result')[0];
@@ -206,7 +206,7 @@
 					var digitResult = doc.getElementById('digitpicker');
 					showDigitPickerButton.addEventListener('tap', function(event) {
 						digitPicker.show(function(items) {
-							digitResult.innerHTML = JSON.stringify(items[0].text);
+							digitResult.value = JSON.stringify(items[0].text);
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});

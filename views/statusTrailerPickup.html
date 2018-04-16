@@ -44,7 +44,7 @@
 					</div>
 					<div class="row">
 						<label class="rowTextPickup">照　片</label>
-						<div class="album" style="width: 80%;margin:25% 0 0 5%;"></div>
+						<div class="album" style="width: 80%;margin:5rem 0 0 5%;"></div>
 						<!--<img id="btn" class="image-item" src="/images/camera.png" style="margin: 0px 0 0 20px;"><img>-->
 						<div class="AddBtnBackBorderPickup" id="chooseBtn">
 							<div class="AddBtnBack">
@@ -70,9 +70,9 @@
 		<script src="/javascripts/zooming.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			document.addEventListener('touchstart', function(event) {
-    			event.preventDefault();
-			},  {passive: false});
+//			document.addEventListener('touchstart', function(event) {
+//  			event.preventDefault();
+//			},  {passive: false});
 			
 			var number = 0;
 			var idx = 0;
@@ -116,7 +116,6 @@
 							div.append(img_delete);
 							$(".album").append(div);
 							$(".album").show();
-							console.log(number)
 							if(number >= 3) {
 								document.getElementById('chooseBtn').style.zIndex = "-99999"
 							} else {

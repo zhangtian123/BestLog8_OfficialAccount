@@ -2,8 +2,8 @@
 	background-color: #ebebeb;
 	margin: 0px;
 	background-size: 100%;
-	/*overflow:auto;
-	overflow-x: hidden;*/
+	overflow:auto;
+	overflow-x: hidden;
 }
 
 .topBack {
@@ -72,14 +72,15 @@
 .rowText {
 	font-size: 1rem;
 	color: #79797a;
-	padding: 6% 0 0 6%;
+	/*padding: 1.4rem 0 0 6%;*/
+	padding: 1.5rem 0 0 1rem;
 }
 
 .btn {
 	width: 70%;
 	height: 1.5rem;
 	font-size: 1rem;
-	margin: 6% 0 0 6%;
+	margin: 1.4rem 0 0 1.4rem;
 	padding: 5px 5px;
 	/*border: none;
 	border-bottom: 1px solid #ebebeb;*/
@@ -91,7 +92,7 @@
 	width: 70%;
 	height: 10rem;
 	font-size: 1rem;
-	margin: 15px 0 0 20px;
+	margin: 1.4rem 0 0 1.4rem;
 	padding: 5px 5px;
 	/*border: none;
 	border-bottom: 1px solid #ebebeb;*/
@@ -125,12 +126,12 @@
 	padding: 6% 0 0 6%;
 	width: 25%;
 }
-.rowTextPack {
+/*.rowTextPack {
 	font-size: 1rem;
 	color: #79797a;
-	padding: 6% 0 0 6%;
+	padding: 3rem 0 0 6%;
 	width: 15%;
-}
+}*/
 .btnMulti {
 	width: 60%;
 	font-size: 1rem;
@@ -145,7 +146,7 @@
 	width: 70%;
 	font-size: 1rem;
 	height: 1.5rem;
-	margin: 3% 0 0 5%;
+	margin: 0.6rem 0 0 5%;
 	border: none;
 	border-bottom: 1px solid gray;
 	/*border: 1px solid gray;*/
@@ -169,14 +170,14 @@
 .rowTextPack {
 	font-size: 1rem;
 	color: #79797a;
-	padding: 10px 0 0 10px;
+	margin: 0.6rem 0 0 0.5rem;
 }
 
 .packages {
-	width: 34%;
+	width: 33%;
 	font-size: 1rem;
 	height: 1.5rem;
-	margin: 4% 0 0 5%;
+	margin: 0.6rem 0 0 5%;
 	border: none;
 	border-bottom: 1px solid gray;
 	/*border: 1px solid gray;*/
@@ -184,10 +185,10 @@
 }
 
 .unit {
-	width: 34%;
+	width: 33%;
 	font-size: 1rem;
 	height: 1.5rem;
-	margin: 4% 0 0 2%;
+	margin: 0.6rem 0 0 5%;
 	border: none;
 	border-bottom: 1px solid gray;
 	/*border: 1px solid gray;*/
@@ -198,7 +199,7 @@
 	width: 70%;
 	font-size: 1rem;
 	height: 5rem;
-	margin: 2.5% 0 0 4%;
+	margin: 0.6rem 0 0 4%;
 	border: none;
 	border-bottom: 1px solid gray;
 	/*border: 1px solid gray;*/
@@ -219,8 +220,8 @@
 .centerBackPickup {
 	background-color: white;
 	width: 90%;
-	height: 31rem;
-	margin: -80px 0 0 5%;
+	height: 28rem;
+	margin: -5.5rem 0 0 5%;
 	border-radius: 5px;
 	z-index: 99;
 }
