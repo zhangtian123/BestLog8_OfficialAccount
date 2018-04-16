@@ -69,6 +69,11 @@
 		<!--二次开发新增的-->
 		<script src="/javascripts/zooming.js"></script>
 		<script type="text/javascript">
+			mui.init();
+			document.addEventListener('touchstart', function(event) {
+    			event.preventDefault();
+			},  {passive: false});
+			
 			var number = 0;
 			var idx = 0;
 

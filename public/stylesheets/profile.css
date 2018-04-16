@@ -10,7 +10,8 @@ body {
 
 .top-bar{
 	position: relative;
-	width: 100%;
+	width: 105%;
+	margin-left: -2.5%;
 	height: 12rem;
 	margin-top: -2%;
 	background-color: #0078cd;

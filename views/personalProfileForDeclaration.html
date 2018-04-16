@@ -56,6 +56,9 @@
 	</body>
 	<script src="/javascripts/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
+		document.addEventListener('touchstart', function(event) {
+    			event.preventDefault();
+			},  {passive: false});
 		mui.init();
 
 		$(document).ready(function() {

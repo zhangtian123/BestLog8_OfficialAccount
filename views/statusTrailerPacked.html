@@ -133,6 +133,10 @@
 		<!--二次开发新增的-->
 		<script src="/javascripts/zooming.js"></script>
 		<script type="text/javascript">
+			mui.init();
+			document.addEventListener('touchstart', function(event) {
+    			event.preventDefault();
+			},  {passive: false});
 			(function($) {
 				$.init();
 				var result = $('#result')[0];
