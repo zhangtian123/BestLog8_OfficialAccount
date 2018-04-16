@@ -396,6 +396,7 @@ label {
 	border-radius: 15px;
 	font-size: 15px;
 	color: white;
+	text-align: center;
 	vertical-align: middle;
 	background: linear-gradient(to right, #36a2ef, #0078cd);
 	line-height: 10px;
@@ -541,12 +542,20 @@ label {
 	justify-content: space-around;
 	
 }
+.buttonbar1 {
+	display: inline-block;
+	margin-top:7px;
+	justify-content: space-around;
+	
+}
+.buttonbar1 button {
+	height: 30px;
+	border-radius: 1rem;
+	
+}
 .buttonbar button {
-	/*	width: 4rem;*/
-	/*background-color: #495A80;*/
 	width: 5rem;
-	height: 25px;
-	/*line-height: 30px;*/
+	height: 30px;
 	border-radius: 1rem;
 }
 
